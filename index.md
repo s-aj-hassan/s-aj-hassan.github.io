@@ -3,16 +3,13 @@ layout: default
 title: Home
 ---
 
-# Your Name
-
-_Your Role_ · _Your Department_ · _Your Institution_
-
-Email: <your.email@uni.edu> · [Google Scholar](https://scholar.google.com/) · [ORCID](https://orcid.org/) · [GitHub](https://github.com/your-username)
+<!-- Email: <your.email@uni.edu> · [Google Scholar](https://scholar.google.com/) · [ORCID](https://orcid.org/) · [GitHub](https://github.com/your-username) -->
 
 ---
 
-## About
-Brief paragraph about your research interests and background. Mention current position, group, and the questions you work on.
+I'm a Sociologist of education and social stratification. My current research focuses on the possibilities and limitations of school reforms when it comes to combating inequities in educational outcomes by social background. 
+
+
 
 ## News
 - 2025-09 — Paper accepted at **Venue** (with A. Collaborator).
