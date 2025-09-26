@@ -5,9 +5,9 @@ title: Home
 
 <!-- Email: <your.email@uni.edu> · [Google Scholar](https://scholar.google.com/) · [ORCID](https://orcid.org/) · [GitHub](https://github.com/your-username) -->
 
-I am a Postdoctoral Research Fellow at Nuffield College, University of Oxford, where I achieved my PhD in 2024. My dissertation recently won the Best PhD Thesis Prize in Sociology, awarded by the European Consortium for Sociolgoical Research.  
+I am a Postdoctoral Research Fellow at Nuffield College, University of Oxford, where I completed my PhD in 2024. My dissertation was recently awarded the Best PhD Thesis Prize in Sociology by the European Consortium for Sociolgoical Research (ECSR).  
 
-I study social stratification with a focus on the role of education. In my current research, I focus on the possibilities and limitations of school interventions when it comes to combating inequalities in educational outcomes by socioeconomic and ethnic background. Methodologically, I specialize in causal inference methods and often employ natural experiment designs to answer questions related to school choice, teacher effectiveness, and racial/ethnic discrimination. 
+I study social stratification with a particular focus on the role of education. My current research examines the possibilities and limitations of school interventions in reducing inequalities in educational outcomes by socioeconomic and ethnic background. Methodologically, I specialize in causal inference methods and often employ natural experiment designs to answer questions related to school choice, teacher effectiveness, and racial/ethnic discrimination. 
 
 
 ## News
