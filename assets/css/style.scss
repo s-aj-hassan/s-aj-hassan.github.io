@@ -1,0 +1,9 @@
+details {
+  display: inline;   /* keep Abstract inline */
+}
+summary {
+  display: inline;   /* keep the text inline */
+  margin-left: 0.5em; /* small gap */
+  cursor: pointer;
+  color: #0366d6;    /* same blue as links */
+}
