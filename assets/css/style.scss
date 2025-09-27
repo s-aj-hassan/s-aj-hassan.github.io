@@ -97,8 +97,8 @@ header img {
 }
 
 /* CV: smaller and black */
-.social-icons .cv-link { 
-  font-size: 0.85em; 
-  color: #000 !important; 
-  font-weight: 600; 
+.social-icons .cv-link {
+  font-size: 1em;       /* same scale as surrounding text */
+  color: #000 !important;
+  font-weight: 600;
 }
