@@ -41,7 +41,7 @@ I study social stratification with a focus on education. My current research exa
   <a href="#" class="abslink" onclick="toggleAbs('abs-refugee', this); return false;">[Abstract]</a>
 </p>
 <div id="abs-refugee" class="abstract-box">
-  Many European countries have examined whether the inflow of refugee children affects the academic performance of native children in schools. Using Danish administrative data and a difference-in-differences design, we find little evidence that refugee children negatively impact native peers’ educational outcomes.
+  Discussions concerning the social impact of accepting refugee immigrants arise each time large numbers of refugees apply for protection in rich countries. However, little evidence exists on how the integration of refugees into core welfare institutions affects native citizens who depend on and interact with these institutions. In this paper, we focus on whether receiving refugees in a school cohort affects the academic performance of natives, using administrative data from Denmark, which contain test scores on all children in public schools. We exploit variation in the timing of refugees’ entrance to schools to facilitate causal estimates. Our findings show that refugees tend to cluster in schools that had poorer performance even prior to the refugees’ arrival. When we take this selection pattern into account, the effect of receiving refugees on the academic performance trajectory of natives is both statistically insignificant and substantially unimportant.
 </div>
 
 
