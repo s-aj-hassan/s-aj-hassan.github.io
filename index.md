@@ -15,8 +15,10 @@ title: Home
   <a href="mailto:your@email.com" aria-label="Email">
     <i class="fa-solid fa-envelope"></i>
   </a>
-  <a href="https://bsky.app/profile/YOUR_HANDLE" target="_blank" rel="noopener" aria-label="Bluesky">
-    <i class="si si-bluesky"></i>
+  <a href="https://bsky.app/profile/YOUR_HANDLE" target="_blank" rel="noopener" aria-label="Bluesky" class="bluesky-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="1em" height="1em" fill="currentColor">
+      <path d="M600 205.5c0 109.9-144.6 301.8-195.4 366.8-15.9 20.1-41.6 27.8-68.2 27.8-26.6 0-52.3-7.7-68.2-27.8C144.6 507.3 0 315.4 0 205.5 0 122.1 73.1 59 146.5 59c60.6 0 115.3 39.2 153.5 101.2C338.2 98.2 393 59 453.5 59 526.9 59 600 122.1 600 205.5Z"/>
+    </svg>
   </a>
   <a href="/assets/cv/YourName_CV.pdf" target="_blank" rel="noopener" aria-label="CV" class="cv-link">CV</a>
 </div>
