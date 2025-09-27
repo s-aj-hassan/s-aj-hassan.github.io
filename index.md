@@ -16,6 +16,11 @@ title: Home
     <i class="ai ai-google-scholar"></i>
   </a>
 
+  <!-- LinkedIn -->
+  <a href="https://www.linkedin.com/in/YOUR_USERNAME" target="_blank" rel="noopener" aria-label="LinkedIn">
+    <i class="fa-brands fa-linkedin"></i>
+  </a>
+ 
   <!-- Email -->
   <a href="mailto:your@email.com" aria-label="Email">
     <i class="fa-solid fa-envelope"></i>
