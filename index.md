@@ -57,8 +57,7 @@ I study social stratification with a focus on education. My current research exa
 
   <li>
     A Muslim School Advantage? Evidence from a Natural Experiment
-      
-    </a>
+  
     <span class="meta">
       (Sole-authored)  
       <em>Review and Resubmit, American Journal of Sociology</em>  
@@ -70,13 +69,12 @@ I study social stratification with a focus on education. My current research exa
   </li>
 
   <li>
-    <a href="#">
     Teacher Sorting and Inequalities in Student Achievement
       
-    </a>
+
     <span class="meta">
-      (Sole-authoreed)  
-      <em>U</em>  
+      (Sole-authored)  
+      <em>TEST</em>  
       <a href="#" class="abslink" onclick="toggleAbs('abs-teacher', this); return false;">[Abstract]</a>
     </span>
     <div id="abs-teacher" class="abstract-box">
