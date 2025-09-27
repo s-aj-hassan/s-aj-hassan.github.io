@@ -98,8 +98,9 @@ header img {
 
 /* CV link styled same as icons */
 .social-icons .cv-link {
-  font-size: 1.8em;     /* same as icons */
-  color: inherit;       /* same blue as the icons */
+  font-size: 1.8em;               /* keep same size as icons */
+  color: #267CB9 !important;      /* Minimal theme link blue */
   font-weight: 600;
   vertical-align: middle;
+  margin-left: 0.2em;             /* tighten spacing on the left */
 }
