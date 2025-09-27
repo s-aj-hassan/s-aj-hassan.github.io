@@ -9,6 +9,28 @@ I am a Postdoctoral Research Fellow at [Nuffield College, University of Oxford](
 
 I study social stratification with a focus on education. My current research examines the potential and limitations of school interventions in reducing inequalities in educational outcomes by socioeconomic and ethnic background. Methodologically, I specialize in causal inference and often employ quasi-experimental designs to answer questions related to school choice, teacher effectiveness, and racial/ethnic discrimination.  
 
+<style>
+  .pub { margin: 0 0 .25rem 0; }
+  .pub .abslink { margin-left:.5em; text-decoration: underline; }
+  .abstract-box{
+    display:none;
+    background:#f6f8fa;           /* light grey */
+    border-left:4px solid #d0d7de; /* subtle left bar */
+    padding:12px 16px;
+    margin:.5rem 0 1rem 1rem;      /* indent under the citation */
+    border-radius:8px;
+    color:#444;
+  }
+</style>
+<script>
+  function toggleAbs(id, link){
+    const box = document.getElementById(id);
+    const show = (box.style.display === 'none' || box.style.display === '');
+    box.style.display = show ? 'block' : 'none';
+    link.textContent = show ? '[Close]' : '[Abstract]';
+  }
+</script>
+
 ## Publications
 <p>
 <a href="https://academic.oup.com/esr/article/39/3/352/6843667?login=false">Do Refugee Children Impair the Academic Performance of Native Children in the School?</a> (with Camilla Hvidtfeldt, Lars Højsgaard Andersen, Rebecca Overgaard Udsen) <em>European Sociological Review</em>
