@@ -1,26 +1,60 @@
 ---
 ---
 
-@import "jekyll-theme-minimal";  /* pulls in the theme's CSS first */
+@import "jekyll-theme-minimal";  /* load theme CSS first */
 
-/* Keep the Abstract toggle inline */
+/* ===== Publications list ===== */
+ul.pubs { 
+  list-style-type: disc; 
+  padding-left: 1.2em; 
+  margin: 0 0 1rem 0; 
+}
+
+ul.pubs li { 
+  margin: 0 0 1rem 0; 
+  line-height: 1.5; 
+}
+
+/* Title stays normal size (inherits), metadata a bit smaller/softer */
+ul.pubs li .meta { 
+  font-size: 0.9em; 
+  color: #555; 
+}
+
+/* [Abstract] link on the same line as the citation */
+ul.pubs li .abslink { 
+  margin-left: 0.5em; 
+  text-decoration: underline; 
+  font-size: 0.9em; 
+}
+
+/* Abstract box: light grey, indented, rounded */
+.abstract-box { 
+  display: none;                 /* toggled via JS */
+  background: #f6f8fa; 
+  border-left: 4px solid #d0d7de;
+  padding: 12px 16px;
+  margin: 0.5rem 0 1rem 1rem;    /* indent under the citation */
+  border-radius: 8px;
+  color: #444;
+  font-size: 0.9em;              /* slightly smaller than title */
+}
+
+/* Tighter spacing when a pubs list follows a heading */
+h2 + ul.pubs, h3 + ul.pubs { 
+  margin-top: 0.5rem; 
+}
+
+/* ===== Optional: keep <details> inline if you use it elsewhere ===== */
 details,
 details summary {
   display: inline !important;
   vertical-align: baseline;
 }
-
-details {
-  margin-left: 0.5em; /* small gap before Abstract */
-}
-
+details { margin-left: 0.5em; }
 details summary {
-  list-style: none;          /* remove the default marker */
+  list-style: none;
   cursor: pointer;
-  text-decoration: underline; /* make it look like a link */
+  text-decoration: underline;
 }
-
-/* Hide the triangle marker in WebKit */
-details summary::-webkit-details-marker {
-  display: none;
-}
+details summary::-webkit-details-marker { display: none; }
