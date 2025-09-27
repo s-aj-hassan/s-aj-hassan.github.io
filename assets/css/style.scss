@@ -64,10 +64,21 @@ header img {
   border-radius: 50%;   /* adjust % for more/less oval */
 }
 
-/* Replace "View My GitHub Profile" with TEST (no includes needed) */
-.view a { display: none !important; }   /* hide the original link text */
-.view::after { 
-  content: "TEST";                      /* your replacement text */
-  font-size: 11px;                      /* match Minimal theme's small text */
-  color: inherit; 
+/* FOR ICONS */ 
+/* Social icons under the profile photo */
+.social-icons {
+  margin-top: .5rem;
+  text-align: center;
 }
+.social-icons a {
+  /* Use your site accent color; or use inherit to match link color */
+  color: #9c2c24;
+  font-size: 1.6em;     /* icon size */
+  margin: 0 .4em;
+  line-height: 1;
+}
+.social-icons a:hover { color: #600; }
+
+/* Make the envelope icon visually aligned with the others */
+.social-icons .fa-envelope { transform: translateY(2px); }
+
