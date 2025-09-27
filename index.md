@@ -56,17 +56,32 @@ I study social stratification with a focus on education. My current research exa
 <ul class="pubs">
 
   <li>
-    <a href="#">
     A Muslim School Advantage? Evidence from a Natural Experiment
       
     </a>
     <span class="meta">
-      (Sole-authoreed)  
+      (Sole-authored)  
       <em>Review and Resubmit, American Journal of Sociology</em>  
       <a href="#" class="abslink" onclick="toggleAbs('abs-muslim', this); return false;">[Abstract]</a>
     </span>
     <div id="abs-muslim" class="abstract-box">
       Do ethnic enclaves improve or impede ethnic minorities' social outcomes? In this study, I examine the impact of Muslim schools in Denmark on ethnic minority children's academic performance, as a case study of this broader question. Using a natural experiment design that induced a sudden and unanticipated student flight from Muslim to public schools, I document large positive Muslim school effects in reading and mathematics. Through several robustness checks, I show that disruption effects do not explain these results. Finally, I empirically test two theoretical mechanisms underlying the observed effects: ethnic homogeneity and teacher biases. While I do not find evidence of teacher biases in my analyses, I find that ethnic homogeneity is a key driver of the observed positive effects, lending support to oppositional culture explanations. From a policy perspective, these results highlight that targeted assimilation policies that seek to further the social integration of ethnic minorities may potentially have unintended consequences and come with costs to other outcomes that policymakers care about-in this context, academic performance. 
+    </div>
+  </li>
+
+  <li>
+    <a href="#">
+    Teacher Sorting and Inequalities in Student Achievement
+      
+    </a>
+    <span class="meta">
+      (Sole-authoreed)  
+      <em>U</em>  
+      <a href="#" class="abslink" onclick="toggleAbs('abs-teacher', this); return false;">[Abstract]</a>
+    </span>
+    <div id="abs-teacher" class="abstract-box">
+      Teachers play a formative role in shaping children’s school experiences and ultimately, their educational outcomes. In this study, I use full population Danish administrative data to explore the consequences of unequal access to
+qualified teachers in three steps. First, I document strong patterns of teacher-student sorting in Denmark, one of the world’s most equal societies and generous welfare states. In short, teachers from higher socioeconomic backgrounds and with higher prior academic achievements tend to select into schools serving high-achieving children from privileged backgrounds. Second, I investigate the effect of teacher qualifications on students’ test score performance. To facilitate causal estimates, I exploit plausibly exogenous shocks to teacher changes induced by parental leave spells, which, I show, are unrelated to an extensive set of observed classroom characteristics, including student well-being and measures of classroom climate. Finally, I explore differentials in the impact of teacher qualifications by students’ socioeconomic background. I find no consistent evidence of differential teacher effects, implying that teacher-induced learning inequalities are mainly driven by teachers' sorting behavior. This finding highlights that policies designed to equalize access to quality teachers can be effective in reducing learning disparities.
     </div>
   </li>
 
