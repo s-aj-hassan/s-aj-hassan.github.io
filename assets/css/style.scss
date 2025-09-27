@@ -68,32 +68,37 @@ header img {
 
 /* FOR ICONS */ 
 /* ---- Social icons under profile photo ---- */
-.social-icons {
-  margin-top: .6rem;
-  text-align: center;         /* center everything */
+
+/* Center row under photo */
+.social-icons { 
+  margin-top: .6rem; 
+  text-align: center; 
 }
+
+/* Make icons Minimal’s link blue */
 .social-icons a {
-  color: inherit;             /* match your site/link color automatically */
+  color: #267CB9;           /* Minimal theme link color */
   margin: 0 .45em;
   line-height: 1;
   text-decoration: none;
 }
-.social-icons a:hover { text-decoration: underline; }
+.social-icons a:hover { color: #069; text-decoration: underline; }
 
-/* make all icon glyphs the same size across families (Academicons, FontAwesome, Simple Icons) */
-.social-icons i {
-  font-size: 1.8em;           /* uniform size */
-  vertical-align: middle;
+/* Uniform glyph size across icon sets */
+.social-icons i { 
+  font-size: 1.8em;         /* all icons same size */
+  vertical-align: middle; 
 }
 
-/* email icon alignment (Font Awesome sometimes sits a touch high) */
-.social-icons .fa-envelope {
-  transform: translateY(1px);
+/* Email icon: match size + tiny vertical nudge */
+.social-icons .fa-envelope { 
+  font-size: 1.8em; 
+  transform: translateY(1px); 
 }
 
-/* CV link: smaller and black */
-.social-icons .cv-link {
-  font-size: 0.85em;
-  color: #000 !important;     /* black */
-  font-weight: 600;
+/* CV: smaller and black */
+.social-icons .cv-link { 
+  font-size: 0.85em; 
+  color: #000 !important; 
+  font-weight: 600; 
 }
