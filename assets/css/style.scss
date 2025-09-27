@@ -96,9 +96,10 @@ header img {
   transform: translateY(1px); 
 }
 
-/* CV: smaller and black */
+/* CV link styled same as icons */
 .social-icons .cv-link {
-  font-size: 1em;       /* same scale as surrounding text */
-  color: #000 !important;
+  font-size: 1.8em;     /* same as icons */
+  color: inherit;       /* same blue as the icons */
   font-weight: 600;
+  vertical-align: middle;
 }
