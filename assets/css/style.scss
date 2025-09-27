@@ -63,16 +63,3 @@ details summary::-webkit-details-marker { display: none; }
 header img {
   border-radius: 50%;   /* adjust % for more/less oval */
 }
-
-/* Settings for icons below profile pictures */ 
-/* Social icons under logo */
-.social-icons {
-  margin-top: 0.5em;
-  text-align: center;
-}
-.social-icons a {
-  color: #9c2c24;      /* set to your site accent color */
-  font-size: 1.6em;    /* icon size */
-  margin: 0 0.4em;
-}
-.social-icons a:hover { color: #600; }
