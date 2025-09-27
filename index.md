@@ -23,6 +23,30 @@ title: Home
   </a>
 </div>
 
+<script>
+  (function () {
+    function placeIcons() {
+      var header = document.querySelector('header');
+      var img = header ? header.querySelector('img') : null;
+      var icons = document.getElementById('social-icons');
+      if (!header || !icons) return;
+      // Insert right after the logo image if it exists, else after description
+      if (img && img.parentNode) {
+        img.insertAdjacentElement('afterend', icons);
+      } else {
+        var desc = header.querySelector('p');
+        (desc || header).insertAdjacentElement('beforeend', icons);
+      }
+      icons.style.display = 'block';
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', placeIcons);
+    } else {
+      placeIcons();
+    }
+  })();
+</script>
+
 <!-- The script below makes it possible to click on abstracts for papers -->
 
 <script>
