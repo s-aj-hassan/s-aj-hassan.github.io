@@ -1,9 +1,14 @@
-details {
-  display: inline;   /* keep Abstract inline */
+---
+---
+
+@import "{{ site.theme }}";
+
+/* Keep Abstract toggle inline with the citation */
+details, details summary { 
+  display: inline !important;
 }
-summary {
-  display: inline;   /* keep the text inline */
-  margin-left: 0.5em; /* small gap */
+details summary {
+  margin-left: 0.5em;   /* small gap after the venue */
   cursor: pointer;
-  color: #0366d6;    /* same blue as links */
+  text-decoration: underline; /* looks like a link */
 }
