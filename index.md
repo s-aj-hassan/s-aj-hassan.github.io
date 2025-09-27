@@ -6,6 +6,23 @@ title: Home
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+<!-- ICONS --> 
+<div id="social-icons" class="social-icons" style="display:none">
+  <!-- Replace the href values with your real links -->
+  <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener" aria-label="Google Scholar">
+    <i class="ai ai-google-scholar ai-2x"></i>
+  </a>
+  <a href="https://orcid.org/YOUR_ID" target="_blank" rel="noopener" aria-label="ORCID">
+    <i class="ai ai-orcid ai-2x"></i>
+  </a>
+  <a href="mailto:your@email.com" aria-label="Email">
+    <i class="fa-solid fa-envelope"></i>
+  </a>
+  <a href="/assets/cv/YourName_CV.pdf" target="_blank" rel="noopener" aria-label="CV">
+    <strong>CV</strong>
+  </a>
+</div>
+
 <!-- The script below makes it possible to click on abstracts for papers -->
 
 <script>
