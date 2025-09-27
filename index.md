@@ -9,12 +9,8 @@ title: Home
 
 <!-- ICONS --> 
 <div id="social-icons" class="social-icons" style="display:none">
-  <!-- Update the href values with your real links -->
   <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener" aria-label="Google Scholar">
     <i class="ai ai-google-scholar"></i>
-  </a>
-  <a href="https://orcid.org/YOUR_ID" target="_blank" rel="noopener" aria-label="ORCID">
-    <i class="ai ai-orcid"></i>
   </a>
   <a href="mailto:your@email.com" aria-label="Email">
     <i class="fa-solid fa-envelope"></i>
@@ -24,9 +20,7 @@ title: Home
   </a>
   <a href="/assets/cv/YourName_CV.pdf" target="_blank" rel="noopener" aria-label="CV" class="cv-link">CV</a>
 </div>
-</div>
 
-<!-- Move icons below profile pic -->
 <script>
   (function () {
     function placeIcons() {
@@ -34,7 +28,6 @@ title: Home
       var img = header ? header.querySelector('img') : null;
       var icons = document.getElementById('social-icons');
       if (!header || !icons) return;
-      // insert directly under the logo image if it exists; otherwise after description
       if (img && img.parentNode) {
         img.insertAdjacentElement('afterend', icons);
       } else {
