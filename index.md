@@ -38,14 +38,13 @@ I study social stratification with a focus on education. My current research exa
   </li>
 
 <!-- JDLC PAPER -->
-</ul>
-
 <li>
   <a href="#">
     The Importance of Living Arrangements for Criminal Persistence and Desistance: A Novel Test of Exposure to Convicted Family Members
   </a>
   <span class="meta">
-    (with David Kirk, Lars H. Andersen) _Journal of Developmental and Life-Course Criminology_  
+    (with David Kirk, Lars H. Andersen)  
+    <em>Journal of Developmental and Life-Course Criminology</em>  
     <a href="#" class="abslink" onclick="toggleAbs('abs-living', this); return false;">[Abstract]</a>
   </span>
   <div id="abs-living" class="abstract-box">
