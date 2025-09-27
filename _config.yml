@@ -6,6 +6,9 @@ theme: jekyll-theme-minimal
 
 # Optional settings
 logo: /assets/img/profile.jpg   # put your headshot at assets/img/profile.jpg
+header img {
+  border-radius: 20%;   /* adjust % for more/less oval */
+}
 show_downloads: false
 google_analytics:
 # If you're using a custom domain, set it in Pages settings (it will create a CNAME file automatically).
