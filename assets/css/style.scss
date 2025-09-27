@@ -60,25 +60,40 @@ details summary {
 details summary::-webkit-details-marker { display: none; }
 
 /* Adjust how the profile photo looks */
+
+
 header img {
   border-radius: 50%;   /* adjust % for more/less oval */
 }
 
 /* FOR ICONS */ 
-/* Social icons under the profile photo */
+/* ---- Social icons under profile photo ---- */
 .social-icons {
-  margin-top: .5rem;
-  text-align: center;
+  margin-top: .6rem;
+  text-align: center;         /* center everything */
 }
 .social-icons a {
-  /* Use your site accent color; or use inherit to match link color */
-  color: #9c2c24;
-  font-size: 1.6em;     /* icon size */
-  margin: 0 .4em;
+  color: inherit;             /* match your site/link color automatically */
+  margin: 0 .45em;
   line-height: 1;
+  text-decoration: none;
 }
-.social-icons a:hover { color: #600; }
+.social-icons a:hover { text-decoration: underline; }
 
-/* Make the envelope icon visually aligned with the others */
-.social-icons .fa-envelope { transform: translateY(2px); }
+/* make all icon glyphs the same size across families (Academicons, FontAwesome, Simple Icons) */
+.social-icons i {
+  font-size: 1.8em;           /* uniform size */
+  vertical-align: middle;
+}
 
+/* email icon alignment (Font Awesome sometimes sits a touch high) */
+.social-icons .fa-envelope {
+  transform: translateY(1px);
+}
+
+/* CV link: smaller and black */
+.social-icons .cv-link {
+  font-size: 0.85em;
+  color: #000 !important;     /* black */
+  font-weight: 600;
+}
