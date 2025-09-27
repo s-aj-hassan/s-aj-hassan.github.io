@@ -106,9 +106,7 @@ header img {
 }
 
 /* Blue sky */
-.social-icons .bluesky-icon svg {
-  width: 1.8em;
-  height: 1.8em;
-  vertical-align: middle;
-  display: inline-block;
+.social-icons .fa-bluesky {
+  font-size: 1.8em;       /* same size as others */
+  vertical-align: middle; /* aligns nicely in the row */
 }
