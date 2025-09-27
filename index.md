@@ -2,6 +2,9 @@
 layout: default
 title: Home
 ---
+<!-- Add fonts for icones -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <!-- The script below makes it possible to click on abstracts for papers -->
 
