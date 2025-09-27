@@ -68,45 +68,42 @@ header img {
 
 /* FOR ICONS */ 
 /* ---- Social icons under profile photo ---- */
+/* ---- Social icons under profile photo ---- */
 
-/* Center row under photo */
+/* Container */
 .social-icons { 
   margin-top: .6rem; 
   text-align: center; 
 }
 
-/* Make icons Minimal’s link blue */
+/* Each link = equal-size flex box */
 .social-icons a {
-  color: #267CB9;           /* Minimal theme link color */
-  margin: 0 .45em;
-  line-height: 1;
+  display: inline-flex;          /* force a box */
+  align-items: center;           /* vertical center inside */
+  justify-content: center;       /* horizontal center */
+  width: 1.8em;                  /* uniform width */
+  height: 1.8em;                 /* uniform height */
+  margin: 0 .35em;
+  color: #267CB9;                /* Minimal theme link blue */
   text-decoration: none;
-}
-.social-icons a:hover { color: #069; text-decoration: underline; }
-
-/* Uniform glyph size across icon sets */
-.social-icons i { 
-  font-size: 1.8em;         /* all icons same size */
-  vertical-align: middle; 
+  line-height: 1;
 }
 
-/* Email icon: match size + tiny vertical nudge */
-.social-icons .fa-envelope { 
-  font-size: 1.8em; 
-  transform: translateY(1px); 
+/* Hover effect */
+.social-icons a:hover {
+  color: #069;
+  text-decoration: underline;
 }
 
-/* CV link styled same as icons */
+/* All icons (scholar, email, bluesky) */
+.social-icons i {
+  font-size: 1em;                /* scaled inside the flex box */
+  line-height: 1;
+}
+
+/* CV styled same as icons but as text */
 .social-icons .cv-link {
-  font-size: 1.8em;               /* keep same size as icons */
-  color: #267CB9 !important;      /* Minimal theme link blue */
+  font-size: 0.9em;              /* tweak until it visually matches */
   font-weight: 600;
-  vertical-align: middle;
-  margin-left: 0em;             /* tighten spacing on the left */
-}
-
-/* Blue sky */
-.social-icons .fa-bluesky {
-  font-size: 1.3em;       /* same size as others */
-  vertical-align: middle; /* aligns nicely in the row */
+  color: #267CB9 !important;
 }
