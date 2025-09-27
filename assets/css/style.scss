@@ -67,44 +67,43 @@ header img {
 }
 
 /* FOR ICONS */ 
-/* ---- Social icons under profile photo ---- */
-/* ---- Social icons under profile photo ---- */
 
 /* ---- Social icons under profile photo ---- */
 
-/* Container centers the row */
+/* Container centers row */
 .social-icons { 
-  margin-top: .6rem; 
+  margin-top: .8rem; 
   text-align: center; 
 }
 
-/* Each link = uniform square box */
+/* Each link = fixed square */
 .social-icons a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2em;
-  height: 2em;
-  margin: 0 .35em;
-  color: #267CB9;                /* Minimal theme link blue */
+  width: 2.4em;                 /* size of the box */
+  height: 2.4em;
+  margin: 0 .4em;
+  color: #267CB9;               /* Minimal theme link blue */
+  background: none;
   text-decoration: none;
   line-height: 1;
 }
 
 .social-icons a:hover {
-  color: #069;                   /* darker blue on hover */
+  color: #069;
   text-decoration: underline;
 }
 
-/* All icons (LinkedIn, Scholar, Email, Bluesky) */
+/* Icons inside the box */
 .social-icons i {
-  font-size: 1.3em;              /* glyph size inside box */
+  font-size: 1.6em;             /* size of glyph inside the box */
   line-height: 1;
 }
 
-/* CV styled to match */
+/* CV styled same as icon inside a box */
 .social-icons .cv-link {
-  font-size: 1em;                /* tweak until visually matches glyphs */
-  font-weight: 600;
+  font-size: 1.2em;             /* scale text so it matches glyphs */
+  font-weight: 700;
   color: #267CB9 !important;
 }
