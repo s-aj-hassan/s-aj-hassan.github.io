@@ -63,3 +63,11 @@ details summary::-webkit-details-marker { display: none; }
 header img {
   border-radius: 50%;   /* adjust % for more/less oval */
 }
+
+/* Replace "View My GitHub Profile" with TEST (no includes needed) */
+.view a { display: none !important; }   /* hide the original link text */
+.view::after { 
+  content: "TEST";                      /* your replacement text */
+  font-size: 11px;                      /* match Minimal theme's small text */
+  color: inherit; 
+}
