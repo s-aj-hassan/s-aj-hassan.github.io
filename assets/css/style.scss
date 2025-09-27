@@ -1,14 +1,26 @@
 ---
 ---
 
-@import "{{ site.theme }}";
+@import "jekyll-theme-minimal";  /* pulls in the theme's CSS first */
 
-/* Keep Abstract toggle inline with the citation */
-details, details summary { 
-  display: inline !important;
-}
+/* Keep the Abstract toggle inline */
+details,
 details summary {
-  margin-left: 0.5em;   /* small gap after the venue */
+  display: inline !important;
+  vertical-align: baseline;
+}
+
+details {
+  margin-left: 0.5em; /* small gap before Abstract */
+}
+
+details summary {
+  list-style: none;          /* remove the default marker */
   cursor: pointer;
-  text-decoration: underline; /* looks like a link */
+  text-decoration: underline; /* make it look like a link */
+}
+
+/* Hide the triangle marker in WebKit */
+details summary::-webkit-details-marker {
+  display: none;
 }
