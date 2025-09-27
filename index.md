@@ -20,12 +20,11 @@ I study social stratification with a focus on education. My current research exa
 
 ## Publications
 
-<!-- REFUGEE PAPER -->
 <ul class="pubs">
 
   <li>
     <a href="https://academic.oup.com/esr/article/39/3/352/6843667?login=false">
-      Do Refugee Children Impair the Academic Performance of Native Children in the School? Informative Null Results from Danish Register Data
+      Do Refugee Children Impair the Academic Performance of Native Children in the School?
     </a>
     <span class="meta">
       (with Camilla Hvidtfeldt, Lars Højsgaard Andersen, Rebecca Overgaard Udsen)  
@@ -37,17 +36,18 @@ I study social stratification with a focus on education. My current research exa
     </div>
   </li>
 
-<!-- JDLC PAPER -->
-<li>
-  <a href="#">
-    The Importance of Living Arrangements for Criminal Persistence and Desistance: A Novel Test of Exposure to Convicted Family Members
-  </a>
-  <span class="meta">
-    (with David Kirk, Lars H. Andersen)  
-    <em>Journal of Developmental and Life-Course Criminology</em>  
-    <a href="#" class="abslink" onclick="toggleAbs('abs-living', this); return false;">[Abstract]</a>
-  </span>
-  <div id="abs-living" class="abstract-box">
-    Leveraging the richness of population register data in Denmark, this study provides an in-depth examination of the residential situations of the formerly incarcerated over the first 3 years after prison. These data allow us to examine precisely who former prisoners reside with after release, and whether the characteristics of housemates, such as prior conviction status, and relationship type, such as familial ties, are associated with criminal reconviction. While Denmark has one of the lowest incarceration rates in the world, like many other Western countries, it is challenged by high recidivism rates among the formerly incarcerated. Using data on the population of all individuals released from prison between 1991 and 2014 and estimation via Cox proportional hazards models, we find that formerly incarcerated individuals who move into a residence with other individuals with criminal records have significantly greater hazards of reconviction, even after controlling for an extensive set of observed confounders. Residing with family members, particularly spouses, significantly reduces the likelihood of recidivism, but only if the family members do not have a recent criminal conviction. Results underscore the importance of housing arrangements and family ties during the post-release period.
-  </div>
-</li>
+  <li>
+    <a href="#">
+      The Importance of Living Arrangements for Criminal Persistence and Desistance: A Novel Test of Exposure to Convicted Family Members
+    </a>
+    <span class="meta">
+      (with David Kirk, Lars H. Andersen)  
+      <em>Journal of Developmental and Life-Course Criminology</em>  
+      <a href="#" class="abslink" onclick="toggleAbs('abs-living', this); return false;">[Abstract]</a>
+    </span>
+    <div id="abs-living" class="abstract-box">
+      Leveraging the richness of population register data in Denmark, this study provides an in-depth examination of the residential situations of the formerly incarcerated over the first 3 years after prison. These data allow us to examine precisely who former prisoners reside with after release, and whether the characteristics of housemates, such as prior conviction status, and relationship type, such as familial ties, are associated with criminal reconviction. While Denmark has one of the lowest incarceration rates in the world, like many other Western countries, it is challenged by high recidivism rates among the formerly incarcerated. Using data on the population of all individuals released from prison between 1991 and 2014 and estimation via Cox proportional hazards models, we find that formerly incarcerated individuals who move into a residence with other individuals with criminal records have significantly greater hazards of reconviction, even after controlling for an extensive set of observed confounders. Residing with family members, particularly spouses, significantly reduces the likelihood of recidivism, but only if the family members do not have a recent criminal conviction. Results underscore the importance of housing arrangements and family ties during the post-release period.
+    </div>
+  </li>
+
+</ul>
