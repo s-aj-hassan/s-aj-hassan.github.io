@@ -83,8 +83,8 @@ I study social stratification with a focus on education. My current research exa
       Do Refugee Children Impair the Academic Performance of Native Children in the School?
     </a> <br>
     <span class="meta">
-      (with Camilla Hvidtfeldt, Lars Højsgaard Andersen, Rebecca Overgaard Udsen)  
-      <em>European Sociological Review</em>  
+      (with Camilla Hvidtfeldt, Lars H. Andersen, Rebecca O. Udsen) <br>
+      <em>European Sociological Review</em> <br> 
       <a href="#" class="abslink" onclick="toggleAbs('abs-refugee', this); return false;">[Abstract]</a>
     </span>
     <div id="abs-refugee" class="abstract-box">
