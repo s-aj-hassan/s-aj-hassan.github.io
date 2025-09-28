@@ -31,7 +31,7 @@ title: Home
   </a>
 
   <!-- CV (text link) -->
-  <a href="/assets/cv/Hassan_CV_web.pdf" target="_blank" rel="noopener" aria-label="CV" class="cv-link">CV</a>
+  <a href="https://saidhassan.net/CV_Hassan.pdf" target="_blank" rel="noopener" aria-label="CV" class="cv-link">CV</a>
 </div>
 
 
