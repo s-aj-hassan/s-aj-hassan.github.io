@@ -84,8 +84,6 @@ header img {
 /* Only Bluesky smaller */
 .social-icons .fa-bluesky {
   font-size: 1.6rem;        /* tweak until it matches visually (e.g., 1.55–1.7) */
-  /* optional: keep baseline perfect after resizing */
-  transform: translateY(1px);
 }
 
 .social-icons i,
