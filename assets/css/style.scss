@@ -71,24 +71,28 @@ header img {
 /* ---- Social icons under profile photo ---- */
 /* ---- Social icons under profile photo ---- */
 
-/* Container centers row */
-.social-icons { 
-  margin-top: .8rem; 
-  text-align: center; 
+/* ---- Social icons under profile photo ---- */
+
+/* Make the row a flex container and pin all items to the same bottom line */
+.social-icons {
+  margin-top: .8rem;
+  display: flex;                 /* NEW: flex row */
+  justify-content: center;       /* centered horizontally */
+  align-items: flex-end;         /* <<< bottoms align perfectly */
+  gap: .6em;                     /* space between items */
+  text-align: center;
 }
 
-/* Each link = fixed square */
+/* Each link = fixed-height box so bottoms line up */
 .social-icons a {
-  display: inline-flex;
-  align-items: flex-end;        /* align glyphs to bottom of box */
+  display: flex;                 /* flex inside too */
+  align-items: flex-end;         /* glyph/text sits on the bottom of the box */
   justify-content: center;
-  width: 2.4em;                 /* size of the box */
-  height: 2.4em;
-  margin: 0 .4em;
-  color: #267CB9;               /* Minimal theme link blue */
-  background: none;
+  width: 2.6em;                  /* make them a bit bigger */
+  height: 2.6em;                 /* SAME height for all */
+  color: #267CB9;                /* Minimal theme link blue */
   text-decoration: none;
-  line-height: 1;
+  line-height: 1;                /* no extra line box */
 }
 
 .social-icons a:hover {
@@ -96,19 +100,22 @@ header img {
   text-decoration: underline;
 }
 
-/* Icons inside the box */
+/* Font icons inside the box */
 .social-icons i {
-  font-size: 1.6em;             /* size of glyph inside the box */
+  display: block;                /* no inline baseline weirdness */
   line-height: 1;
-  display: inline-block;
-  vertical-align: baseline;     /* bottoms align */
+  font-size: 1.7em;              /* size of glyph inside the box */
 }
 
-/* CV styled same as icon inside a box */
+/* CV styled to match (text inside the same box) */
 .social-icons .cv-link {
-  font-size: 1.2em;             /* scale text so it matches glyphs */
+  display: block;
+  line-height: 1;
   font-weight: 700;
+  font-size: 1.25em;             /* tune this if you want CV taller/shorter */
   color: #267CB9 !important;
-  display: inline-block;
-  vertical-align: baseline;     /* align CV bottom with icons */
 }
+
+/* --- Debug guide (optional): uncomment to see the baseline exactly --- */
+/* .social-icons { border-bottom: 1px dashed magenta; } */
+/* .social-icons a { outline: 1px dotted rgba(255,0,255,.35); } */
