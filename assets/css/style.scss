@@ -40,6 +40,18 @@ ul.pubs li .abslink {
   font-size: 0.9em;              /* slightly smaller than title */
 }
 
+/* Make [Abstract]/[Close] look like normal text (not blue links) */
+.pubs .abslink,
+.pubs .abslink:link,
+.pubs .abslink:visited,
+.pubs .abslink:hover,
+.pubs .abslink:active {
+  color: inherit !important;    /* same color as surrounding text */
+  text-decoration: none;        /* no underline */
+  font-weight: normal;
+  cursor: pointer;              /* still looks clickable */
+}
+
 /* Tighter spacing when a pubs list follows a heading */
 h2 + ul.pubs, h3 + ul.pubs { 
   margin-top: 0.5rem; 
