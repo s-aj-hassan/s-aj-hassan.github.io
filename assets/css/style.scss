@@ -67,53 +67,23 @@ header img {
 }
 
 /* FOR ICONS */ 
-/* ==== Social icons: pixel-consistent boxes (SVGs) ==== */
-:root{
-  --icon-box: 36px;    /* outer box size (tweak bigger/smaller) */
-  --icon-gap: 10px;    /* spacing between icons */
-  --icon-glyph: 26px;  /* inner glyph/text size */
-  --icon-color: #267CB9;
-  --icon-color-hover: #069;
-}
-
-.social-icons{
-  margin-top: .6rem;
-  white-space: nowrap;             /* single line */
+/* minimal styling for two icons */
+.social-icons {
   text-align: center;
+  margin-top: .6rem;
+  white-space: nowrap;     /* stay on one line */
 }
 
-.social-icons a{
-  display: inline-block;
-  width: var(--icon-box);
-  height: var(--icon-box);
-  margin: 0 calc(var(--icon-gap)/2);
-  color: var(--icon-color);
+.social-icons a {
+  color: #267CB9;          /* Minimal theme link blue */
+  margin: 0 .45em;
   text-decoration: none;
-  vertical-align: bottom;          /* bottoms share the same baseline */
+}
+
+.social-icons a:hover { color: #069; }
+
+.social-icons i {
+  font-size: 1.8rem;       /* adjust once and both scale */
   line-height: 1;
+  vertical-align: bottom;  /* align bottoms */
 }
-
-/* All SVGs fill the box consistently */
-.social-icons svg{
-  display: block;                  /* no inline baseline weirdness */
-  width: var(--icon-glyph);
-  height: var(--icon-glyph);
-  margin: calc((var(--icon-box) - var(--icon-glyph))) auto 0; /* top margin, bottom aligned */
-}
-
-/* CV rendered as text but in the same fixed box */
-.social-icons .cv-box{
-  font-weight: 700;
-  font-size: calc(var(--icon-glyph) * 0.8);  /* visual match */
-  display: inline-block;
-  line-height: 1;
-  /* bottom align by using same outer box; push text to bottom with padding-top */
-  padding-top: calc(var(--icon-box) - var(--icon-glyph));
-  color: var(--icon-color) !important;
-}
-
-.social-icons a:hover{ color: var(--icon-color-hover); text-decoration: underline; }
-
-/* Optional: micro-nudges per icon if you want absolute visual equality */
-/* .social-icons [aria-label="Google Scholar"] svg{ transform: translateY(1px); } */
-/* .social-icons [aria-label="Email"] svg{ transform: translateY(1px); } */
