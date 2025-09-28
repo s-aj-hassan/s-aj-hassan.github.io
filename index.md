@@ -78,16 +78,26 @@ qualified teachers in three steps. First, I document strong patterns of teacher-
   </li>
 
   <li>
-    Schools and Learning Inequalities: A Theoretical Model of Quantitative and Qualitative School Effects
-      
+    Schools and Learning Inequalities: A Theoretical Model of Quantitative and Qualitative School Effects <br>
 
     <span class="meta">
       (with Richard Breen)  
-      <em>TEST</em>  
       <a href="#" class="abslink" onclick="toggleAbs('abs-school', this); return false;">[Abstract]</a>
     </span>
     <div id="abs-school" class="abstract-box">
 Do schools reduce or amplify learning gaps by socioeconomic background? In this paper, we contribute to this longstanding sociological debate in three ways. First, we develop a formal model that clarifies relevant theoretical estimands and counterfactuals. Second, our theoretical model synthesizes previously contradictory findings in the literature on schools and inequality by distinguishing between quantitative and qualitative school effects. Third, we empirically test a central hypothesis from our model: that the positive returns to improvements in school quality are concentrated among children from lower socioeconomic backgrounds. To test this hypothesis, we use administrative register data from Denmark and a natural experiment design that relies on variation in school quality induced by unanticipated changes in school district boundaries over time. We show that children redistricted to higher-quality schools substantially improve their test score performance in reading, and, crucially, these effects are strongest among children from lower socioeconomic backgrounds. These findings suggest that equalizing school quality can be an effective means of reducing learning inequalities.
+    </div>
+  </li>
+
+  <li>
+    Parental Incarceration and Children's Educational Outcomes <br>
+
+    <span class="meta">
+      (Sole-authored)  
+      <a href="#" class="abslink" onclick="toggleAbs('abs-parinc', this); return false;">[Abstract]</a>
+    </span>
+    <div id="abs-parinc" class="abstract-box">
+    Abstract here.
     </div>
   </li>
 
