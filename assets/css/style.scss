@@ -69,53 +69,49 @@ header img {
 /* FOR ICONS */ 
 
 /* ---- Social icons under profile photo ---- */
-/* ---- Social icons under profile photo ---- */
 
-/* ---- Social icons under profile photo ---- */
-
-/* Make the row a flex container and pin all items to the same bottom line */
-.social-icons {
+/* Row: one line, centered, bottoms aligned */
+.social-icons{
+  display: inline-flex;         /* sit inline with header content */
+  flex-direction: row;          /* horizontal */
+  flex-wrap: nowrap;            /* keep one line */
+  align-items: flex-end;        /* <<< align bottoms */
+  gap: 0.6rem;                  /* spacing between items */
   margin-top: .8rem;
-  display: flex;                 /* NEW: flex row */
-  justify-content: center;       /* centered horizontally */
-  align-items: flex-end;         /* <<< bottoms align perfectly */
-  gap: .6em;                     /* space between items */
-  text-align: center;
 }
 
-/* Each link = fixed-height box so bottoms line up */
-.social-icons a {
-  display: flex;                 /* flex inside too */
-  align-items: flex-end;         /* glyph/text sits on the bottom of the box */
+/* Each item = auto width, fixed height so bottoms align */
+.social-icons a{
+  display: inline-flex;
+  align-items: flex-end;        /* bottom of each box */
   justify-content: center;
-  width: 2.6em;                  /* make them a bit bigger */
-  height: 2.6em;                 /* SAME height for all */
-  color: #267CB9;                /* Minimal theme link blue */
+  height: 2.2rem;               /* make bigger/smaller here */
+  color: #267CB9;
   text-decoration: none;
-  line-height: 1;                /* no extra line box */
+  line-height: 1;               /* remove extra inline line-box */
 }
 
-.social-icons a:hover {
+.social-icons a:hover{
   color: #069;
   text-decoration: underline;
 }
 
 /* Font icons inside the box */
-.social-icons i {
-  display: block;                /* no inline baseline weirdness */
+.social-icons i{
+  display: block;               /* avoid inline baseline quirks */
   line-height: 1;
-  font-size: 1.7em;              /* size of glyph inside the box */
+  font-size: 1.6rem;            /* glyph size; adjust if you want bigger */
 }
 
-/* CV styled to match (text inside the same box) */
-.social-icons .cv-link {
+/* CV text sized to visually match icons */
+.social-icons .cv-link{
   display: block;
   line-height: 1;
   font-weight: 700;
-  font-size: 1.25em;             /* tune this if you want CV taller/shorter */
+  font-size: 1.35rem;           /* tweak up/down until it matches the glyphs */
   color: #267CB9 !important;
 }
 
-/* --- Debug guide (optional): uncomment to see the baseline exactly --- */
-/* .social-icons { border-bottom: 1px dashed magenta; } */
-/* .social-icons a { outline: 1px dotted rgba(255,0,255,.35); } */
+/* Optional debug to verify baseline: enable, check, then remove */
+/* .social-icons{ border-bottom: 1px dashed magenta; } */
+/* .social-icons a{ outline: 1px dotted rgba(255,0,255,.35); } */
