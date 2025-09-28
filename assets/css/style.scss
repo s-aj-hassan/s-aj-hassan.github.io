@@ -67,51 +67,59 @@ header img {
 }
 
 /* FOR ICONS */ 
+/* ==== Social icons (one row, bottoms aligned) ==== */
 
-/* ---- Social icons under profile photo ---- */
-
-/* Row: one line, centered, bottoms aligned */
+/* Row container */
 .social-icons{
-  display: inline-flex;         /* sit inline with header content */
-  flex-direction: row;          /* horizontal */
-  flex-wrap: nowrap;            /* keep one line */
-  align-items: flex-end;        /* <<< align bottoms */
-  gap: 0.6rem;                  /* spacing between items */
+  display: flex;                 /* single flex row */
+  flex-wrap: nowrap;             /* never wrap to a new line */
+  justify-content: center;       /* center the whole strip */
+  align-items: flex-end;         /* <<< align bottoms */
+  gap: 0.6rem;                   /* horizontal spacing */
   margin-top: .8rem;
 }
 
-/* Each item = auto width, fixed height so bottoms align */
+/* Each item */
 .social-icons a{
-  display: inline-flex;
-  align-items: flex-end;        /* bottom of each box */
+  display: flex;                 /* makes the glyph sit in a box */
+  align-items: flex-end;         /* put glyph on the bottom of the box */
   justify-content: center;
-  height: 2.2rem;               /* make bigger/smaller here */
+  height: 2.6rem;                /* box height — increase to make all bigger */
+  flex: 0 0 auto;                /* don't shrink / wrap */
   color: #267CB9;
-  text-decoration: none;
-  line-height: 1;               /* remove extra inline line-box */
+  text-decoration: none;         /* kill underlines */
+  line-height: 1;                /* no extra line box */
 }
 
+/* Hover: color only (no underline so it won't shift the baseline) */
 .social-icons a:hover{
   color: #069;
-  text-decoration: underline;
 }
 
-/* Font icons inside the box */
+/* Glyph size inside the box (all icons) */
 .social-icons i{
-  display: block;               /* avoid inline baseline quirks */
+  display: block;                /* avoid inline baseline quirks */
   line-height: 1;
-  font-size: 1.6rem;            /* glyph size; adjust if you want bigger */
+  font-size: 2.0rem;             /* glyph size — tune with height above */
 }
 
-/* CV text sized to visually match icons */
-.social-icons .cv-link{
-  display: block;
-  line-height: 1;
+/* CV as text but treated like an icon */
+.social-icons a.cv-link{
+  display: flex;
+  align-items: flex-end;         /* bottom aligned like icons */
+  justify-content: center;
+  height: 2.6rem;                /* same box height */
   font-weight: 700;
-  font-size: 1.35rem;           /* tweak up/down until it matches the glyphs */
+  font-size: 2.0rem;             /* match icon visual size */
   color: #267CB9 !important;
 }
 
-/* Optional debug to verify baseline: enable, check, then remove */
+/* Tiny per-icon nudges to visually match the butterfly */
+.social-icons .ai-google-scholar{ transform: translateY(1px); }
+.social-icons .fa-linkedin      { transform: translateY(2px); }
+.social-icons .fa-envelope      { transform: translateY(2px); }
+/* .social-icons .fa-bluesky   { transform: translateY(0); }  // usually fine */
+
+/* ---- Debug (optional): uncomment to verify baseline, then remove ---- */
 /* .social-icons{ border-bottom: 1px dashed magenta; } */
-/* .social-icons a{ outline: 1px dotted rgba(255,0,255,.35); } */
+/* .social-icons a{ outline: 1px dotted rgba(255,0,255,.3); } */
