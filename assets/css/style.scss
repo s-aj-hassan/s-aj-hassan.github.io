@@ -69,6 +69,7 @@ header img {
 /* FOR ICONS */ 
 
 /* ---- Social icons under profile photo ---- */
+/* ---- Social icons under profile photo ---- */
 
 /* Container centers row */
 .social-icons { 
@@ -79,7 +80,7 @@ header img {
 /* Each link = fixed square */
 .social-icons a {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-end;        /* align glyphs to bottom of box */
   justify-content: center;
   width: 2.4em;                 /* size of the box */
   height: 2.4em;
@@ -99,6 +100,8 @@ header img {
 .social-icons i {
   font-size: 1.6em;             /* size of glyph inside the box */
   line-height: 1;
+  display: inline-block;
+  vertical-align: baseline;     /* bottoms align */
 }
 
 /* CV styled same as icon inside a box */
@@ -106,4 +109,6 @@ header img {
   font-size: 1.2em;             /* scale text so it matches glyphs */
   font-weight: 700;
   color: #267CB9 !important;
+  display: inline-block;
+  vertical-align: baseline;     /* align CV bottom with icons */
 }
