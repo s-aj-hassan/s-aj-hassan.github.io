@@ -1,0 +1,10 @@
+<!-- The script below makes it possible to click on abstracts for papers -->
+
+<script>
+  function toggleAbs(id, link){
+    const box = document.getElementById(id);
+    const show = (box.style.display === 'none' || box.style.display === '');
+    box.style.display = show ? 'block' : 'none';
+    link.textContent = show ? '[Close]' : '[Abstract]';
+  }
+</script>
