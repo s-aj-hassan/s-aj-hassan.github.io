@@ -9,28 +9,29 @@ title: Home
 
 <!-- ICONS --> 
 <div id="social-icons" class="social-icons">
+
+  <!-- Scholar (FA has no Google Scholar icon; using graduation cap) -->
+  <a href="https://scholar.google.com/citations?user=LKYHvDMAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
+    <i class="fa-solid fa-graduation-cap"></i>
+  </a>
+  
   <!-- LinkedIn -->
-  <a href="https://www.linkedin.com/in/YOUR_USERNAME" target="_blank" rel="noopener" aria-label="LinkedIn">
+  <a href="https://www.linkedin.com/in/said-aj-hassan" target="_blank" rel="noopener" aria-label="LinkedIn">
     <i class="fa-brands fa-linkedin"></i>
   </a>
 
   <!-- Bluesky -->
-  <a href="https://bsky.app/profile/YOUR_HANDLE" target="_blank" rel="noopener" aria-label="Bluesky">
+  <a href="https://bsky.app/profile/saidhassan.bsky.social" target="_blank" rel="noopener" aria-label="Bluesky">
     <i class="fa-brands fa-bluesky"></i>
   </a>
 
-  <!-- Scholar (FA has no Google Scholar icon; using graduation cap) -->
-  <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener" aria-label="Google Scholar">
-    <i class="fa-solid fa-graduation-cap"></i>
-  </a>
-
   <!-- Email -->
-  <a href="mailto:your@email.com" aria-label="Email">
+  <a href="mailto:said.aj.hassan@gmail.com" aria-label="Email">
     <i class="fa-solid fa-envelope"></i>
   </a>
 
   <!-- CV (text link) -->
-  <a href="/assets/cv/YourName_CV.pdf" target="_blank" rel="noopener" aria-label="CV" class="cv-link">CV</a>
+  <a href="/assets/cv/Hassan_CV_web.pdf" target="_blank" rel="noopener" aria-label="CV" class="cv-link">CV</a>
 </div>
 
 
