@@ -84,7 +84,7 @@ I study social stratification with a focus on education. My current research exa
     </a> <br>
     <span class="meta">
       (with Camilla Hvidtfeldt, Lars H. Andersen, Rebecca O. Udsen) <br>
-      <em>European Sociological Review</em> <br> 
+      <em>European Sociological Review</em>  
       <a href="#" class="abslink" onclick="toggleAbs('abs-refugee', this); return false;">[Abstract]</a>
     </span>
     <div id="abs-refugee" class="abstract-box">
@@ -95,9 +95,9 @@ I study social stratification with a focus on education. My current research exa
   <li>
     <a href="https://link.springer.com/article/10.1007/s40865-022-00211-0">
       The Importance of Living Arrangements for Criminal Persistence and Desistance: A Novel Test of Exposure to Convicted Family Members
-    </a>
+    </a> <br>
     <span class="meta">
-      (with David Kirk, Lars H. Andersen)  
+      (with David Kirk, Lars H. Andersen)  <br>
       <em>Journal of Developmental and Life-Course Criminology</em>  
       <a href="#" class="abslink" onclick="toggleAbs('abs-living', this); return false;">[Abstract]</a>
     </span>
