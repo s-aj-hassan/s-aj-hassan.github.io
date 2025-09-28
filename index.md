@@ -8,72 +8,20 @@ title: Home
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v9/font/simple-icons.min.css">
 
 <!-- ICONS --> 
-<div id="social-icons" class="social-icons" style="display:none">
-
-  <!-- LinkedIn -->
-  <a href="https://www.linkedin.com/in/YOUR_USERNAME" target="_blank" rel="noopener" aria-label="LinkedIn">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
-      <path d="M22.23 0H1.77C.79 0 0 .78 0 1.74v20.52C0 23.22.79 24 1.77 24h20.46c.98 0 1.77-.78 1.77-1.74V1.74C24 .78 23.21 0 22.23 0ZM7.06 20.45H3.98V9h3.08v11.45ZM5.52 7.43A1.8 1.8 0 1 1 5.53 3.8a1.8 1.8 0 0 1-.01 3.63ZM20.45 20.45h-3.07v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.46-2.13 2.94v5.67H10.3V9h2.95v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.28 2.37 4.28 5.46v6.28Z"/>
-    </svg>
-  </a>
-
-  <!-- Google Scholar (graduation cap) -->
-  <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener" aria-label="Google Scholar">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
-      <path d="M12 3 22 8 12 13 2 8 12 3Z"/>
-      <path d="M4 10v4l8 4 8-4v-4l-8 4-8-4Z"/>
-    </svg>
-  </a>
-
-  <!-- Email -->
-  <a href="mailto:your@email.com" aria-label="Email">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
-      <path d="M2 5h20v14H2z"/>
-      <path d="M2 5l10 8 10-8" />
-    </svg>
-  </a>
-
-  <!-- Bluesky (official butterfly shape) -->
+<div id="social-icons" class="social-icons">
+  <!-- Bluesky -->
   <a href="https://bsky.app/profile/YOUR_HANDLE" target="_blank" rel="noopener" aria-label="Bluesky">
-    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-      <!-- inset the shape so it doesn’t touch edges -->
-      <g transform="translate(45,45) scale(0.85)">
-        <path d="M600 205.5c0 109.9-144.6 301.8-195.4 366.8-15.9 20.1-41.6 27.8-68.2 27.8-26.6 0-52.3-7.7-68.2-27.8C144.6 507.3 0 315.4 0 205.5 0 122.1 73.1 59 146.5 59c60.6 0 115.3 39.2 153.5 101.2C338.2 98.2 393 59 453.5 59 526.9 59 600 122.1 600 205.5Z"/>
-      </g>
-    </svg>
+    <i class="fa-brands fa-bluesky"></i>
   </a>
 
-  <!-- CV (text in the same box) -->
-  <a href="/assets/cv/YourName_CV.pdf" target="_blank" rel="noopener" aria-label="CV" class="cv-box">
-    CV
+  <!-- Scholar (Font Awesome doesn't have Google Scholar; using graduation cap) -->
+  <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener" aria-label="Google Scholar">
+    <i class="fa-solid fa-graduation-cap"></i>
   </a>
-
 </div>
 
-<!-- Script to move icons under your profile photo -->
-<script>
-  (function () {
-    function placeIcons() {
-      var header = document.querySelector('header');
-      var img = header ? header.querySelector('img') : null;
-      var icons = document.getElementById('social-icons');
-      if (!header || !icons) return;
-      if (img && img.parentNode) {
-        img.insertAdjacentElement('afterend', icons);
-      } else {
-        var desc = header.querySelector('p');
-        (desc || header).insertAdjacentElement('beforeend', icons);
-      }
-      icons.style.display = 'block';
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', placeIcons);
-    } else {
-      placeIcons();
-    }
-  })();
-</script>
 
+<!-- Script to move icons under your profile photo -->
 <script>
   (function () {
     function placeIcons() {
