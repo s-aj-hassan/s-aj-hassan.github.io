@@ -67,43 +67,53 @@ header img {
 }
 
 /* FOR ICONS */ 
-/* ==== Social icons: single row, bottoms aligned, simple ==== */
+/* ==== Social icons: pixel-consistent boxes (SVGs) ==== */
+:root{
+  --icon-box: 36px;    /* outer box size (tweak bigger/smaller) */
+  --icon-gap: 10px;    /* spacing between icons */
+  --icon-glyph: 26px;  /* inner glyph/text size */
+  --icon-color: #267CB9;
+  --icon-color-hover: #069;
+}
+
 .social-icons{
   margin-top: .6rem;
+  white-space: nowrap;             /* single line */
   text-align: center;
-  white-space: nowrap;                 /* keep everything on ONE line */
 }
 
 .social-icons a{
-  display: inline-block;               /* sit next to each other */
-  vertical-align: bottom;              /* align bottoms */
-  margin: 0 .35em;
-  color: #267CB9;
-  text-decoration: none;
-  line-height: 1;                      /* no extra line-box */
-}
-
-.social-icons a:hover{
-  color: #069;
-  text-decoration: underline;
-}
-
-/* Base sizes (tuned so they LOOK the same height) */
-.social-icons i,
-.social-icons .cv-link{
   display: inline-block;
-  vertical-align: bottom;              /* share baseline */
+  width: var(--icon-box);
+  height: var(--icon-box);
+  margin: 0 calc(var(--icon-gap)/2);
+  color: var(--icon-color);
+  text-decoration: none;
+  vertical-align: bottom;          /* bottoms share the same baseline */
   line-height: 1;
-  font-size: 1.8rem;                   /* global target size */
-  font-weight: 700;                    /* makes CV feel icon-like */
 }
 
-/* Per-icon micro-adjustments for visual match (tweak if needed) */
-.social-icons .ai-google-scholar{ font-size: 2.0rem; }   /* skinny, needs boost */
-.social-icons .fa-linkedin      { font-size: 1.7rem; }   /* boxed, reduce a hair */
-.social-icons .fa-envelope      { font-size: 1.8rem; transform: translateY(1px); }
-.social-icons .fa-bluesky       { font-size: 1.8rem; }   /* reference */
-.social-icons .cv-link          { font-size: 1.8rem; }   /* same as icons */
+/* All SVGs fill the box consistently */
+.social-icons svg{
+  display: block;                  /* no inline baseline weirdness */
+  width: var(--icon-glyph);
+  height: var(--icon-glyph);
+  margin: calc((var(--icon-box) - var(--icon-glyph))) auto 0; /* top margin, bottom aligned */
+}
 
-/* Debug guide – uncomment to verify baseline, then remove */
-/* .social-icons{ border-bottom: 1px dashed magenta; } */
+/* CV rendered as text but in the same fixed box */
+.social-icons .cv-box{
+  font-weight: 700;
+  font-size: calc(var(--icon-glyph) * 0.8);  /* visual match */
+  display: inline-block;
+  line-height: 1;
+  /* bottom align by using same outer box; push text to bottom with padding-top */
+  padding-top: calc(var(--icon-box) - var(--icon-glyph));
+  color: var(--icon-color) !important;
+}
+
+.social-icons a:hover{ color: var(--icon-color-hover); text-decoration: underline; }
+
+/* Optional: micro-nudges per icon if you want absolute visual equality */
+/* .social-icons [aria-label="Google Scholar"] svg{ transform: translateY(1px); } */
+/* .social-icons [aria-label="Email"] svg{ transform: translateY(1px); } */
