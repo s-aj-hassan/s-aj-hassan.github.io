@@ -4,6 +4,7 @@ title: Home
 ---
 
 {% include icons_settings.html %}
+{% include make_abstract.html %}
 
 
 
