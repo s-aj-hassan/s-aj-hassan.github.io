@@ -81,6 +81,13 @@ header img {
 
 .social-icons a:hover { color: #069; }
 
+/* Only Bluesky smaller */
+.social-icons .fa-bluesky {
+  font-size: 1.6rem;        /* tweak until it matches visually (e.g., 1.55–1.7) */
+  /* optional: keep baseline perfect after resizing */
+  transform: translateY(1px);
+}
+
 .social-icons i,
 .social-icons .cv-link {
   font-size: 1.8rem;       /* base size for all */
@@ -88,4 +95,4 @@ header img {
   vertical-align: bottom;  /* align bottoms */
   font-weight: 700;        /* makes CV feel icon-like */
 }
-.social-icons .cv-link { margin-left: -0.05em; }
+.social-icons .cv-link { margin-left: -0.02em; }
