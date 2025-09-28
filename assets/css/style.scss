@@ -66,12 +66,11 @@ header img {
   border-radius: 50%;   /* adjust % for more/less oval */
 }
 
-/* FOR ICONS */ 
-/* minimal styling for two icons */
+/* FOR ICONS */ /* minimal styling for the icon row */
 .social-icons {
   text-align: center;
   margin-top: .6rem;
-  white-space: nowrap;     /* stay on one line */
+  white-space: nowrap;     /* keep on one line */
 }
 
 .social-icons a {
@@ -82,8 +81,10 @@ header img {
 
 .social-icons a:hover { color: #069; }
 
-.social-icons i {
-  font-size: 1.8rem;       /* adjust once and both scale */
+.social-icons i,
+.social-icons .cv-link {
+  font-size: 1.8rem;       /* base size for all */
   line-height: 1;
   vertical-align: bottom;  /* align bottoms */
+  font-weight: 700;        /* makes CV feel icon-like */
 }
