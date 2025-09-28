@@ -101,3 +101,14 @@ header img {
 
 /* Hide the "Hosted on GitHub Pages — Theme by orderedlist" footer */
 footer { display: none !important; }
+
+/* email different font */ 
+/* Monospace email like \texttt */
+header p .desc-tt {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+               "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95em;   /* tweak if you want */
+  letter-spacing: 0.01em;
+}
+header p .desc-tt a { color: inherit; text-decoration: none; }
+header p .desc-tt a:hover { text-decoration: underline; }
