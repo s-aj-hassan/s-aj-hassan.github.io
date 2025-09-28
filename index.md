@@ -95,7 +95,7 @@ Do schools reduce or amplify learning gaps by socioeconomic background? In this 
       <a href="#" class="abslink" onclick="toggleAbs('abs-parinc', this); return false;">[Abstract]</a>
     </span>
     <div id="abs-parinc" class="abstract-box">
-    Abstract here.
+        How does parental incarceration affect children's educational outcomes? I provide causal evidence on this question by combining full population register data containing detailed information on 16 Danish birth cohorts (<em>N<\em> = 890,159) with a sibling fixed effects approach to identification. This strategy overcomes selection issues arising from unobserved family characteristics. On average, children who experience parental incarceration are 4 percentage points less likely to complete a high school degree by age 20, compared to their siblings who do not. These effects are largely concentrated among girls who experience substantially stronger detrimental effects of parental incarceration, compared to boys. 
     </div>
   </li>
 
