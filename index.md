@@ -9,15 +9,28 @@ title: Home
 
 <!-- ICONS --> 
 <div id="social-icons" class="social-icons">
+  <!-- LinkedIn -->
+  <a href="https://www.linkedin.com/in/YOUR_USERNAME" target="_blank" rel="noopener" aria-label="LinkedIn">
+    <i class="fa-brands fa-linkedin"></i>
+  </a>
+
   <!-- Bluesky -->
   <a href="https://bsky.app/profile/YOUR_HANDLE" target="_blank" rel="noopener" aria-label="Bluesky">
     <i class="fa-brands fa-bluesky"></i>
   </a>
 
-  <!-- Scholar (Font Awesome doesn't have Google Scholar; using graduation cap) -->
+  <!-- Scholar (FA has no Google Scholar icon; using graduation cap) -->
   <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener" aria-label="Google Scholar">
     <i class="fa-solid fa-graduation-cap"></i>
   </a>
+
+  <!-- Email -->
+  <a href="mailto:your@email.com" aria-label="Email">
+    <i class="fa-solid fa-envelope"></i>
+  </a>
+
+  <!-- CV (text link) -->
+  <a href="/assets/cv/YourName_CV.pdf" target="_blank" rel="noopener" aria-label="CV" class="cv-link">CV</a>
 </div>
 
 
