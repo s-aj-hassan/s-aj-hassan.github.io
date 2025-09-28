@@ -67,59 +67,43 @@ header img {
 }
 
 /* FOR ICONS */ 
-/* ==== Social icons (one row, bottoms aligned) ==== */
-
-/* Row container */
+/* ==== Social icons: single row, bottoms aligned, simple ==== */
 .social-icons{
-  display: flex;                 /* single flex row */
-  flex-wrap: nowrap;             /* never wrap to a new line */
-  justify-content: center;       /* center the whole strip */
-  align-items: flex-end;         /* <<< align bottoms */
-  gap: 0.6rem;                   /* horizontal spacing */
-  margin-top: .8rem;
+  margin-top: .6rem;
+  text-align: center;
+  white-space: nowrap;                 /* keep everything on ONE line */
 }
 
-/* Each item */
 .social-icons a{
-  display: flex;                 /* makes the glyph sit in a box */
-  align-items: flex-end;         /* put glyph on the bottom of the box */
-  justify-content: center;
-  height: 2.6rem;                /* box height — increase to make all bigger */
-  flex: 0 0 auto;                /* don't shrink / wrap */
+  display: inline-block;               /* sit next to each other */
+  vertical-align: bottom;              /* align bottoms */
+  margin: 0 .35em;
   color: #267CB9;
-  text-decoration: none;         /* kill underlines */
-  line-height: 1;                /* no extra line box */
+  text-decoration: none;
+  line-height: 1;                      /* no extra line-box */
 }
 
-/* Hover: color only (no underline so it won't shift the baseline) */
 .social-icons a:hover{
   color: #069;
+  text-decoration: underline;
 }
 
-/* Glyph size inside the box (all icons) */
-.social-icons i{
-  display: block;                /* avoid inline baseline quirks */
+/* Base sizes (tuned so they LOOK the same height) */
+.social-icons i,
+.social-icons .cv-link{
+  display: inline-block;
+  vertical-align: bottom;              /* share baseline */
   line-height: 1;
-  font-size: 2.0rem;             /* glyph size — tune with height above */
+  font-size: 1.8rem;                   /* global target size */
+  font-weight: 700;                    /* makes CV feel icon-like */
 }
 
-/* CV as text but treated like an icon */
-.social-icons a.cv-link{
-  display: flex;
-  align-items: flex-end;         /* bottom aligned like icons */
-  justify-content: center;
-  height: 2.6rem;                /* same box height */
-  font-weight: 700;
-  font-size: 2.0rem;             /* match icon visual size */
-  color: #267CB9 !important;
-}
+/* Per-icon micro-adjustments for visual match (tweak if needed) */
+.social-icons .ai-google-scholar{ font-size: 2.0rem; }   /* skinny, needs boost */
+.social-icons .fa-linkedin      { font-size: 1.7rem; }   /* boxed, reduce a hair */
+.social-icons .fa-envelope      { font-size: 1.8rem; transform: translateY(1px); }
+.social-icons .fa-bluesky       { font-size: 1.8rem; }   /* reference */
+.social-icons .cv-link          { font-size: 1.8rem; }   /* same as icons */
 
-/* Tiny per-icon nudges to visually match the butterfly */
-.social-icons .ai-google-scholar{ transform: translateY(1px); }
-.social-icons .fa-linkedin      { transform: translateY(2px); }
-.social-icons .fa-envelope      { transform: translateY(2px); }
-/* .social-icons .fa-bluesky   { transform: translateY(0); }  // usually fine */
-
-/* ---- Debug (optional): uncomment to verify baseline, then remove ---- */
+/* Debug guide – uncomment to verify baseline, then remove */
 /* .social-icons{ border-bottom: 1px dashed magenta; } */
-/* .social-icons a{ outline: 1px dotted rgba(255,0,255,.3); } */
