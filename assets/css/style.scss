@@ -45,6 +45,17 @@ h2 + ul.pubs, h3 + ul.pubs {
   margin-top: 0.5rem; 
 }
 
+/* Working paper title options */
+/* non-linked working paper titles */
+.pubs .wp-title {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: .08em;
+  text-underline-offset: .12em;
+  color: inherit;     /* or use #267CB9 if you want it blue */
+  cursor: default;
+}
+
 /* ===== Optional: keep <details> inline if you use it elsewhere ===== */
 details,
 details summary {
