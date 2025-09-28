@@ -64,9 +64,7 @@ I study social stratification with a focus on education. My current research exa
   </li>
 
   <li>
-    Teacher Sorting and Inequalities in Student Achievement <br>
-      
-
+    <span class="WP">Teacher Sorting and Inequalities in Student Achievement </span><br>
     <span class="meta">
       (Sole-authored, <em>Under Review</em>)   
       <a href="#" class="abslink" onclick="toggleAbs('abs-teacher', this); return false;">[Abstract]</a>
@@ -78,7 +76,7 @@ qualified teachers in three steps. First, I document strong patterns of teacher-
   </li>
 
   <li>
-    Schools and Learning Inequalities: A Theoretical Model of Quantitative and Qualitative School Effects <br>
+    <span class="WP">Schools and Learning Inequalities: A Theoretical Model of Quantitative and Qualitative School Effects </span><br>
 
     <span class="meta">
       (with Richard Breen)  
@@ -90,7 +88,7 @@ Do schools reduce or amplify learning gaps by socioeconomic background? In this 
   </li>
 
   <li>
-    Parental Incarceration and Children's Educational Outcomes <br>
+    <span class="WP">Parental Incarceration and Children's Educational Outcomes </span><br>
 
     <span class="meta">
       (Sole-authored)  
