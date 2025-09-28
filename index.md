@@ -52,7 +52,7 @@ I study social stratification with a focus on education. My current research exa
 <ul class="pubs">
 
   <li>
-    A Muslim School Advantage? Evidence from a Natural Experiment <br>
+    <span class="WP">A Muslim School Advantage? Evidence from a Natural Experiment</span><br>
     <span class="meta">
       (Sole-authored) <br> 
       <em>American Journal of Sociology (Review and Resubmit)</em>  
