@@ -94,4 +94,7 @@ header img {
   font-weight: 700;        /* makes CV feel icon-like */
 }
 
-/*.social-icons .cv-link { margin-left: -0.01em; } */
+.social-icons .cv-link { margin-left: -0.01em; } 
+
+/* Hide the theme’s "View My GitHub Profile" line */
+.view { display: none !important; }
