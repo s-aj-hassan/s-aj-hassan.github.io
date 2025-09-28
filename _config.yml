@@ -12,5 +12,5 @@ show_downloads: false
 google_analytics:
 # If you're using a custom domain, set it in Pages settings (it will create a CNAME file automatically).
 # For a user site at https://<username>.github.io, leave baseurl empty and set url accordingly:
-url: "https://s-aj-hassan.github.io"
+url: "https://saidhassan.net"
 baseurl: ""
