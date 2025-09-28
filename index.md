@@ -35,20 +35,18 @@ title: Home
 </div>
 
 
-<!-- Script to move icons under your profile photo -->
+<!-- Script to move icons under your profile photo and description -->
 <script>
   (function () {
     function placeIcons() {
       var header = document.querySelector('header');
-      var img = header ? header.querySelector('img') : null;
-      var icons = document.getElementById('social-icons');
+      var icons  = document.getElementById('social-icons');
       if (!header || !icons) return;
-      if (img && img.parentNode) {
-        img.insertAdjacentElement('afterend', icons);
-      } else {
-        var desc = header.querySelector('p');
-        (desc || header).insertAdjacentElement('beforeend', icons);
-      }
+
+      // insert icons AFTER the description paragraph (the line with your role/affiliation)
+      var desc = header.querySelector('p');    // the “Postdoctoral Prize Research Fellow…” <p>
+      (desc || header).insertAdjacentElement('afterend', icons);
+
       icons.style.display = 'block';
     }
     if (document.readyState === 'loading') {
@@ -114,8 +112,7 @@ I study social stratification with a focus on education. My current research exa
 <ul class="pubs">
 
   <li>
-    A Muslim School Advantage? Evidence from a Natural Experiment
-  
+    A Muslim School Advantage? Evidence from a Natural Experiment 
     <span class="meta">
       (Sole-authored)  
       <em>Review and Resubmit, American Journal of Sociology</em>  
