@@ -2,60 +2,8 @@
 layout: default
 title: Home
 ---
-<!-- Add fonts for icones -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v9/font/simple-icons.min.css">
 
-<!-- ICONS --> 
-<div id="social-icons" class="social-icons">
-
-  <!-- Scholar (FA has no Google Scholar icon; using graduation cap) -->
-  <a href="https://scholar.google.com/citations?user=LKYHvDMAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
-    <i class="fa-solid fa-graduation-cap"></i>
-  </a>
-  
-  <!-- LinkedIn -->
-  <a href="https://www.linkedin.com/in/said-aj-hassan" target="_blank" rel="noopener" aria-label="LinkedIn">
-    <i class="fa-brands fa-linkedin"></i>
-  </a>
-
-  <!-- Bluesky -->
-  <a href="https://bsky.app/profile/saidhassan.bsky.social" target="_blank" rel="noopener" aria-label="Bluesky">
-    <i class="fa-brands fa-bluesky"></i>
-  </a>
-
-  <!-- Email -->
-  <a href="mailto:said.aj.hassan@gmail.com" aria-label="Email">
-    <i class="fa-solid fa-envelope"></i>
-  </a>
-
-  <!-- CV (text link) -->
-  <a href="https://saidhassan.net/CV_Hassan.pdf" target="_blank" rel="noopener" aria-label="CV" class="cv-link">CV</a>
-</div>
-
-
-<!-- Script to move icons under your profile photo and description -->
-<script>
-  (function () {
-    function placeIcons() {
-      var header = document.querySelector('header');
-      var icons  = document.getElementById('social-icons');
-      if (!header || !icons) return;
-
-      // insert icons AFTER the description paragraph (the line with your role/affiliation)
-      var desc = header.querySelector('p');    // the “Postdoctoral Prize Research Fellow…” <p>
-      (desc || header).insertAdjacentElement('afterend', icons);
-
-      icons.style.display = 'block';
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', placeIcons);
-    } else {
-      placeIcons();
-    }
-  })();
-</script>
+{% include icons_settings.html %}
 
 <!-- The script below makes it possible to click on abstracts for papers -->
 
