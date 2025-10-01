@@ -119,10 +119,15 @@ header img {
 
 .social-icons .cv-link { margin-left: -0.00em; } 
 
-/* Fix thin baseline line under icons on mobile Safari */
-.social-icons { line-height: 0; }   /* removes the baseline “underline” */
-.social-icons a { line-height: 1; }  /* keeps each icon sized normally */
-
+/* Remove Minimal theme's mobile section border (the thin line under icons) */
+@media screen and (max-width: 960px) {
+  section {
+    border: 0 !important;          /* the theme sets border-width: 1px 0; */
+    /* optional: keep bottom border only:
+    border-top: 0 !important;
+    border-bottom: 0 !important;   */
+  }
+}
 /* Hide the theme’s "View My GitHub Profile" line */
 .view { display: none !important; }
 
