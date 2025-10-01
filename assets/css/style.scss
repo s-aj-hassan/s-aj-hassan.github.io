@@ -119,24 +119,9 @@ header img {
 
 .social-icons .cv-link { margin-left: -0.00em; } 
 
-/* Fix weird baseline line under icons on mobile */
-.social-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;       /* allows wrapping nicely on small screens */
-  margin-top: .6rem;
-  gap: 0.6rem;           /* replaces margins on each <a> */
-}
-
-.social-icons a {
-  margin: 0;             /* let gap handle spacing */
-  line-height: 1;
-  display: flex;         /* center the icon inside its box */
-  align-items: center;
-  justify-content: center;
-}
-
+/* Fix thin baseline line under icons on mobile Safari */
+.social-icons { line-height: 0; }   /* removes the baseline “underline” */
+.social-icons a { line-height: 1; }  /* keeps each icon sized normally */
 
 /* Hide the theme’s "View My GitHub Profile" line */
 .view { display: none !important; }
