@@ -55,7 +55,7 @@ I study social stratification with a focus on education. My current research exa
     <span class="WP">A Muslim School Advantage? Evidence from a Natural Experiment</span><br>
     <span class="meta">
       (Sole-authored) <br> 
-      <em>American Journal of Sociology (Review and Resubmit)</em>  
+      <em>American Journal of Sociology (Revise and Resubmit)</em>  
       <a href="#" class="abslink" onclick="toggleAbs('abs-muslim', this); return false;">[Abstract]</a>
     </span>
     <div id="abs-muslim" class="abstract-box">
