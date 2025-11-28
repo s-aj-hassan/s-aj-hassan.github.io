@@ -1,12 +1,71 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Cotswolds Countdown</title>
-  </head>
-  <body style="margin:0; padding:0; display:flex; justify-content:center; align-items:center; height:100vh;">
-    <iframe width="300" height="154"
-            src="https://w2.countingdownto.com/6743174"
-            frameborder="0">
-    </iframe>
-  </body>
-</html>
+library(sf)
+
+# CONFIG
+gpkg_path <- "/Users/saidhassan/Desktop/geo/data/Historiske skoledistrikter - København - 20214-2026.gpkg"
+layer_name <- "f_skolegrunddistrikter_2014_2015"
+
+# read whole layer (keep all rows)
+sk14 <- st_read(gpkg_path, layer = layer_name, quiet = TRUE)
+sk14_orig <- sk14  # in-memory backup
+
+# indexes for the two features
+i17 <- which(sk14$id == 17)
+i19 <- which(sk14$id == 19)
+if (length(i17) != 1 || length(i19) != 1) stop("expected exactly one row for id 17 and id 19")
+
+# split geometry of 19 into POLYGON parts (work on geometry only)
+parts19_sfc <- st_cast(st_geometry(sk14[i19, ]), "POLYGON")
+areas19 <- st_area(parts19_sfc)
+small_idx <- which.min(areas19)
+small_part <- parts19_sfc[small_idx]         # sfc containing the small polygon
+
+# build new geometry for 19 (remaining parts)
+if (length(parts19_sfc) > 1) {
+  remaining_parts <- parts19_sfc[-small_idx]
+  # combine remaining into MULTIPOLYGON sfc
+  new19_geom <- st_cast(st_combine(remaining_parts), "MULTIPOLYGON")
+  new19_sfc  <- st_sfc(new19_geom, crs = st_crs(sk14))
+} else {
+  # nothing left -> empty geometrycollection (keeps the row & attributes)
+  new19_sfc <- st_sfc(st_geometrycollection(), crs = st_crs(sk14))
+}
+
+# create new geometry for 17 by unioning its current geom with the small part
+new17_geom_raw <- st_union(st_geometry(sk14[i17, ]), small_part)
+new17_sfc_raw  <- st_sfc(new17_geom_raw, crs = st_crs(sk14))
+
+# assign back into the full sk14 (only replace geometries of those rows)
+st_geometry(sk14)[i19] <- new19_sfc
+st_geometry(sk14)[i17] <- new17_sfc_raw
+
+# clean id 17: rebuild from outer rings to remove internal artifact (drops holes)
+g17_raw <- st_geometry(sk14)[[i17]]
+# normalize: if single POLYGON, make list for consistent processing
+if (inherits(g17_raw, "POLYGON")) g17_raw_list <- list(g17_raw) else g17_raw_list <- g17_raw
+new_polys <- lapply(seq_along(g17_raw_list), function(pidx) {
+  outer_ring <- g17_raw_list[[pidx]][[1]]
+  st_polygon(list(as.matrix(outer_ring)))
+})
+new_sfc <- st_sfc(new_polys, crs = st_crs(sk14))
+new_union <- st_union(new_sfc)
+new_union <- st_collection_extract(new_union, "POLYGON")
+new_union <- st_cast(new_union, "MULTIPOLYGON")
+st_geometry(sk14)[i17] <- st_sfc(new_union, crs = st_crs(sk14))
+
+# final validity & area checks (in-memory)
+valid17 <- st_is_valid(sk14[i17, ])
+valid19 <- st_is_valid(sk14[i19, ])
+area17_after <- as.numeric(st_area(sk14[i17, ]))
+area19_after <- as.numeric(st_area(sk14[i19, ]))
+
+cat("valid id17:", valid17, "\n")
+cat("valid id19:", valid19, "\n")
+cat("area id17 (m2):", area17_after, "\n")
+cat("area id19 (m2):", area19_after, "\n")
+
+# quick visual check (all rows kept; only 17/19 changed)
+plot(st_geometry(sk14), col = "grey95", border = "black", main = "In-memory edit: all rows preserved; 17/19 edited")
+plot(st_geometry(sk14[i19, ]), col = "red", border = "black", add = TRUE)
+plot(st_geometry(sk14[i17, ]), col = "blue", border = "black", add = TRUE)
+
+# sk14 now contains the edited geometries in memory; no disk writes performed.
