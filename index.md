@@ -17,6 +17,32 @@ I study social stratification with a focus on education. My current research exa
 ## Publications
 
 <ul class="pubs">
+  <li>
+    <a href="https://doi.org/10.15195/v13.a29">
+      Teacher Sorting and Inequalities in Student Achievement: Unequal Exposures and Differential Returns to Teacher Qualifications
+    </a> <br>
+    <span class="meta">
+      <em>Sociological Science (Forthcoming)</em>  
+      <a href="#" class="abslink" onclick="toggleAbs('abs-refugee', this); return false;">[Abstract]</a>
+    </span>
+    <div id="abs-refugee" class="abstract-box">
+      Teachers play a formative role in shaping children’s school experiences and ultimately,
+their educational outcomes. In this study, I use full population Danish administrative data to explore
+the consequences of unequal access to qualified teachers in three steps. First, I document strong
+patterns of teacher–student sorting in Denmark, one of the world’s most equal societies and generous
+welfare states. In short, teachers from higher socioeconomic backgrounds and with higher prior
+academic achievements tend to select into schools serving high-achieving children from privileged
+backgrounds. Second, I investigate the effect of exposure to teachers with different qualifications
+on students’ test score performance. To facilitate causal estimates, I exploit plausibly exogenous
+shocks to teacher changes induced by parental leave spells, which, I show, are unrelated to an
+extensive set of observed classroom characteristics, including student well-being and measures of
+classroom climate. Third, I explore differentials in the impact of teacher qualifications by students’
+socioeconomic background. I find no consistent evidence of differential teacher effects, implying
+that teacher-induced learning inequalities are mainly driven by unequal exposure to highly qualified
+teachers, rather than unequal returns to qualifications. This suggests that policies equalizing access
+to qualified teachers may reduce learning disparities.
+    </div>
+  </li>
 
   <li>
     <a href="https://academic.oup.com/esr/article/39/3/352/6843667">
