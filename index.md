@@ -62,10 +62,9 @@ to qualified teachers may reduce learning disparities.
   <li>
     <a href="https://academic.oup.com/esr/article/39/3/352/6843667">
       Do Refugee Children Impair the Academic Performance of Native Children in the School?
-    </a> <br>
+    </a> (with Camilla Hvidtfeldt, Lars H. Andersen, Rebecca O. Udsen) <br>
     <span class="meta">
       <span class="journal">European Sociological Review</span>  <br>
-      (with Camilla Hvidtfeldt, Lars H. Andersen, Rebecca O. Udsen)
       <a href="#" class="abslink" onclick="toggleAbs('abs-refugee', this); return false;">[Abstract]</a>
     </span>
     <div id="abs-refugee" class="abstract-box">
