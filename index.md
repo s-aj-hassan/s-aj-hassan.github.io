@@ -31,7 +31,7 @@ My job market paper asks a classic sociological question: do ethnic institutions
 
 ## Publications
 
-<ol class="pubs">
+<ol class="pubs" reversed>
   <li>
     <a href="https://doi.org/10.15195/v13.a29">
       Teacher Sorting and Inequalities in Student Achievement: Unequal Exposures and Differential Returns to Teacher Qualifications
