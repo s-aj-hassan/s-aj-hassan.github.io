@@ -22,7 +22,7 @@ I study social stratification with a focus on education. My current research exa
       Teacher Sorting and Inequalities in Student Achievement: Unequal Exposures and Differential Returns to Teacher Qualifications
     </a> <br>
     <span class="meta">
-      <em>Sociological Science</em>  
+     <span class="journal">Sociological Science</span>
       <a href="#" class="abslink" onclick="toggleAbs('abs-teachqual', this); return false;">[Abstract]</a>
     </span>
     <div id="abs-teachqual" class="abstract-box">
