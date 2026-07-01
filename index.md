@@ -75,10 +75,9 @@ to qualified teachers may reduce learning disparities.
   <li>
     <a href="https://link.springer.com/article/10.1007/s40865-022-00211-0">
       The Importance of Living Arrangements for Criminal Persistence and Desistance: A Novel Test of Exposure to Convicted Family Members
-    </a> <br>
+    </a> (with David Kirk, Lars H. Andersen) <br>
     <span class="meta">
       <span class="journal">Journal of Developmental and Life-Course Criminology</span>  <br>
-       (with David Kirk, Lars H. Andersen)
       <a href="#" class="abslink" onclick="toggleAbs('abs-living', this); return false;">[Abstract]</a>
     </span>
     <div id="abs-living" class="abstract-box">
