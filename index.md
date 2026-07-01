@@ -63,8 +63,8 @@ to qualified teachers may reduce learning disparities.
       The Importance of Living Arrangements for Criminal Persistence and Desistance: A Novel Test of Exposure to Convicted Family Members
     </a> <br>
     <span class="meta">
-      (with David Kirk, Lars H. Andersen)  <br>
-      <em>Journal of Developmental and Life-Course Criminology</em>  
+      <span class="journal">Journal of Developmental and Life-Course Criminology</span>  <br>
+       (with David Kirk, Lars H. Andersen)
       <a href="#" class="abslink" onclick="toggleAbs('abs-living', this); return false;">[Abstract]</a>
     </span>
     <div id="abs-living" class="abstract-box">
@@ -79,9 +79,8 @@ to qualified teachers may reduce learning disparities.
 
   <li>
     <span class="WP">A Muslim School Advantage? Evidence from a Natural Experiment</span><br>
-    <span class="meta">
-      (Sole-authored) <br> 
-      <em>American Journal of Sociology (Revise and Resubmit)</em>  
+    <span class="meta"> 
+      <span class="journal">American Journal of Sociology (Revise and Resubmit, Sole-authored)</span>  
       <a href="#" class="abslink" onclick="toggleAbs('abs-muslim', this); return false;">[Abstract]</a>
     </span>
     <div id="abs-muslim" class="abstract-box">
