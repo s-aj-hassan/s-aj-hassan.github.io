@@ -31,7 +31,7 @@ My job market paper asks a classic sociological question: do ethnic institutions
 
 ## Publications
 
-<ul class="pubs">
+<ol class="pubs">
   <li>
     <a href="https://doi.org/10.15195/v13.a29">
       Teacher Sorting and Inequalities in Student Achievement: Unequal Exposures and Differential Returns to Teacher Qualifications
@@ -87,7 +87,7 @@ to qualified teachers may reduce learning disparities.
     </div>
   </li>
 
-</ul>
+</ol>
 
 ## Working Papers
 <ul class="pubs">
