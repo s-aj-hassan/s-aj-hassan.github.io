@@ -21,6 +21,13 @@ ul.pubs li .meta {
   color: #555; 
 }
 
+/* Journal names within citations */
+.journal {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.05em;
+}
+
 /* [Abstract] link on the same line as the citation */
 ul.pubs li .abslink { 
   margin-left: 0.5em; 
