@@ -14,6 +14,25 @@ I am a Postdoctoral Prize Research Fellow at [Nuffield College, University of Ox
 
 I study social stratification with a focus on education. My current research examines the potential and limitations of school interventions in reducing inequalities in educational outcomes by socioeconomic and ethnic background. Methodologically, I specialize in causal inference and often employ quasi-experimental designs to answer questions related to school choice, teacher effectiveness, and racial/ethnic discrimination.  
 
+## Job Market Paper
+
+<div style="background: #f6f8fa; border-left: 4px solid #267CB9; padding: 1rem 1.25rem; margin: 1rem 0 1.5rem 0; border-radius: 8px;">
+
+<span style="font-size: 1.15em; font-weight: bold; color: #267CB9; display: block; margin-bottom: 0.3rem;">A Muslim School Advantage? Evidence from a Natural Experiment</span>
+
+<span style="font-style: italic; font-weight: bold; display: block; margin-bottom: 0.6rem;">American Journal of Sociology (Revise and Resubmit)</span>
+
+<p style="color: #333; margin-bottom: 0.6rem; line-height: 1.5;">
+ Do ethnic enclaves improve or impede ethnic minorities' social outcomes? In this study, I examine the impact of Muslim schools in Denmark on ethnic minority children's academic performance, as a case study of this broader question. Using a natural experiment design that induced a sudden and unanticipated student flight from Muslim to public schools, I document large positive Muslim school effects in reading and mathematics. Through several robustness checks, I show that disruption effects do not explain these results. Finally, I empirically test two theoretical mechanisms underlying the observed effects: ethnic homogeneity and teacher biases. While I do not find evidence of teacher biases in my analyses, I find that ethnic homogeneity is a key driver of the observed positive effects, lending support to oppositional culture explanations. From a policy perspective, these results highlight that targeted assimilation policies that seek to further the social integration of ethnic minorities may potentially have unintended consequences and come with costs to other outcomes that policymakers care about-in this context, academic performance. 
+</p>
+
+<span style="font-size: 0.9em;">
+<a href="/path/to/paper.pdf">[PDF]</a> &nbsp;
+<a href="/path/to/slides.pdf">[Slides]</a>
+</span>
+
+</div>
+
 ## Publications
 
 <ul class="pubs">
@@ -76,18 +95,7 @@ to qualified teachers may reduce learning disparities.
 
 ## Working Papers
 <ul class="pubs">
-
-  <li>
-    <span class="WP">A Muslim School Advantage? Evidence from a Natural Experiment</span><br>
-    <span class="meta"> 
-      <span class="journal">American Journal of Sociology (Revise and Resubmit, Sole-authored)</span>  
-      <a href="#" class="abslink" onclick="toggleAbs('abs-muslim', this); return false;">[Abstract]</a>
-    </span>
-    <div id="abs-muslim" class="abstract-box">
-      Do ethnic enclaves improve or impede ethnic minorities' social outcomes? In this study, I examine the impact of Muslim schools in Denmark on ethnic minority children's academic performance, as a case study of this broader question. Using a natural experiment design that induced a sudden and unanticipated student flight from Muslim to public schools, I document large positive Muslim school effects in reading and mathematics. Through several robustness checks, I show that disruption effects do not explain these results. Finally, I empirically test two theoretical mechanisms underlying the observed effects: ethnic homogeneity and teacher biases. While I do not find evidence of teacher biases in my analyses, I find that ethnic homogeneity is a key driver of the observed positive effects, lending support to oppositional culture explanations. From a policy perspective, these results highlight that targeted assimilation policies that seek to further the social integration of ethnic minorities may potentially have unintended consequences and come with costs to other outcomes that policymakers care about-in this context, academic performance. 
-    </div>
-  </li>
-
+  
   <li>
     <span class="WP">Schools and Learning Inequalities: A Theoretical Model of Quantitative and Qualitative School Effects </span><br>
 
