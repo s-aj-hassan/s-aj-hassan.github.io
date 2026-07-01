@@ -17,19 +17,17 @@ I study social stratification with a focus on education. My current research exa
 ## Job Market Paper
 
 <p style="font-size: 1.15em; font-weight: bold; margin-bottom: 0.3rem;">
-<a href="/path/to/paper.pdf">A Muslim School Advantage? Evidence from a Natural Experiment</a>
+A Muslim School Advantage? Evidence from a Natural Experiment
 </p>
 
 <span class="meta">
-(Sole-authored) <br>
-<span class="journal">American Journal of Sociology (Revise and Resubmit)</span>
-<a href="#" class="abslink" onclick="toggleAbs('abs-muslim', this); return false;">[Abstract]</a>
+<span class="journal">American Journal of Sociology</span> (Revise and Resubmit, Sole-authored) <br>
 <a href="/path/to/slides.pdf" class="abslink">[Slides]</a>
 </span>
 
-<div id="abs-muslim" class="abstract-box">
+<p style="margin-top: 0.75rem;">
 Do ethnic enclaves improve or impede ethnic minorities' social outcomes? In this study, I examine the impact of Muslim schools in Denmark on ethnic minority children's academic performance, as a case study of this broader question. Using a natural experiment design that induced a sudden and unanticipated student flight from Muslim to public schools, I document large positive Muslim school effects in reading and mathematics. Through several robustness checks, I show that disruption effects do not explain these results. Finally, I empirically test two theoretical mechanisms underlying the observed effects: ethnic homogeneity and teacher biases. While I do not find evidence of teacher biases in my analyses, I find that ethnic homogeneity is a key driver of the observed positive effects, lending support to oppositional culture explanations. From a policy perspective, these results highlight that targeted assimilation policies that seek to further the social integration of ethnic minorities may potentially have unintended consequences and come with costs to other outcomes that policymakers care about—in this context, academic performance.
-</div>
+</p>
 
 
 ## Publications
