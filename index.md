@@ -22,10 +22,10 @@ I study social stratification with a focus on education. My current research exa
       Teacher Sorting and Inequalities in Student Achievement: Unequal Exposures and Differential Returns to Teacher Qualifications
     </a> <br>
     <span class="meta">
-      <em>Sociological Science (Forthcoming)</em>  
-      <a href="#" class="abslink" onclick="toggleAbs('abs-refugee', this); return false;">[Abstract]</a>
+      <em>Sociological Science</em>  
+      <a href="#" class="abslink" onclick="toggleAbs('abs-teachqual', this); return false;">[Abstract]</a>
     </span>
-    <div id="abs-refugee" class="abstract-box">
+    <div id="abs-teachqual" class="abstract-box">
       Teachers play a formative role in shaping children’s school experiences and ultimately,
 their educational outcomes. In this study, I use full population Danish administrative data to explore
 the consequences of unequal access to qualified teachers in three steps. First, I document strong
