@@ -16,8 +16,6 @@ I study social stratification with a focus on education. My current research exa
 
 ## Job Market Paper
 
-## Job Market Paper
-
 <ul class="pubs">
   <li>
     <a href="/path/to/paper.pdf">
