@@ -16,22 +16,28 @@ I study social stratification with a focus on education. My current research exa
 
 ## Job Market Paper
 
-<div style="background: #f6f8fa; border-left: 4px solid #267CB9; padding: 1rem 1.25rem; margin: 1rem 0 1.5rem 0; border-radius: 8px;">
+## Job Market Paper
 
-<span style="font-size: 1.15em; font-weight: bold; color: #267CB9; display: block; margin-bottom: 0.3rem;">A Muslim School Advantage? Evidence from a Natural Experiment</span>
+<ul class="pubs">
+  <li>
+    <a href="/path/to/paper.pdf">
+      A Muslim School Advantage? Evidence from a Natural Experiment
+    </a> <br>
+    <span class="meta">
+      (Sole-authored) <br>
+      <span class="journal">American Journal of Sociology (Revise and Resubmit)</span>
+      <a href="#" class="abslink" onclick="toggleAbs('abs-muslim', this); return false;">[Abstract]</a>
+      <a href="/path/to/slides.pdf" class="abslink">[Slides]</a>
+    </span>
+    <p style="margin: 0.5rem 0 0 0;">
+      I leverage a natural experiment in Denmark to identify the causal effect of Muslim schools on ethnic minority children's academic achievement. Contrary to concerns that ethnic enclaves harm minority outcomes, I document large positive effects on reading and math, driven by ethnic homogeneity rather than teacher bias. The results speak to ongoing debates on assimilation policy and the unintended consequences of integration mandates.
+    </p>
+    <div id="abs-muslim" class="abstract-box">
+      Do ethnic enclaves improve or impede ethnic minorities' social outcomes? In this study, I examine the impact of Muslim schools in Denmark on ethnic minority children's academic performance, as a case study of this broader question. Using a natural experiment design that induced a sudden and unanticipated student flight from Muslim to public schools, I document large positive Muslim school effects in reading and mathematics. Through several robustness checks, I show that disruption effects do not explain these results. Finally, I empirically test two theoretical mechanisms underlying the observed effects: ethnic homogeneity and teacher biases. While I do not find evidence of teacher biases in my analyses, I find that ethnic homogeneity is a key driver of the observed positive effects, lending support to oppositional culture explanations. From a policy perspective, these results highlight that targeted assimilation policies that seek to further the social integration of ethnic minorities may potentially have unintended consequences and come with costs to other outcomes that policymakers care about—in this context, academic performance.
+    </div>
+  </li>
+</ul>
 
-<span style="font-style: italic; font-weight: bold; display: block; margin-bottom: 0.6rem;">American Journal of Sociology (Revise and Resubmit)</span>
-
-<p style="color: #333; margin-bottom: 0.6rem; line-height: 1.5;">
- Do ethnic enclaves improve or impede ethnic minorities' social outcomes? In this study, I examine the impact of Muslim schools in Denmark on ethnic minority children's academic performance, as a case study of this broader question. Using a natural experiment design that induced a sudden and unanticipated student flight from Muslim to public schools, I document large positive Muslim school effects in reading and mathematics. Through several robustness checks, I show that disruption effects do not explain these results. Finally, I empirically test two theoretical mechanisms underlying the observed effects: ethnic homogeneity and teacher biases. While I do not find evidence of teacher biases in my analyses, I find that ethnic homogeneity is a key driver of the observed positive effects, lending support to oppositional culture explanations. From a policy perspective, these results highlight that targeted assimilation policies that seek to further the social integration of ethnic minorities may potentially have unintended consequences and come with costs to other outcomes that policymakers care about-in this context, academic performance. 
-</p>
-
-<span style="font-size: 0.9em;">
-<a href="/path/to/paper.pdf">[PDF]</a> &nbsp;
-<a href="/path/to/slides.pdf">[Slides]</a>
-</span>
-
-</div>
 
 ## Publications
 
