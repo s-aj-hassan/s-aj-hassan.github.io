@@ -82,6 +82,23 @@ h2 + ul.pubs, h3 + ul.pubs {
   margin-top: 0.5rem; 
 }
 
+/* Award note under a publication (e.g., "Best Article Prize") */
+.pub-award {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+  font-size: 0.9em;
+  font-style: italic;
+  color: #555;
+}
+
+.pub-award i {
+  color: #c74e6f;      /* soft pink to match your CV */
+  font-size: 1.05em;
+  font-style: normal;  /* don't italicise the icon */
+}
+
 /* Working paper list */
 .wp-list {
     list-style: none !important;
