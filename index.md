@@ -21,10 +21,10 @@ A Muslim School Advantage? Evidence from a Natural Experiment
 </p>
 
 <span class="meta">
-<span class="journal">American Journal of Sociology</span> (Revise and Resubmit, Sole-authored)
+<span class="journal">American Journal of Sociology</span> (R&R, Sole-authored)
 </span>
 
-<p style="margin-top: 0.75rem; font-size: 0.9em;">
+<p style="margin-top: 0.75rem;">
 My job market paper asks a classic sociological question: do ethnic institutions foster or hinder minority incorporation? Using a natural experiment involving Muslim schools in Denmark, I examine whether minority-serving institutions help or impede the educational outcomes of ethnic minority students. I find that Muslim schools substantially improve academic achievement, largely by providing culturally aligned learning environments, with benefits that persist into upper secondary education and no evidence of diminished social integration. The findings contribute to broader debates on assimilation, ethnic institutions, and immigrant incorporation.  
 </p>
 
