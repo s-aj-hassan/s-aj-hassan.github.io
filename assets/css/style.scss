@@ -88,15 +88,14 @@ h2 + ul.pubs, h3 + ul.pubs {
   align-items: center;
   gap: 0.4rem;
   margin-top: 0.35rem;
-  font-size: 0.9em;
   font-style: italic;
   color: #555;
 }
 
 .pub-award i {
-  color: #c74e6f;      /* soft pink to match your CV */
-  font-size: 1.05em;
-  font-style: normal;  /* don't italicise the icon */
+  color: #267CB9;      /* same blue as your links */
+  font-size: 1.1em;
+  font-style: normal;
 }
 
 /* Working paper list */
