@@ -100,7 +100,7 @@ to qualified teachers may reduce learning disparities.
     </span>
 
     <div id="abs-school" class="abstract-box">
-      ...
+       Do schools reduce or amplify learning gaps by socioeconomic background? In this paper, we contribute to this longstanding sociological debate in three ways. First, we develop a formal model that clarifies relevant theoretical estimands and counterfactuals. Second, our theoretical model synthesizes previously contradictory findings in the literature on schools and inequality by distinguishing between quantitative and qualitative school effects. Third, we empirically test a central hypothesis from our model: that the positive returns to improvements in school quality are concentrated among children from lower socioeconomic backgrounds. To test this hypothesis, we use administrative register data from Denmark and a natural experiment design that relies on variation in school quality induced by unanticipated changes in school district boundaries over time. We show that children redistricted to higher-quality schools substantially improve their test score performance in reading, and, crucially, these effects are strongest among children from lower socioeconomic backgrounds. These findings suggest that equalizing school quality can be an effective means of reducing learning inequalities.
     </div>
   </li>
 
@@ -114,8 +114,25 @@ to qualified teachers may reduce learning disparities.
     </span>
 
     <div id="abs-parinc" class="abstract-box">
-      ...
+       How does parental incarceration affect children's educational outcomes? I provide causal evidence on this question by combining full population register data containing detailed information on 16 Danish birth cohorts (<em>N</em> = 890,159) with a sibling fixed effects approach to identification. This strategy overcomes selection issues arising from unobserved family characteristics. On average, children who experience parental incarceration are 4 percentage points less likely to complete a high school degree by age 20, compared to their siblings who do not. These effects are largely concentrated among girls who experience substantially stronger detrimental effects of parental incarceration, compared to boys.
     </div>
   </li>
+
+  <li>
+    <span class="WP">
+      Daughters Ahead, Sons Behind? Economic Mobility and Educational Choices among \\ Children of Immigrants in Scandinavia
+    </span>
+    <span class="meta">
+      (with Are Skeie Hermansen and Carina Mood)
+      <a href="#" class="abslink" onclick="toggleAbs('abs-scandimob', this); return false;">[Abstract]</a>
+    </span>
+
+    <div id="abs-scandimob" class="abstract-box">
+       Can education equalize intergenerational economic mobility for the sons and daughters of immigrants? We examine this question using population-wide administrative data on cohorts born in the 1970s and 1980s in Denmark, Norway, and Sweden. These Scandinavian welfare-state contexts constitute revealing cases because they combine open educational systems and high rates of social mobility with considerable immigration from low-income countries, alongside an increasing female advantage in educational attainment and rising concern about labor market disadvantage among less-educated men. We show that children of immigrants experience substantial upward earnings mobility relative to their parents, sharply reducing their overrepresentation at the bottom of the distribution. Conditional on parental earnings, they attain broadly similar earnings as native-origin peers from comparable family backgrounds. However, this convergence is strongly gendered, as daughters of immigrants often equal or exceed the mobility outcomes of native-origin women, whereas sons of immigrants lag behind comparable native-origin men. These differences are closely linked to educational attainment and field-of-study sorting. The findings show that education is central to immigrant mobility across generations, but its equalizing potential is primarily realized among women. Gendered educational trajectories produce gendered patterns of economic mobility, with broader implications for the intergenerational transmission of disadvantage among immigrant minorities.
+    </div>
+  </li>
+
+
+
 
 </ul>
