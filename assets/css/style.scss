@@ -72,14 +72,23 @@ h2 + ul.pubs, h3 + ul.pubs {
 }
 
 /* Working paper title options */
-/* Non-linked working paper titles: underline, NOT bold */
-.WP {
-  font-weight: normal;           /* or 400 */
-  text-decoration: underline;
-  text-decoration-thickness: .08em;
-  text-underline-offset: .12em;
-  color: inherit;                /* keep body text color */
-  cursor: default;
+/* Working papers: use dashes instead of bullets */
+.wp-list {
+    list-style: none;
+    padding-left: 1.2em;
+}
+
+.wp-list li {
+    position: relative;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.wp-list li::before {
+    content: "–";      /* en dash */
+    position: absolute;
+    left: -1.2em;
+    color: inherit;
 }
 
 /* ===== Optional: keep <details> inline if you use it elsewhere ===== */
