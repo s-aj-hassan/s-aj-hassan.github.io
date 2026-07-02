@@ -91,51 +91,31 @@ to qualified teachers may reduce learning disparities.
 <ul class="pubs wp-list">
 
   <li>
-
     <span class="WP">
-
       Schools and Learning Inequalities: A Theoretical Model of Quantitative and Qualitative School Effects
-
     </span>
-
     <span class="meta">
-
       (with Richard Breen)
-
       <a href="#" class="abslink" onclick="toggleAbs('abs-school', this); return false;">[Abstract]</a>
-
     </span>
 
     <div id="abs-school" class="abstract-box">
-
-      Do schools reduce or amplify learning gaps by socioeconomic background? In this paper, we contribute to this longstanding sociological debate in three ways. First, we develop a formal model that clarifies relevant theoretical estimands and counterfactuals. Second, our theoretical model synthesizes previously contradictory findings in the literature on schools and inequality by distinguishing between quantitative and qualitative school effects. Third, we empirically test a central hypothesis from our model: that the positive returns to improvements in school quality are concentrated among children from lower socioeconomic backgrounds. To test this hypothesis, we use administrative register data from Denmark and a natural experiment design that relies on variation in school quality induced by unanticipated changes in school district boundaries over time. We show that children redistricted to higher-quality schools substantially improve their test score performance in reading, and, crucially, these effects are strongest among children from lower socioeconomic backgrounds. These findings suggest that equalizing school quality can be an effective means of reducing learning inequalities.
-
+      ...
     </div>
-
   </li>
 
   <li>
-
     <span class="WP">
-
       Parental Incarceration and Children's Educational Outcomes
-
     </span>
-
     <span class="meta">
-
       (Sole-authored)
-
       <a href="#" class="abslink" onclick="toggleAbs('abs-parinc', this); return false;">[Abstract]</a>
-
     </span>
 
     <div id="abs-parinc" class="abstract-box">
-
-      How does parental incarceration affect children's educational outcomes? I provide causal evidence on this question by combining full population register data containing detailed information on 16 Danish birth cohorts (<em>N</em> = 890,159) with a sibling fixed effects approach to identification. This strategy overcomes selection issues arising from unobserved family characteristics. On average, children who experience parental incarceration are 4 percentage points less likely to complete a high school degree by age 20, compared to their siblings who do not. These effects are largely concentrated among girls who experience substantially stronger detrimental effects of parental incarceration, compared to boys.
-
+      ...
     </div>
-
   </li>
 
 </ul>
