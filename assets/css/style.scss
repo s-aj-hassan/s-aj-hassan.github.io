@@ -202,6 +202,12 @@ header p .desc-tt {
 
 /* On mobile: horizontal icons only, no labels */
 @media screen and (max-width: 960px) {
+  header {
+    border-bottom: none;
+  }
+  section {
+    border-top: none;
+  }
   .social-icons {
     flex-direction: row;
     justify-content: center;
