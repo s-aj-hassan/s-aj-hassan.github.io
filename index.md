@@ -65,9 +65,13 @@ to qualified teachers may reduce learning disparities.
       Do Refugee Children Impair the Academic Performance of Native Children in the School?
     </a> (with Camilla Hvidtfeldt, Lars H. Andersen, Rebecca O. Udsen) 
     <span class="meta">
-      <span class="journal">European Sociological Review</span>  
+      <span class="journal">European Sociological Review</span> 
       <a href="#" class="abslink" onclick="toggleAbs('abs-refugee', this); return false;">[Abstract]</a>
     </span>
+      <div class="pub-award">
+         <i class="ti ti-award" aria-hidden="true"></i>
+        <span>Best Article of the Year Prize, ECSR, 2024</span>
+    </div>
     <div id="abs-refugee" class="abstract-box">
       Discussions concerning the social impact of accepting refugee immigrants arise each time large numbers of refugees apply for protection in rich countries. However, little evidence exists on how the integration of refugees into core welfare institutions affects native citizens who depend on and interact with these institutions. In this paper, we focus on whether receiving refugees in a school cohort affects the academic performance of natives, using administrative data from Denmark, which contain test scores on all children in public schools. We exploit variation in the timing of refugees’ entrance to schools to facilitate causal estimates. Our findings show that refugees tend to cluster in schools that had poorer performance even prior to the refugees’ arrival. When we take this selection pattern into account, the effect of receiving refugees on the academic performance trajectory of natives is both statistically insignificant and substantially unimportant.
     </div>
