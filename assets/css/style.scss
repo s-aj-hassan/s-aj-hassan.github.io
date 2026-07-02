@@ -10,9 +10,9 @@ ul.pubs {
   margin: 0 0 1rem 0; 
 }
 
-ul.pubs li { 
-  margin: 0 0 1rem 0; 
-  line-height: 1.5; 
+ul.pubs li {
+    margin-bottom: 2rem;   /* try 1.5rem–2.5rem */
+    line-height: 1.5;
 }
 
 /* Title stays normal size (inherits), metadata a bit smaller/softer */
