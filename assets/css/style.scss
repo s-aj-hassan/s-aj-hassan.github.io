@@ -71,24 +71,30 @@ h2 + ul.pubs, h3 + ul.pubs {
   margin-top: 0.5rem; 
 }
 
-/* Working paper title options */
-/* Working papers: use dashes instead of bullets */
+/* Working paper list */
 .wp-list {
-    list-style: none;
-    padding-left: 1.2em;
+    list-style: none;      /* remove browser bullets */
+    padding-left: 0;        /* don't indent the whole list */
+    margin: 0 0 1rem 0;
 }
 
 .wp-list li {
     position: relative;
     margin-bottom: 1rem;
     line-height: 1.5;
+    padding-left: 1.3em;    /* indent text to match publications */
 }
 
 .wp-list li::before {
-    content: "–";      /* en dash */
+    content: "–";
     position: absolute;
-    left: -1.2em;
+    left: 0;
     color: inherit;
+}
+
+.WP {
+    color: #267CB9;          /* same blue as publication titles */
+    font-weight: normal;
 }
 
 /* ===== Optional: keep <details> inline if you use it elsewhere ===== */
