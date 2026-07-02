@@ -73,27 +73,29 @@ h2 + ul.pubs, h3 + ul.pubs {
 
 /* Working paper list */
 .wp-list {
-    list-style: none;      /* remove browser bullets */
-    padding-left: 0;        /* don't indent the whole list */
-    margin: 0 0 1rem 0;
+    list-style: none !important;
+    padding-left: 0;
+    margin: 0;
 }
 
 .wp-list li {
+    list-style: none !important;
     position: relative;
+    padding-left: 1.6em;
     margin-bottom: 1rem;
     line-height: 1.5;
-    padding-left: 1.3em;    /* indent text to match publications */
 }
 
 .wp-list li::before {
     content: "–";
     position: absolute;
     left: 0;
-    color: inherit;
+    top: 0;
+    font-size: 1em;
 }
 
 .WP {
-    color: #267CB9;          /* same blue as publication titles */
+    color: #267CB9 !important;          /* same blue as publication titles */
     font-weight: normal;
 }
 
