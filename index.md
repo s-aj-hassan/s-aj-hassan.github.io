@@ -39,7 +39,7 @@ My job market paper asks a classic sociological question: do ethnic institutions
     <span class="meta">
      <span class="journal">Sociological Science</span>
       <a href="#" class="abslink" onclick="toggleAbs('abs-teachqual', this); return false;">[Abstract]</a>
-      <a href="https://github.com/s-aj-hassan/Teacher-Sorting-Achievement" target="_blank" rel="noopener" class="abslink">[Replication]</a>
+      <a href="https://github.com/s-aj-hassan/Teacher-Sorting-Achievement" target="_blank" rel="noopener" class="abslink">[Code]</a>
     </span>
     <div id="abs-teachqual" class="abstract-box">
       Teachers play a formative role in shaping children’s school experiences and ultimately,
