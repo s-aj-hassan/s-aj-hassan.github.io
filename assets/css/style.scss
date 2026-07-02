@@ -131,44 +131,43 @@ header img {
   border-radius: 50%;   /* adjust % for more/less oval */
 }
 
-/* FOR ICONS */ /* minimal styling for the icon row */
+/* FOR ICONS - vertical stacked with labels */
 .social-icons {
-  text-align: center;
-  margin-top: .6rem;
-  white-space: nowrap;     /* keep on one line */
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: flex-start;
+  white-space: normal;         /* override the old nowrap */
 }
 
 .social-icons a {
-  color: #267CB9;          /* Minimal theme link blue */
-  margin: 0 .45em;
+  color: #267CB9;
   text-decoration: none;
-}
-
-.social-icons a:hover { color: #069; }
-
-/* Only Bluesky smaller */
-.social-icons .fa-bluesky {
-  font-size: 1.6rem;        /* tweak until it matches visually (e.g., 1.55–1.7) */
-}
-
-.social-icons i,
-.social-icons .cv-link {
-  font-size: 1.8rem;       /* base size for all */
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.95rem;
   line-height: 1;
-  vertical-align: bottom;  /* align bottoms */
-  font-weight: 700;        /* makes CV feel icon-like */
+  font-weight: 500;
 }
 
-.social-icons .cv-link { margin-left: -0.00em; } 
+.social-icons a:hover {
+  color: #069;
+  text-decoration: underline;
+}
 
-/* Remove Minimal theme's mobile section border (the thin line under icons) */
-@media screen and (max-width: 960px) {
-  section {
-    border: 0 !important;          /* the theme sets border-width: 1px 0; */
-    /* optional: keep bottom border only:
-    border-top: 0 !important;
-    border-bottom: 0 !important;   */
-  }
+/* Fixed-width icon column so labels line up perfectly */
+.social-icons a i {
+  font-size: 1.15rem;
+  width: 1.4rem;
+  text-align: center;
+  display: inline-block;
+}
+
+/* Bluesky glyph runs a touch larger — nudge it down */
+.social-icons a .fa-bluesky {
+  font-size: 1.05rem;
 }
 /* Hide the theme’s "View My GitHub Profile" line */
 .view { display: none !important; }
