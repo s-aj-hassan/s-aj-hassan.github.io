@@ -120,7 +120,7 @@ to qualified teachers may reduce learning disparities.
 
   <li>
     <span class="WP">
-      Daughters Ahead, Sons Behind? Economic Mobility and Educational Choices among \\ Children of Immigrants in Scandinavia
+      Daughters Ahead, Sons Behind? Economic Mobility and Educational Choices among Children of Immigrants in Scandinavia
     </span>
     <span class="meta">
       (with Are Skeie Hermansen and Carina Mood)
@@ -132,7 +132,33 @@ to qualified teachers may reduce learning disparities.
     </div>
   </li>
 
+  <li>
+    <span class="WP">
+      Social Class in the Classroom: Teacher–Student Socioeconomic Matching and Achievement
+    </span>
+    <span class="meta">
+      (with Sara Geven)
+      <a href="#" class="abslink" onclick="toggleAbs('abs-geven', this); return false;">[Abstract]</a>
+    </span>
 
+    <div id="abs-geven" class="abstract-box">
+     A substantial literature examines whether students benefit from being taught by teachers who share their gender or race, but little is known about socioeconomic matching, despite cultural capital theory's emphasis on social class as the basis for the cultural alignment between students and educational gatekeepers. We ask whether students' test performance depends on the socioeconomic match between them and their teachers. Using Danish administrative registers linking the full population of public-school students to their teachers by subject, year, and classroom (2013–2019), we triangulate across multiple sources of within-student variation—across subjects within a school year and across years within a subject—to address teacher-student sorting. Our findings show that exposure to low-SES teachers is associated with higher reading scores among low-SES students, with a similar but weaker pattern in mathematics, while high-SES students appear unaffected by their teachers' socioeconomic background. The findings reposition teachers as active mediators in the reproduction of educational inequality.
+    </div>
+  </li>
+
+  <li>
+    <span class="WP">
+      Multi-Dimensional Teacher Value-Added: Characterizing "the Good Teacher"
+    </span>
+    <span class="meta">
+      (with Miriam Gensowski)
+      <a href="#" class="abslink" onclick="toggleAbs('abs-TSVA', this); return false;">[Abstract]</a>
+    </span>
+
+    <div id="abs-TSVA" class="abstract-box">
+We examine teachers' value added not just for their student's achievement test scores but also students' non-cognitive skills -- well-being, conscientiousness, agreeableness, emotional stability, subjective achievement, as well as behavioral measures (absenteeism). With self-reported and direct measures of these skills, rather than only behavioral proxies or teacher-rated measures, we confirm that teachers contribute significantly to the development of their students' multi-dimensional skills. Yet we challenge prior findings that teachers who promote test scores are not the same as teachers promoting non-test-score outcomes -- we find that this is only true for the behavioral proxies. Value-added in self-reported socio-emotional skills are positively correlated with test-score value-added. With access to administrative register data on teachers as well as students, we attempt to characterize high-value-added teachers. Only few observable teacher characteristics successfully predict teacher value-added in socio-emotional skills, behavior, and test scores.  
+    </div>
+  </li>
 
 
 </ul>
