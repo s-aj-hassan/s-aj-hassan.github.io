@@ -3,6 +3,17 @@
 
 @import "jekyll-theme-minimal";  /* load theme CSS first */
 
+/* ===== Color of name Said Hassan ===== */
+/* Keep the name in black instead of the theme's link blue */
+header h1,
+header h1 a,
+header h1 a:hover,
+header h1 a:visited {
+  color: #232323;
+  background: transparent;
+  text-decoration: none;
+}
+
 /* ===== Publications list ===== */
 ul.pubs { 
   list-style-type: disc; 
