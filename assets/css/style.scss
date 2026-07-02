@@ -82,7 +82,7 @@ h2 + ul.pubs, h3 + ul.pubs {
   margin-top: 0.5rem; 
 }
 
-/* Award note under a publication (e.g., "Best Article Prize") */
+/* Award note under a publication */
 .pub-award {
   display: flex;
   align-items: center;
@@ -93,7 +93,7 @@ h2 + ul.pubs, h3 + ul.pubs {
 }
 
 .pub-award i {
-  color: #267CB9;      /* same blue as your links */
+  color: #267CB9;
   font-size: 1.1em;
   font-style: normal;
 }
