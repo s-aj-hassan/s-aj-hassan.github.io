@@ -62,9 +62,9 @@ to qualified teachers may reduce learning disparities.
   <li>
     <a href="https://academic.oup.com/esr/article/39/3/352/6843667">
       Do Refugee Children Impair the Academic Performance of Native Children in the School?
-    </a> (with Camilla Hvidtfeldt, Lars H. Andersen, Rebecca O. Udsen) <br>
+    </a> (with Camilla Hvidtfeldt, Lars H. Andersen, Rebecca O. Udsen) 
     <span class="meta">
-      <span class="journal">European Sociological Review</span>  <br>
+      <span class="journal">European Sociological Review</span>  
       <a href="#" class="abslink" onclick="toggleAbs('abs-refugee', this); return false;">[Abstract]</a>
     </span>
     <div id="abs-refugee" class="abstract-box">
@@ -75,9 +75,9 @@ to qualified teachers may reduce learning disparities.
   <li>
     <a href="https://link.springer.com/article/10.1007/s40865-022-00211-0">
       The Importance of Living Arrangements for Criminal Persistence and Desistance: A Novel Test of Exposure to Convicted Family Members
-    </a> (with David Kirk, Lars H. Andersen) <br>
+    </a> (with David Kirk, Lars H. Andersen) 
     <span class="meta">
-      <span class="journal">Journal of Developmental and Life-Course Criminology</span>  <br>
+      <span class="journal">Journal of Developmental and Life-Course Criminology</span>  
       <a href="#" class="abslink" onclick="toggleAbs('abs-living', this); return false;">[Abstract]</a>
     </span>
     <div id="abs-living" class="abstract-box">
