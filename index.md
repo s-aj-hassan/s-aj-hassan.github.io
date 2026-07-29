@@ -2,7 +2,7 @@
 layout: default
 title: Home
 ---
-{% include jm_banner.html %}
+/*{% include jm_banner.html %}*/
 {% include icons_settings.html %}
 {% include make_abstract.html %}
 
