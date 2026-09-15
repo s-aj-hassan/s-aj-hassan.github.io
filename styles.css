@@ -1,0 +1,350 @@
+/* =================================================================
+   FONTS  —  6. Newsreader + Inter
+   Editorial serif. Base 1.08rem, here x1.1 = 1.18rem.
+
+   Others tried, if you want to go back:
+     Source Serif 4 / Source Sans 3   scholarly, readable  (1.06rem)
+     EB Garamond / Inter              classical, literary  (1.15rem)
+     Lora / Libre Franklin            warm, sturdy         (1.00rem)
+     Crimson Pro / Inter              book-like            (1.12rem)
+     Spectral / IBM Plex Sans         even colour          (1.00rem)
+     Newsreader / Inter               <-- current          (1.08rem)
+     Inter / Inter                    no serif at all      (0.98rem)
+     Space Mono                       Hunter York's face   (0.95rem)
+     JetBrains Mono                   evener monospace     (0.92rem)
+     IBM Plex Mono                    monospace, warm      (0.94rem)
+
+   @import must stay at the very top of this file to work.
+   ================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&display=swap');
+
+/* -----------------------------------------------------------------
+   Page width.
+   page-layout: full (in _quarto.yml) removes Quarto's narrow column.
+   The cap below stops the text sprawling on a very large monitor.
+   Raise or lower 1400px to taste — that one number controls the width.
+   ----------------------------------------------------------------- */
+
+#quarto-content,
+.page-full main {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Space out the publication entries so they read as separate items */
+main p {
+  margin-bottom: 1.1rem;
+}
+
+/* -----------------------------------------------------------------
+   Photo column width (the "trestles" about layout).
+   Quarto's own rule sets this to 42% and loads after this file, so
+   !important is needed to override it.
+   THE DIAL: change 21% below. Lower = narrower photo column.
+   Note: this, not image-width, is what decides whether the email
+   address fits on one line.
+   ----------------------------------------------------------------- */
+
+.quarto-about-trestles .about-entity {
+  flex: 0 0 21% !important;
+}
+
+.quarto-about-trestles .about-contents {
+  flex: 1 1 auto !important;
+}
+
+/* -----------------------------------------------------------------
+   Background colour.
+   Change it in all three places below — body, navbar and footer must
+   match or you get a white band at the top and bottom.
+
+   Options, darkest to lightest:
+     #d3bea1  original tan
+     #e0d1bb  a touch lighter
+     #e9ddcb  warm paper
+     #f2eae0  parchment
+     #f7f2ea  <-- current: barely there
+   ----------------------------------------------------------------- */
+
+body {
+  background-color: #f7f2ea;
+}
+
+
+.nav-footer,
+.page-footer,
+footer {
+  background-color: #f7f2ea !important;
+  border-top: none;
+}
+
+
+/* -----------------------------------------------------------------
+   Hide the name under the photo.
+   The heading is still in the page for the browser tab and for search
+   engines — it is just not shown, since the name now appears as your
+   own heading in the text.
+   ----------------------------------------------------------------- */
+
+.quarto-about-trestles .about-entity #title-block-header {
+  display: none;
+}
+
+
+/* ----- font assignments (see FONTS block at top of file) ---------- */
+
+:root {
+  --font-body: "Newsreader", Georgia, serif;
+  --font-heading: "Inter", system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.18rem;
+  line-height: 1.65;
+  color: #23201c;
+}
+
+h1, h2, h3, h4,
+.about-link-text {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.42rem;
+  margin-top: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+/* -----------------------------------------------------------------
+   Text column: pull the RIGHT edge in only.
+   Left edge stays where it is; padding on the right shortens the
+   lines. THE DIAL: raise 8.5rem to narrow further, lower it to widen.
+   ----------------------------------------------------------------- */
+
+.quarto-about-trestles .about-contents {
+  padding-right: 8.5rem !important;
+}
+
+/* -----------------------------------------------------------------
+   Accent colour (links).
+   Measured against the #f7f2ea background; all pass WCAG AA.
+     #005b4c  <-- current: deep green  7.2:1
+     #1d4e4a  teal         8.4:1
+     #22475f  petrol       8.8:1
+     #2f3e70  indigo       9.2:1
+     #7b2d26  oxblood      8.4:1
+     #9c4433  sienna       5.7:1
+     #a84f3a  terracotta   4.9:1  (lightest that is still safe)
+   To swap: replace #005b4c everywhere below. The rgba() line is the
+   same colour as a faint underline — rgba(0, 0, 0, 0.2) works too.
+   ----------------------------------------------------------------- */
+
+a {
+  color: #005b4c;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 91, 76, 0.30);
+}
+
+a:hover {
+  color: #005b4c;
+  border-bottom-color: #005b4c;
+}
+
+/* The Email / Scholar / GitHub buttons under the photo */
+.about-link {
+  color: #005b4c !important;
+  border-bottom: none !important;
+}
+
+/* -----------------------------------------------------------------
+   Featured paper: the rule runs alongside the abstract only,
+   not the title or the journal status line.
+   ----------------------------------------------------------------- */
+
+.paper-abstract {
+  border-left: 3px solid #005b4c;
+  padding-left: 1.25rem;
+  margin-top: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.paper-abstract p:last-child {
+  margin-bottom: 0;
+}
+
+/* -----------------------------------------------------------------
+   Expandable abstract.
+   The <details> sits inline so [Abstract] lands right after [Link].
+   The abstract itself is a span forced to block, which lets it drop
+   onto its own line with the green rule beside it.
+   ----------------------------------------------------------------- */
+
+.abstract-toggle {
+  display: inline;
+}
+
+.abstract-toggle > summary {
+  display: inline;
+  white-space: nowrap;   /* keep [ Abstract ] together on one line */
+  cursor: pointer;
+  list-style: none;
+  color: #005b4c;
+  font-size: inherit;
+}
+
+.abstract-toggle > summary::-webkit-details-marker { display: none; }
+.abstract-toggle > summary::before { content: "["; }
+.abstract-toggle > summary::after  { content: "]"; }
+.abstract-toggle > summary:hover { text-decoration: underline; }
+
+.abstract-toggle .abs {
+  display: block;
+  border-left: 3px solid #005b4c;
+  padding-left: 1.25rem;
+  margin-top: 0.7rem;
+  font-size: 1.04rem;
+}
+
+/* In the featured block the outer rule already provides the line */
+.paper-abstract .abstract-toggle .abs {
+  border-left: none;
+  padding-left: 0;
+}
+
+/* -----------------------------------------------------------------
+   Space between entries in the publication / working paper lists.
+   Each entry is wrapped in ::: {.pub} in index.qmd, because Pandoc
+   does not wrap these lines in <p> once they contain a <details>.
+   THE DIAL: change 2.5rem.
+   ----------------------------------------------------------------- */
+
+.pub {
+  margin-bottom: 1.2rem;
+  padding-left: 2em;
+  text-indent: -2em;    /* first line flush, the rest indented */
+}
+
+/* the expanded abstract should not inherit the hanging indent */
+.pub .abs {
+  text-indent: 0;
+  margin-left: 0;
+}
+
+.pub:last-child {
+  margin-bottom: 0;
+}
+
+/* -----------------------------------------------------------------
+   Award line: last line of a .pub entry, accent colour, bold italic,
+   with the Bootstrap "award" rosette in front (same icon set Quarto
+   already loads for the Email / Scholar / GitHub buttons).
+   ----------------------------------------------------------------- */
+
+.award {
+  display: block;
+  text-indent: 0;
+  margin-top: 0.3rem;
+  color: #005b4c;
+  font-size: 1.0rem;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.award .fa-solid {
+  margin-right: 0.4rem;
+  font-style: normal;
+}
+
+/* -----------------------------------------------------------------
+   LINK BLOCK — plain stack.
+   No box, no dividers; icon + label rows with a faint hover tint.
+   ----------------------------------------------------------------- */
+
+.quarto-about-trestles .about-entity {
+  align-items: flex-start !important;
+  text-align: left !important;
+}
+
+.quarto-about-trestles .about-entity .about-links {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 0 !important;
+  margin-top: 0.9rem;
+  width: 100%;
+}
+
+.about-link {
+  display: flex !important;
+  align-items: baseline;
+  gap: 0.55rem;
+  padding: 0.35rem 0.5rem !important;
+  font-size: 0.87rem;
+  color: #005b4c !important;
+  background: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transition: background-color 0.15s ease;
+}
+
+.about-link:hover {
+  background-color: #f1e9dc !important;
+}
+
+.about-link i.bi {
+  width: 1em;
+  text-align: center;
+  flex: 0 0 1em;
+}
+/* -----------------------------------------------------------------
+   Link block icons.
+   Each icon sits in a fixed-width .ic column inside the link text,
+   which is what keeps all four labels starting at the same x.
+   THE DIAL: widen 1.5em to push the labels further right.
+   ----------------------------------------------------------------- */
+
+.about-link {
+  align-items: center !important;
+  gap: 0 !important;
+  padding: 0.3rem 0.5rem !important;
+}
+
+.about-link .ic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5em;
+  flex: 0 0 1.5em;
+  margin-right: 0.5rem;
+}
+
+.about-link .ic .bi {
+  font-size: 0.95em;
+  line-height: 1;
+}
+
+/* -----------------------------------------------------------------
+   Affiliation under the name, in the accent green.
+   The negative top margin pulls it up against the heading so the two
+   read as one block rather than a heading and a paragraph.
+   ----------------------------------------------------------------- */
+
+.affiliation {
+  display: block;
+  font-family: var(--font-heading);   /* same face as the name above */
+  letter-spacing: -0.005em;
+  color: #005b4c;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: -0.5rem;
+  margin-bottom: 1.6rem;
+}
