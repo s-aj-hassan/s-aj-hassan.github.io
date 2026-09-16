@@ -304,6 +304,11 @@ a:hover {
   text-align: center;
   flex: 0 0 1em;
 }
+/* the short "CV" label is for phones only */
+.lbl-short {
+  display: none;
+}
+
 /* -----------------------------------------------------------------
    Link block icons.
    Each icon sits in a fixed-width .ic column inside the link text,
@@ -347,4 +352,171 @@ a:hover {
   line-height: 1.5;
   margin-top: -0.5rem;
   margin-bottom: 1.6rem;
+}
+
+/* =================================================================
+   PHONES AND NARROW WINDOWS  (<= 991px)
+   Everything here is inside a media query, so the desktop layout
+   above is completely unaffected. Quarto stacks the trestles
+   template on small screens by itself; the job here is to undo the
+   fixed widths and !important overrides that stop it doing so.
+   ================================================================= */
+
+@media (max-width: 991px) {
+
+  /* ---- ordering: name / photo / affiliation / icons ----
+     Quarto wraps the name and subtitle together in a title block.
+     display:contents dissolves those wrappers so the h1 and the
+     subtitle become flex items of the photo column in their own
+     right, which lets each be ordered separately. */
+
+  .quarto-about-trestles .about-entity #title-block-header,
+  .quarto-about-trestles .about-entity .quarto-title {
+    display: contents !important;
+  }
+
+  .quarto-about-trestles .about-entity .quarto-title-meta {
+    display: none !important;
+  }
+
+  .quarto-about-trestles .about-entity .title {
+    display: block !important;
+    order: -1;                      /* above the photo */
+    font-family: var(--font-heading);
+    font-size: 1.9rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0 0 1rem;
+    text-wrap: balance;
+  }
+
+  .quarto-about-trestles .about-entity .about-image {
+    order: 0;
+  }
+
+  .quarto-about-trestles .about-entity .subtitle {
+    order: 1;                       /* below the photo */
+    font-family: var(--font-heading);
+    font-size: 0.98rem;
+    font-weight: 600;
+    line-height: 1.45;
+    color: #005b4c;
+    margin: 0;                      /* THE DIAL: gap under the photo */
+  }
+
+  /* Quarto puts a bottom margin on the about image; that is the
+     other half of the gap. */
+  .quarto-about-trestles .about-entity .about-image {
+    margin-bottom: 0.7rem !important;
+  }
+
+  .quarto-about-trestles .about-entity .about-links {
+    order: 2;                       /* below the affiliation */
+  }
+
+  /* the desktop copies in the text column, now redundant */
+  .about-contents h1,
+  .affiliation {
+    display: none;
+  }
+
+  /* photo column: stop forcing 21%, let it be the full width */
+  .quarto-about-trestles .about-entity {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding-right: 0 !important;
+  }
+
+  /* text column: drop the right-hand gap entirely */
+  .quarto-about-trestles .about-contents {
+    padding-right: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  /* smaller photo — 13.5em is most of a phone screen */
+  .quarto-about-trestles .about-entity .about-image {
+    height: 9em !important;
+    width: 9em !important;
+  }
+
+  /* links become a single centred row of icons */
+  .quarto-about-trestles .about-entity .about-links {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1.5rem;
+    width: auto;
+    margin-top: 1.1rem;
+  }
+
+  .about-link {
+    padding: 0.2rem !important;
+  }
+
+  /* hide the labels, keep the glyphs */
+  .lbl {
+    display: none;
+  }
+
+  .about-link .ic {
+    width: auto;
+    flex: 0 0 auto;
+    margin-right: 0;
+  }
+
+  .about-link .ic .bi {
+    font-size: 1.35rem;
+  }
+
+  /* CV is the exception: no icon, the letters "CV" instead.
+     Needs the .about-link prefix and !important to beat the
+     desktop rule .about-link .ic { display: inline-flex } */
+  .about-link .ic-cv {
+    display: none !important;
+  }
+
+  .about-link .lbl-short {
+    display: inline;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* page gutters: 2rem each side is too much at this width */
+  #quarto-content,
+  .page-full main {
+    max-width: 100%;
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+  }
+
+  /* body text down a step; 1.18rem is a desktop size */
+  body {
+    font-size: 1.06rem;
+    line-height: 1.6;
+  }
+
+  h2 {
+    font-size: 1.24rem;
+  }
+
+  /* shallower hanging indent — 2em of a phone width is a lot */
+  .pub {
+    padding-left: 1.2em;
+    text-indent: -1.2em;
+  }
+
+  /* the featured paper's rule and the abstracts, tightened */
+  .paper-abstract,
+  .abstract-toggle .abs {
+    padding-left: 0.9rem;
+  }
+
+  /* long DOIs and URLs must not force a sideways scroll */
+  a {
+    overflow-wrap: anywhere;
+  }
 }
