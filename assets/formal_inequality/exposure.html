@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exposure and Learning Gaps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+/* ------------------------------------------------------------------
+   Dials
+   --page-bg : transparent lets an iframe show the host page behind it;
+               set to #f7f2ea to match saidhassan.net when viewed alone.
+   --halo    : outline behind in-graph labels; set to the page colour.
+   --high / --low : the two SES groups (solid / dashed).
+   ------------------------------------------------------------------ */
+:root{
+  --page-bg: transparent;
+  --halo: #ffffff;
+  --ink:   #1d1d1b;
+  --ink-2: #4a4945;
+  --ink-3: #8a8780;
+  --rule:  #dcd8cf;
+  --high:  #005b4c;
+  --low:   #9a4a28;
+  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--page-bg);color:var(--ink)}
+body{font-family:var(--serif);font-size:1.08rem;line-height:1.55;padding:1rem}
+.lm{max-width:920px;margin:0 auto}
+
+.lm h1{font-family:var(--sans);font-weight:600;font-size:1.15rem;letter-spacing:-.005em;margin:0 0 .35rem}
+.lm h2{font-family:var(--sans);font-weight:600;font-size:.98rem;margin:0 0 .6rem}
+.model-eq{margin:.2rem 0 1rem;color:var(--ink)}
+.katex{font-size:1.05em}
+.katex-display{margin:.6rem 0;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+[data-display]{max-width:100%;overflow-x:auto;overflow-y:hidden}
+
+/* ---- figure ---- */
+figure{margin:0 0 1.25rem}
+.legend{display:flex;justify-content:flex-end;gap:1.4rem;font-family:var(--sans);font-size:.82rem;color:var(--ink-2);margin-bottom:.15rem}
+.legend span{display:inline-flex;align-items:center;gap:.45rem}
+#plot{width:100%}
+#plot svg{display:block;width:100%;height:auto;overflow:visible}
+.ax{stroke:var(--ink);stroke-width:1}
+.tk{stroke:var(--ink);stroke-width:1}
+.tl{font-family:var(--sans);font-size:12px;fill:var(--ink-2)}
+.at{font-family:var(--sans);font-size:13px;fill:var(--ink)}
+.at .m{font-family:var(--serif);font-style:italic;font-size:15px}
+.cH{fill:none;stroke:var(--high);stroke-width:2.25;stroke-linejoin:round}
+.cL{fill:none;stroke:var(--low);stroke-width:2.25;stroke-dasharray:7 5;stroke-linejoin:round}
+.t0{stroke:var(--ink-2);stroke-width:1.6;stroke-dasharray:.5 4.5;stroke-linecap:round}
+.t1{stroke:var(--ink-3);stroke-width:1.6;stroke-dasharray:.5 4.5;stroke-linecap:round}
+.tlab{font-family:var(--sans);font-size:12px;fill:var(--ink-2)}
+.tlab.target{fill:var(--ink-3)}
+.gap{stroke:var(--ink);stroke-width:1.3}
+.gap1{stroke:var(--ink-3);stroke-width:1.3}
+.gl{font-family:var(--sans);font-size:12.5px;font-weight:600;fill:var(--ink);paint-order:stroke;stroke:var(--halo);stroke-width:4px;stroke-linejoin:round}
+.gl.target{fill:var(--ink-3);font-weight:500}
+
+/* ---- readout ---- */
+.readout{display:grid;grid-template-columns:1fr 1fr;gap:0 2rem;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:.9rem 0;margin-bottom:1.4rem}
+.stat-label{font-family:var(--sans);font-size:.8rem;color:var(--ink-2);text-transform:uppercase;letter-spacing:.05em}
+.stat-row{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+.stat-val{font-family:var(--sans);font-size:1.45rem;font-weight:500;font-variant-numeric:tabular-nums}
+.stat-sub{font-family:var(--sans);font-size:.82rem;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.verdict{grid-column:1/-1;margin:.55rem 0 0;font-style:italic;color:var(--high)}
+.verdict.widen{color:var(--low)}
+.verdict.flat{color:var(--ink-2)}
+
+/* ---- controls ---- */
+.controls{margin-bottom:1.6rem}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-bottom:1rem;font-family:var(--sans);font-size:.85rem}
+.bar .lab{color:var(--ink-2);margin-right:.25rem}
+.bar .spacer{flex:1}
+button{font-family:var(--sans);font-size:.82rem;color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:3px;padding:.32rem .7rem;cursor:pointer}
+button:hover{border-color:var(--ink-3)}
+button[aria-pressed="true"]{border-color:var(--high);color:var(--high);background:rgba(0,91,76,.06)}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--high);outline-offset:2px}
+
+.pgrid{display:grid;grid-template-columns:10.5rem 1fr 1fr;gap:.35rem 1.6rem;align-items:center}
+.ch{font-family:var(--sans);font-size:.8rem;color:var(--ink-2);display:flex;align-items:center;gap:.45rem;padding-bottom:.15rem;border-bottom:1px solid var(--rule)}
+.rl{font-size:.98rem;color:var(--ink-2)}
+.sl{display:grid;grid-template-columns:2.1rem 1fr 3.4rem;align-items:center;gap:.5rem}
+.sl .num{width:100%;font-family:var(--sans);font-size:.85rem;font-variant-numeric:tabular-nums;text-align:right;color:var(--ink);
+  background:transparent;border:1px solid var(--rule);border-radius:3px;padding:.15rem .35rem}
+.sl .num:hover{border-color:var(--ink-3)}
+.sl .num:focus{outline:none;border-color:var(--high)}
+.sl.h input{accent-color:var(--high)}
+.sl.l input{accent-color:var(--low)}
+.sl.s input{accent-color:var(--ink-2)}
+input[type=range]{width:100%;margin:0;min-height:1.6rem}
+.shared{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem 1.6rem;margin-top:1.1rem;padding-top:.9rem;border-top:1px solid var(--rule)}
+.shared .cap{font-size:.95rem;color:var(--ink-2);line-height:1.3;margin-bottom:.1rem}
+
+/* ---- decomposition ---- */
+.decomp{margin-bottom:1.4rem}
+.nums{font-family:var(--sans);font-size:.9rem;font-variant-numeric:tabular-nums;color:var(--ink-2);margin:-.2rem 0 .9rem;overflow-wrap:anywhere}
+.nums b{color:var(--ink);font-weight:600}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+.card h3{font-family:var(--sans);font-size:.88rem;font-weight:600;margin:0 0 .15rem;display:flex;justify-content:space-between;gap:1rem}
+.card h3 .v{font-weight:500;font-variant-numeric:tabular-nums}
+.card .sub{font-style:italic;color:var(--ink-2);margin:0 0 .35rem;font-size:.98rem}
+.card p{margin:0;font-size:1rem}
+.limit{font-size:.95rem;color:var(--ink-2);margin:1.1rem 0 0}
+.limit .n{font-family:var(--sans);font-size:.88rem;font-variant-numeric:tabular-nums;color:var(--ink)}
+
+details{margin-top:1.3rem;border-top:1px solid var(--rule);padding-top:.7rem}
+summary{font-family:var(--sans);font-size:.88rem;font-weight:500;cursor:pointer;color:var(--high)}
+details[open] .inner{border-left:2px solid var(--high);padding-left:1rem;margin-top:.6rem}
+.message{font-style:italic;margin:.4rem 0 .8rem}
+.forces{font-family:var(--sans);font-size:.85rem;margin-top:.8rem}
+.fr{display:grid;grid-template-columns:7rem 1fr 4.8rem;align-items:center;gap:.8rem;margin:.4rem 0}
+.fr .fv{text-align:right;font-variant-numeric:tabular-nums}
+.ft{position:relative;height:.7rem}
+.ft::before{content:'';position:absolute;left:50%;top:-.3rem;bottom:-.3rem;border-left:1px solid var(--ink-3)}
+.fb{position:absolute;top:0;bottom:0;background:var(--ink-3)}
+.fr.net{font-weight:600;border-top:1px solid var(--rule);padding-top:.5rem;margin-top:.55rem}
+.fr.net .fb{background:var(--ink)}
+.fdir{display:grid;grid-template-columns:7rem 1fr 4.8rem;gap:.8rem;color:var(--ink-3);font-size:.75rem}
+.fdir span:nth-child(2){display:flex;justify-content:space-between}
+
+.note{font-size:.92rem;color:var(--ink-2);border-top:1px solid var(--rule);padding-top:.7rem;margin:0}
+
+/* ---- narrow screens ---- */
+@media (max-width:640px){
+  body{font-size:1.02rem;padding:.75rem}
+  .readout{grid-template-columns:1fr;gap:.7rem}
+  .pgrid{grid-template-columns:1fr 1fr;gap:.3rem 1rem}
+  .pgrid .corner{display:none}
+  .pgrid .rl{grid-column:1/-1;margin-top:.45rem;font-size:.95rem}
+  .sl{grid-template-columns:1.8rem 1fr 3.6rem;gap:.35rem}
+  .sl .num{font-size:16px}   /* below 16px, iOS zooms the page when the box is tapped */
+  .shared{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr;gap:1.1rem}
+  .fr,.fdir{grid-template-columns:5.6rem 1fr 4.2rem;gap:.5rem}
+}
+</style>
+</head>
+<body>
+<main class="lm">
+
+  <h1>Schooling exposure and socioeconomic learning gaps</h1>
+  <div class="model-eq" data-tex="\ell_g(\tau)=c_g(\tau Q_g)^{\alpha}+h_g(1-\theta\tau),\qquad g\in\{H,L\}" data-display></div>
+
+  <figure>
+    <div class="legend" aria-hidden="true">
+      <span><svg width="30" height="8"><line x1="0" y1="4" x2="30" y2="4" class="cH"/></svg>High SES</span>
+      <span><svg width="30" height="8"><line x1="0" y1="4" x2="30" y2="4" class="cL"/></svg>Low SES</span>
+    </div>
+    <div id="plot"></div>
+  </figure>
+
+  <section class="readout" aria-live="polite">
+    <div>
+      <div class="stat-label">Current learning gap</div>
+      <div class="stat-row"><span data-tex="\mathcal G(\tau_0)=\ell_H(\tau_0)-\ell_L(\tau_0)"></span><span>=</span><span class="stat-val" id="v-gap"></span></div>
+    </div>
+    <div>
+      <div class="stat-label">Change in the gap</div>
+      <div class="stat-row"><span data-tex="\Delta\mathcal G=\mathcal G(\tau_1)-\mathcal G(\tau_0)"></span><span>=</span><span class="stat-val" id="v-dG"></span></div>
+      <div class="stat-sub" id="v-gap1"></div>
+    </div>
+    <p class="verdict" id="verdict"></p>
+  </section>
+
+  <section class="controls" aria-label="Model parameters">
+    <div class="bar">
+      <span class="lab">Conversion presets</span>
+      <button type="button" data-preset="equal">Equal</button>
+      <button type="button" data-preset="comp">Compensatory</button>
+      <button type="button" data-preset="repro">Reproductive</button>
+      <span class="spacer"></span>
+      <button type="button" id="reset">Reset</button>
+    </div>
+    <div class="pgrid" id="pgrid"></div>
+    <div class="shared" id="shared"></div>
+  </section>
+
+  <section class="decomp">
+    <h2>Decomposing the change in the gap</h2>
+    <div data-display data-tex="\Delta\mathcal G=\underbrace{\left(c_HQ_H^{\alpha}-c_LQ_L^{\alpha}\right)\left(\tau_1^{\alpha}-\tau_0^{\alpha}\right)}_{\substack{\text{inequality reproduced through}\\\text{additional school exposure}}}\;-\;\underbrace{\theta(h_H-h_L)(\tau_1-\tau_0)}_{\substack{\text{inequality removed}\\\text{through displacement}}}"></div>
+    <div class="nums" id="n-main"></div>
+
+    <div class="cards">
+      <div class="card">
+        <h3><span>School exposure</span><span class="v" id="v-expo"></span></h3>
+        <p class="sub">Inequality reproduced through additional school exposure</p>
+        <p>Increasing exposure gives children more time in the schools they already attend. Its effect therefore depends on both socioeconomic sorting into school quality and differences in conversion.</p>
+      </div>
+      <div class="card">
+        <h3><span>Displacement</span><span class="v" id="v-disp"></span></h3>
+        <p class="sub">Inequality removed through displacement</p>
+        <p>Additional schooling replaces some non-school learning. When <span data-tex="h_H>h_L"></span>, this removes more potential non-school learning from high-SES children and therefore pushes toward lower inequality.</p>
+      </div>
+    </div>
+
+    <p class="limit">For a small change at current exposure, the same decomposition gives the slope of the gap:
+      <span data-tex="\left.\frac{\partial\mathcal G}{\partial\tau}\right|_{\tau_0}=\alpha\tau_0^{\alpha-1}\left(c_HQ_H^{\alpha}-c_LQ_L^{\alpha}\right)-\theta(h_H-h_L)"></span>
+      = <span class="n" id="v-deriv"></span>.</p>
+
+    <details>
+      <summary>Split school exposure into sorting and conversion</summary>
+      <div class="inner">
+        <p class="message">Whether additional exposure increases or decreases socioeconomic learning inequality depends on three forces: sorting, conversion, and displacement.</p>
+        <div data-display data-tex="\underbrace{\mathcal S=c_L\left(Q_H^{\alpha}-Q_L^{\alpha}\right)}_{\text{Sorting}}\qquad\underbrace{\mathcal C=(c_H-c_L)\,Q_H^{\alpha}}_{\text{Conversion}}"></div>
+        <div class="nums" id="n-sc"></div>
+        <div data-display data-tex="\Delta\mathcal G=\left(\mathcal S+\mathcal C\right)\left(\tau_1^{\alpha}-\tau_0^{\alpha}\right)-\underbrace{\theta(h_H-h_L)(\tau_1-\tau_0)}_{\text{Displacement}}"></div>
+        <div class="nums" id="n-full"></div>
+        <div class="forces" id="forces" aria-label="Contribution of each force to the change in the gap"></div>
+      </div>
+    </details>
+  </section>
+
+  <p class="note">Parameter values are illustrative and are intended to demonstrate the theoretical mechanisms of the model, not to represent empirical estimates.</p>
+</main>
+
+<script>
+(function(){
+  "use strict";
+
+  const DEFAULTS = {QH:1.4, QL:1, cH:1, cL:1.2, hH:1.3, hL:0.7, alpha:0.6, theta:0.5, tau0:0.8, tau1:0.85};
+  const RANGES   = {QH:[0.5,2], QL:[0.5,2], cH:[0.5,1.5], cL:[0.5,1.5], hH:[0,2], hL:[0,2],
+                    alpha:[0.1,1], theta:[0,1], tau0:[0,1], tau1:[0,1]};
+  const PRESETS  = {equal:{cH:1, cL:1}, comp:{cH:1, cL:1.2}, repro:{cH:1.2, cL:1}};
+  const EPS = 0.005;   // |change in gap per unit of tau| below this counts as "approximately unchanged"
+  const p = Object.assign({}, DEFAULTS);
+
+  /* ---------- maths ---------- */
+  function ell(g, t){
+    const c = g === "H" ? p.cH : p.cL, Q = g === "H" ? p.QH : p.QL, h = g === "H" ? p.hH : p.hL;
+    return c * Math.pow(t * Q, p.alpha) + h * (1 - p.theta * t);
+  }
+  // k * x without Infinity * 0 = NaN (at tau0 = 0 with alpha < 1, the slope multiplier is unbounded)
+  const times = (k, x) => (Math.abs(x) < 1e-12 ? 0 : k * x);
+
+  function derived(){
+    const QHa = Math.pow(p.QH, p.alpha), QLa = Math.pow(p.QL, p.alpha);
+    const S = p.cL * (QHa - QLa);
+    const C = (p.cH - p.cL) * QHa;
+    const hd = p.hH - p.hL;
+    const dA = Math.pow(p.tau1, p.alpha) - Math.pow(p.tau0, p.alpha);   // tau1^alpha - tau0^alpha
+    const dT = p.tau1 - p.tau0;
+    const k  = p.alpha * Math.pow(p.tau0, p.alpha - 1);
+    const lH = ell("H", p.tau0), lL = ell("L", p.tau0);
+    const lH1 = ell("H", p.tau1), lL1 = ell("L", p.tau1);
+    return {
+      S, C, dA, dT, k,
+      dSort: S * dA, dConv: C * dA, dExpo: (S + C) * dA,
+      dDisp: p.theta * hd * dT,
+      dGap: (S + C) * dA - p.theta * hd * dT,
+      deriv: times(k, S + C) - p.theta * hd,
+      lH, lL, lH1, lL1,
+      gap: lH - lL, gap1: lH1 - lL1
+    };
+  }
+
+  /* ---------- formatting ---------- */
+  function fmt(x, d, signed){
+    d = d === undefined ? 3 : d;
+    if (x === Infinity)  return "+∞";
+    if (x === -Infinity) return "−∞";
+    if (Math.abs(x) < 0.5 * Math.pow(10, -d)) x = 0;
+    const sign = x < 0 ? "−" : (signed && x > 0 ? "+" : "");
+    return sign + Math.abs(x).toFixed(d);
+  }
+  const par = (x, d) => (x < 0 ? "(" + fmt(x, d) + ")" : fmt(x, d));
+
+  /* ---------- KaTeX ---------- */
+  function renderTex(root){
+    (root || document).querySelectorAll("[data-tex]").forEach(el => {
+      const src = el.getAttribute("data-tex");
+      if (window.katex) {
+        try { katex.render(src, el, {displayMode: el.hasAttribute("data-display"), throwOnError:false}); return; }
+        catch(e){}
+      }
+      el.textContent = src;
+    });
+  }
+
+  /* ---------- controls ---------- */
+  function slider(key, tex, aria, cls){
+    const r = RANGES[key];
+    return '<div class="sl ' + cls + '"><span data-tex="' + tex + '" aria-hidden="true"></span>' +
+      '<input type="range" id="in-' + key + '" data-key="' + key + '" min="' + r[0] + '" max="' + r[1] +
+      '" step="0.01" value="' + p[key] + '" aria-label="' + aria + '">' +
+      '<input type="text" class="num" inputmode="decimal" autocomplete="off" id="out-' + key + '" data-key="' + key +
+      '" value="' + p[key].toFixed(2) + '" aria-label="' + aria + ', value between ' + r[0] + ' and ' + r[1] + '"></div>';
+  }
+  const PAIRS = [
+    ["School quality",      ["QH","Q_H","High-SES school quality"],      ["QL","Q_L","Low-SES school quality"]],
+    ["Conversion",          ["cH","c_H","High-SES conversion"],          ["cL","c_L","Low-SES conversion"]],
+    ["Non-school learning", ["hH","h_H","High-SES non-school learning"],  ["hL","h_L","Low-SES non-school learning"]]
+  ];
+  const SHARED = [
+    ["alpha","\\alpha","Diminishing returns to effective schooling"],
+    ["theta","\\theta","Displacement of non-school learning"],
+    ["tau0","\\tau_0","Current exposure"],
+    ["tau1","\\tau_1","Target exposure"]
+  ];
+
+  const pgrid = document.getElementById("pgrid");
+  let html = '<div class="corner"></div>' +
+    '<div class="ch"><svg width="22" height="6" aria-hidden="true"><line x1="0" y1="3" x2="22" y2="3" class="cH"/></svg>High SES</div>' +
+    '<div class="ch"><svg width="22" height="6" aria-hidden="true"><line x1="0" y1="3" x2="22" y2="3" class="cL"/></svg>Low SES</div>';
+  PAIRS.forEach(row => {
+    html += '<div class="rl">' + row[0] + '</div>' + slider(row[1][0], row[1][1], row[1][2], "h") + slider(row[2][0], row[2][1], row[2][2], "l");
+  });
+  pgrid.innerHTML = html;
+  document.getElementById("shared").innerHTML = SHARED.map(s =>
+    '<div><div class="cap">' + s[2] + '</div>' + slider(s[0], s[1], s[2], "s") + '</div>').join("");
+
+  document.querySelectorAll('input[type=range]').forEach(inp => {
+    inp.addEventListener("input", () => { p[inp.dataset.key] = parseFloat(inp.value); update(); });
+  });
+
+  // Typed values: update live while the number is valid and in range; on Enter or leaving the box,
+  // round to two decimals and clamp to the slider's range (anything unreadable reverts).
+  const parse = s => parseFloat(String(s).trim().replace(",", "."));
+  document.querySelectorAll("input.num").forEach(box => {
+    const k = box.dataset.key, r = RANGES[k], range = document.getElementById("in-" + k);
+    box.addEventListener("input", () => {
+      const v = parse(box.value);
+      if (isFinite(v) && v >= r[0] && v <= r[1]) { p[k] = v; range.value = v; update(); }
+    });
+    box.addEventListener("change", () => {
+      let v = parse(box.value);
+      if (!isFinite(v)) v = p[k];
+      v = Math.min(r[1], Math.max(r[0], Math.round(v * 100) / 100));
+      p[k] = v; range.value = v; box.value = v.toFixed(2); update();
+    });
+    box.addEventListener("keydown", e => { if (e.key === "Enter") box.blur(); });
+    box.addEventListener("focus", () => box.select());
+  });
+
+  function setParams(obj){
+    Object.keys(obj).forEach(k => { p[k] = obj[k]; document.getElementById("in-" + k).value = obj[k]; });
+    update();
+  }
+  document.querySelectorAll("[data-preset]").forEach(b =>
+    b.addEventListener("click", () => setParams(PRESETS[b.dataset.preset])));
+  document.getElementById("reset").addEventListener("click", () => setParams(DEFAULTS));
+
+  /* ---------- plot ---------- */
+  const plotEl = document.getElementById("plot");
+
+  function draw(d){
+    const W = Math.max(280, plotEl.clientWidth || 640);
+    const small = W < 520;
+    const H = Math.round(Math.min(480, Math.max(290, W * 0.6)));
+    const m = {l: small ? 46 : 58, r: small ? 14 : 28, t: 44, b: small ? 48 : 54};
+    const iw = W - m.l - m.r, ih = H - m.t - m.b;
+
+    const N = 240, hp = [], lp = [];
+    let maxY = 0;
+    for (let i = 0; i <= N; i++){
+      const t = i / N, a = ell("H", t), b = ell("L", t);
+      hp.push([t, a]); lp.push([t, b]);
+      maxY = Math.max(maxY, a, b);
+    }
+    const step = maxY <= 1.2 ? 0.25 : maxY <= 2.6 ? 0.5 : 1;
+    const yTop = Math.max(2 * step, Math.ceil(maxY * 1.04 / step) * step);
+    const sx = t => m.l + t * iw;
+    const sy = y => m.t + ih - (y / yTop) * ih;
+    const path = pts => pts.map((q, i) => (i ? "L" : "M") + sx(q[0]).toFixed(1) + "," + sy(q[1]).toFixed(1)).join("");
+    const dec = step < 0.5 ? 2 : step < 1 ? 1 : 0;
+
+    let s = "";
+    for (let v = 0; v <= yTop + 1e-9; v += step){
+      const y = sy(v).toFixed(1);
+      s += '<line class="tk" x1="' + (m.l - 5) + '" x2="' + m.l + '" y1="' + y + '" y2="' + y + '"/>' +
+           '<text class="tl" x="' + (m.l - 9) + '" y="' + y + '" dy=".32em" text-anchor="end">' + (v === 0 ? "0" : v.toFixed(dec)) + '</text>';
+    }
+    for (let i = 0; i <= 5; i++){
+      const t = i / 5, x = sx(t).toFixed(1);
+      s += '<line class="tk" x1="' + x + '" x2="' + x + '" y1="' + (m.t + ih) + '" y2="' + (m.t + ih + 5) + '"/>' +
+           '<text class="tl" x="' + x + '" y="' + (m.t + ih + 19) + '" text-anchor="middle">' + (i === 0 ? "0" : i === 5 ? "1" : t.toFixed(1)) + '</text>';
+    }
+    s += '<line class="ax" x1="' + m.l + '" y1="' + (m.t + ih) + '" x2="' + (m.l + iw) + '" y2="' + (m.t + ih) + '"/>' +
+         '<line class="ax" x1="' + m.l + '" y1="' + m.t + '" x2="' + m.l + '" y2="' + (m.t + ih) + '"/>';
+    s += '<text class="at" x="' + (m.l + iw / 2) + '" y="' + (H - 8) + '" text-anchor="middle">Exposure to schooling, <tspan class="m">τ</tspan></text>';
+    s += '<text class="at" transform="translate(' + (small ? 13 : 16) + ',' + (m.t + ih / 2) + ') rotate(-90)" text-anchor="middle">Learning, <tspan class="m">ℓ</tspan><tspan class="m" font-size="11" dy="4">g</tspan></text>';
+
+    // exposure lines: labels on two rows so they never collide
+    const x0 = sx(p.tau0), x1 = sx(p.tau1);
+    const same = Math.abs(x1 - x0) < 3;
+    // each label sits on the side facing away from the other line, unless it would run off the plot
+    const LW = small ? 56 : 108;
+    const L0 = small ? "Current" : "Current exposure", L1 = small ? "Target" : "Target exposure";
+    const vlab = (x, y, left, cls, txt) =>
+      '<text class="tlab ' + cls + '" x="' + (left ? x - 6 : x + 6) + '" y="' + y + '" text-anchor="' + (left ? "end" : "start") + '">' + txt + '</text>';
+    const side = (x, wantLeft) => (wantLeft ? (x - LW > 0 ? true : false) : (x + LW < W ? false : true));
+    const up0 = p.tau1 >= p.tau0;
+    if (!same){
+      s += '<line class="t1" x1="' + x1 + '" x2="' + x1 + '" y1="' + (m.t - 4) + '" y2="' + (m.t + ih) + '"/>' +
+           vlab(x1, m.t - 10, side(x1, !up0), "target", L1);
+    }
+    s += '<line class="t0" x1="' + x0 + '" x2="' + x0 + '" y1="' + (m.t - 20) + '" y2="' + (m.t + ih) + '"/>' +
+         vlab(x0, m.t - 26, same ? side(x0, p.tau0 > 0.72) : side(x0, up0), "", L0);
+
+    // curves
+    s += '<path class="cL" d="' + path(lp) + '"/><path class="cH" d="' + path(hp) + '"/>';
+
+    // gap brackets
+    const bracket = (x, a, b, cls) => {
+      const ya = sy(a), yb = sy(b), cap = 4.5;
+      return '<line class="' + cls + '" x1="' + x + '" x2="' + x + '" y1="' + ya + '" y2="' + yb + '"/>' +
+        '<line class="' + cls + '" x1="' + (x - cap) + '" x2="' + (x + cap) + '" y1="' + ya + '" y2="' + ya + '"/>' +
+        '<line class="' + cls + '" x1="' + (x - cap) + '" x2="' + (x + cap) + '" y1="' + yb + '" y2="' + yb + '"/>' +
+        '<circle cx="' + x + '" cy="' + ya + '" r="3.4" fill="var(--high)"/>' +
+        '<circle cx="' + x + '" cy="' + yb + '" r="3.4" fill="var(--low)"/>';
+    };
+    const glab = (x, a, b, left, cls, txt) => {
+      const ya = sy(a), yb = sy(b);
+      let gy = (ya + yb) / 2;
+      if (Math.abs(ya - yb) < 24) gy = Math.min(ya, yb) - 12;
+      return '<text class="gl ' + cls + '" x="' + (left ? x - 11 : x + 11) + '" y="' + gy + '" dy=".32em" text-anchor="' + (left ? "end" : "start") + '">' + txt + '</text>';
+    };
+    const roomL = x => x - 80 > m.l, roomR = x => x + 80 < m.l + iw;
+    const up = p.tau1 >= p.tau0;
+    let left0 = up, left1 = !up;              // put the two gap labels on the outside of the pair
+    if (left0 && !roomL(x0)) left0 = false;
+    if (!left0 && !roomR(x0)) left0 = true;
+    if (left1 && !roomL(x1)) left1 = false;
+    if (!left1 && !roomR(x1)) left1 = true;
+
+    // the target gap label only when it can't collide with the current one (its value is also in the readout)
+    const apart = Math.abs(x1 - x0) > 90 || (up ? (left0 && !left1) : (!left0 && left1));
+    if (!same) s += bracket(x1, d.lH1, d.lL1, "gap1") + (apart ? glab(x1, d.lH1, d.lL1, left1, "target", "Gap " + fmt(d.gap1, 3)) : "");
+    s += bracket(x0, d.lH, d.lL, "gap") + glab(x0, d.lH, d.lL, left0, "", "Gap " + fmt(d.gap, 3));
+
+    const label = "Learning curves for high- and low-SES children across exposure to schooling. At current exposure " +
+      p.tau0.toFixed(2) + " the gap is " + d.gap.toFixed(3) + "; at target exposure " + p.tau1.toFixed(2) +
+      " it is " + d.gap1.toFixed(3) + ".";
+    plotEl.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" role="img" aria-label="' + label + '">' + s + '</svg>';
+  }
+
+  /* ---------- force bars ---------- */
+  function forces(d){
+    const rows = [
+      ["Sorting", d.dSort, ""], ["Conversion", d.dConv, ""],
+      ["Displacement", -d.dDisp, ""], ["Net change", d.dGap, "net"]
+    ];
+    const mx = Math.max(1e-12, ...rows.map(r => Math.abs(r[1])));
+    return '<div class="fdir" aria-hidden="true"><span></span><span><span>← narrows the gap</span><span>widens the gap →</span></span><span></span></div>' +
+      rows.map(r => {
+        const w = Math.abs(r[1]) / mx * 50;
+        const side = r[1] < 0 ? "right:50%" : "left:50%";
+        return '<div class="fr ' + r[2] + '"><span>' + r[0] + '</span><span class="ft"><span class="fb" style="' + side + ';width:' + w.toFixed(2) + '%"></span></span><span class="fv">' + fmt(r[1], 4, true) + '</span></div>';
+      }).join("");
+  }
+
+  /* ---------- update ---------- */
+  function update(){
+    Object.keys(p).forEach(k => {
+      const box = document.getElementById("out-" + k);
+      if (box !== document.activeElement) box.value = p[k].toFixed(2);   // don't overwrite what's being typed
+    });
+    document.querySelectorAll("[data-preset]").forEach(b => {
+      const pr = PRESETS[b.dataset.preset];
+      b.setAttribute("aria-pressed", Math.abs(p.cH - pr.cH) < 1e-9 && Math.abs(p.cL - pr.cL) < 1e-9 ? "true" : "false");
+    });
+
+    const d = derived();
+    draw(d);
+
+    document.getElementById("v-gap").textContent = fmt(d.gap);
+    document.getElementById("v-dG").textContent = fmt(d.dGap, 4, true);
+    document.getElementById("v-gap1").textContent = "Gap at target exposure: " + fmt(d.gap1);
+
+    const v = document.getElementById("verdict");
+    const from = "from " + p.tau0.toFixed(2) + " to " + p.tau1.toFixed(2);
+    let text, cls = "";
+    if (Math.abs(d.dT) < 1e-9){
+      text = "Set a target exposure different from current exposure to see how the gap changes."; cls = "flat";
+    } else {
+      const subj = d.dT > 0 ? "Additional exposure, " + from + "," : "Reduced exposure, " + from + ",";
+      if (Math.abs(d.dGap / d.dT) < EPS){ text = subj + " leaves the gap approximately unchanged."; cls = "flat"; }
+      else if (d.dGap < 0)               text = subj + " narrows the gap.";
+      else                             { text = subj + " widens the gap."; cls = "widen"; }
+    }
+    v.className = "verdict " + cls;
+    v.textContent = text;
+
+    document.getElementById("v-expo").textContent = fmt(d.dExpo, 4, true);
+    document.getElementById("v-disp").textContent = fmt(d.dDisp, 4);
+    document.getElementById("n-main").innerHTML =
+      "= " + fmt(d.S + d.C) + " × " + par(d.dA, 4) + " − " + fmt(p.theta * (p.hH - p.hL)) + " × " + par(d.dT, 2) +
+      " = " + fmt(d.dExpo, 4) + " − " + par(d.dDisp, 4) + " = <b>" + fmt(d.dGap, 4) + "</b>";
+    document.getElementById("n-sc").innerHTML = "𝒮 = <b>" + fmt(d.S) + "</b> &nbsp;&nbsp; 𝒞 = <b>" + fmt(d.C) + "</b>";
+    document.getElementById("n-full").innerHTML =
+      "= (" + fmt(d.S) + " + " + par(d.C) + ") × " + par(d.dA, 4) + " − " + par(d.dDisp, 4) + " = <b>" + fmt(d.dGap, 4) + "</b>";
+    document.getElementById("v-deriv").textContent = fmt(d.deriv, 3, true) +
+      (isFinite(d.k) ? "" : " (unbounded at τ₀ = 0 when α < 1)");
+    document.getElementById("forces").innerHTML = forces(d);
+  }
+
+  renderTex();
+  update();
+  if (window.ResizeObserver) new ResizeObserver(() => draw(derived())).observe(plotEl);
+  else window.addEventListener("resize", () => draw(derived()));
+
+  // When embedded in an iframe, tell the host page how tall the widget is.
+  if (window.parent !== window && window.ResizeObserver){
+    const main = document.querySelector(".lm");
+    new ResizeObserver(() => {
+      window.parent.postMessage({lmHeight: Math.ceil(main.getBoundingClientRect().height + 40)}, "*");
+    }).observe(main);
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>School Quality and Learning Gaps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+/* ------------------------------------------------------------------
+   Dials
+   --page-bg : transparent lets an iframe show the host page behind it;
+               set to #f7f2ea to match saidhassan.net when viewed alone.
+   --halo    : outline behind in-graph labels; set to the page colour.
+   --high / --low : the two SES groups (solid / dashed).
+   ------------------------------------------------------------------ */
+:root{
+  --page-bg: transparent;
+  --halo: #ffffff;
+  --ink:   #1d1d1b;
+  --ink-2: #4a4945;
+  --ink-3: #8a8780;
+  --rule:  #dcd8cf;
+  --high:  #005b4c;
+  --low:   #9a4a28;
+  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--page-bg);color:var(--ink)}
+body{font-family:var(--serif);font-size:1.08rem;line-height:1.55;padding:1rem}
+.lm{max-width:920px;margin:0 auto}
+
+.lm h1{font-family:var(--sans);font-weight:600;font-size:1.15rem;letter-spacing:-.005em;margin:0 0 .35rem}
+.lm h2{font-family:var(--sans);font-weight:600;font-size:.98rem;margin:0 0 .6rem}
+.model-eq{margin:.2rem 0 1rem;color:var(--ink)}
+.katex{font-size:1.05em}
+.katex-display{margin:.6rem 0;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+[data-display]{max-width:100%;overflow-x:auto;overflow-y:hidden}
+
+/* ---- figure ---- */
+figure{margin:0 0 1.25rem}
+.legend{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:.3rem 1.4rem;font-family:var(--sans);font-size:.82rem;color:var(--ink-2);margin-bottom:.15rem}
+.legend span{display:inline-flex;align-items:center;gap:.45rem}
+#plot{width:100%}
+#plot svg{display:block;width:100%;height:auto;overflow:visible}
+.ax{stroke:var(--ink);stroke-width:1}
+.tk{stroke:var(--ink);stroke-width:1}
+.tl{font-family:var(--sans);font-size:12px;fill:var(--ink-2)}
+.at{font-family:var(--sans);font-size:13px;fill:var(--ink)}
+.at .m{font-family:var(--serif);font-style:italic;font-size:15px}
+.cH{fill:none;stroke:var(--high);stroke-width:2.25;stroke-linejoin:round}
+.cL{fill:none;stroke:var(--low);stroke-width:2.25;stroke-dasharray:7 5;stroke-linejoin:round}
+.t0{stroke:var(--ink-2);stroke-width:1.6;stroke-dasharray:.5 4.5;stroke-linecap:round}
+.t1{stroke:var(--ink-3);stroke-width:1.6;stroke-dasharray:.5 4.5;stroke-linecap:round}
+.gap{stroke:var(--ink);stroke-width:1.3}
+.gap1{stroke:var(--ink-3);stroke-width:1.3}
+.lead{stroke:var(--ink-3);stroke-width:.8;stroke-dasharray:2 3}
+.gl{font-family:var(--sans);font-size:12.5px;font-weight:600;fill:var(--ink);paint-order:stroke;stroke:var(--halo);stroke-width:4px;stroke-linejoin:round}
+.gl.target{fill:var(--ink-3);font-weight:500}
+.ql{font-family:var(--sans);font-size:12px}
+.ql .m{font-family:var(--serif);font-style:italic;font-size:14px}
+.ql .sb{font-size:9.5px}
+.stp{stroke-width:1.3}
+.rise{stroke-width:2}
+.dl{font-family:var(--sans);font-size:11.5px;font-weight:500;font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--halo);stroke-width:4px;stroke-linejoin:round}
+.dq{font-family:var(--serif);font-style:italic;font-size:13.5px;paint-order:stroke;stroke:var(--halo);stroke-width:4px;stroke-linejoin:round}
+
+/* ---- readout ---- */
+.readout{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem 2rem;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:.9rem 0;margin-bottom:1.4rem}
+.stat-label{font-family:var(--sans);font-size:.8rem;color:var(--ink-2);text-transform:uppercase;letter-spacing:.05em}
+.stat-row{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+.stat-val{font-family:var(--sans);font-size:1.45rem;font-weight:500;font-variant-numeric:tabular-nums}
+.stat-val.hi{color:var(--high)}
+.stat-val.lo{color:var(--low)}
+.stat-sub{font-family:var(--sans);font-size:.82rem;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.verdict{grid-column:1/-1;margin:.1rem 0 0;font-style:italic;color:var(--high)}
+.verdict.widen{color:var(--low)}
+.verdict.flat{color:var(--ink-2)}
+
+/* ---- controls ---- */
+.controls{margin-bottom:1.6rem}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-bottom:1rem;font-family:var(--sans);font-size:.85rem}
+.bar .lab{color:var(--ink-2);margin-right:.25rem}
+.bar .spacer{flex:1}
+button{font-family:var(--sans);font-size:.82rem;color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:3px;padding:.32rem .7rem;cursor:pointer}
+button:hover{border-color:var(--ink-3)}
+button[aria-pressed="true"]{border-color:var(--high);color:var(--high);background:rgba(0,91,76,.06)}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--high);outline-offset:2px}
+
+.pgrid{display:grid;grid-template-columns:10.5rem 1fr 1fr;gap:.35rem 1.6rem;align-items:center}
+.ch{font-family:var(--sans);font-size:.8rem;color:var(--ink-2);display:flex;align-items:center;gap:.45rem;padding-bottom:.15rem;border-bottom:1px solid var(--rule)}
+.rl{font-size:.98rem;color:var(--ink-2)}
+.sl{display:grid;grid-template-columns:2.1rem 1fr 3.4rem;align-items:center;gap:.5rem}
+.sl .num{width:100%;font-family:var(--sans);font-size:.85rem;font-variant-numeric:tabular-nums;text-align:right;color:var(--ink);
+  background:transparent;border:1px solid var(--rule);border-radius:3px;padding:.15rem .35rem}
+.sl .num:hover{border-color:var(--ink-3)}
+.sl .num:focus{outline:none;border-color:var(--high)}
+.sl.h input{accent-color:var(--high)}
+.sl.l input{accent-color:var(--low)}
+.sl.s input{accent-color:var(--ink-2)}
+input[type=range]{width:100%;margin:0;min-height:1.6rem}
+.shared{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem 1.6rem;margin-top:1.1rem;padding-top:.9rem;border-top:1px solid var(--rule)}
+.shared .cap{font-size:.95rem;color:var(--ink-2);line-height:1.3;margin-bottom:.1rem}
+
+/* ---- decomposition ---- */
+.decomp{margin-bottom:1.4rem}
+.nums{font-family:var(--sans);font-size:.9rem;font-variant-numeric:tabular-nums;color:var(--ink-2);margin:-.2rem 0 .9rem;overflow-wrap:anywhere}
+.nums b{color:var(--ink);font-weight:600}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+.card h3{font-family:var(--sans);font-size:.88rem;font-weight:600;margin:0 0 .15rem;display:flex;justify-content:space-between;gap:1rem}
+.card h3 .v{font-weight:500;font-variant-numeric:tabular-nums}
+.card .sub{font-style:italic;color:var(--ink-2);margin:0 0 .35rem;font-size:.98rem}
+.card p{margin:0;font-size:1rem}
+.card p + p{margin-top:.45rem}
+.limit{font-size:.95rem;color:var(--ink-2);margin:1.1rem 0 0}
+.limit .n{font-family:var(--sans);font-size:.88rem;font-variant-numeric:tabular-nums;color:var(--ink)}
+.pdv{font-style:italic;color:var(--high);margin:.2rem 0 0}
+.pdv.widen{color:var(--low)}
+.pdv.flat{color:var(--ink-2)}
+
+details{margin-top:1.3rem;border-top:1px solid var(--rule);padding-top:.7rem}
+summary{font-family:var(--sans);font-size:.88rem;font-weight:500;cursor:pointer;color:var(--high)}
+details[open] .inner{border-left:2px solid var(--high);padding-left:1rem;margin-top:.6rem}
+.message{font-style:italic;margin:.4rem 0 .8rem}
+.forces{font-family:var(--sans);font-size:.85rem;margin-top:.8rem}
+.fr{display:grid;grid-template-columns:7rem 1fr 4.8rem;align-items:center;gap:.8rem;margin:.4rem 0}
+.fr .fv{text-align:right;font-variant-numeric:tabular-nums}
+.ft{position:relative;height:.7rem}
+.ft::before{content:'';position:absolute;left:50%;top:-.3rem;bottom:-.3rem;border-left:1px solid var(--ink-3)}
+.fb{position:absolute;top:0;bottom:0;background:var(--ink-3)}
+.fr.net{font-weight:600;border-top:1px solid var(--rule);padding-top:.5rem;margin-top:.55rem}
+.fr.net .fb{background:var(--ink)}
+.fdir{display:grid;grid-template-columns:7rem 1fr 4.8rem;gap:.8rem;color:var(--ink-3);font-size:.75rem}
+.fdir span:nth-child(2){display:flex;justify-content:space-between}
+
+.note{font-size:.92rem;color:var(--ink-2);border-top:1px solid var(--rule);padding-top:.7rem;margin:0}
+
+/* ---- narrow screens ---- */
+@media (max-width:640px){
+  body{font-size:1.02rem;padding:.75rem}
+  .readout{grid-template-columns:1fr;gap:.7rem}
+  .pgrid{grid-template-columns:1fr 1fr;gap:.3rem 1rem}
+  .pgrid .corner{display:none}
+  .pgrid .rl{grid-column:1/-1;margin-top:.45rem;font-size:.95rem}
+  .sl{grid-template-columns:1.8rem 1fr 3.6rem;gap:.35rem}
+  .sl .num{font-size:16px}   /* below 16px, iOS zooms the page when the box is tapped */
+  .shared{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr;gap:1.1rem}
+  .fr,.fdir{grid-template-columns:5.6rem 1fr 4.2rem;gap:.5rem}
+}
+</style>
+</head>
+<body>
+<main class="lm">
+
+  <h1>Universal school quality and socioeconomic learning gaps</h1>
+  <div class="model-eq" data-tex="\ell_g(Q_g)=c_g(\tau Q_g)^{\alpha}+h_g(1-\theta\tau),\qquad g\in\{H,L\}" data-display></div>
+
+  <figure>
+    <div class="legend" aria-hidden="true">
+      <span><svg width="30" height="8"><line x1="0" y1="4" x2="30" y2="4" class="cH"/></svg>High SES</span>
+      <span><svg width="30" height="8"><line x1="0" y1="4" x2="30" y2="4" class="cL"/></svg>Low SES</span>
+      <span><svg width="10" height="10"><circle cx="5" cy="5" r="3.4" style="fill:var(--ink-2)"/></svg>Current quality</span>
+      <span><svg width="10" height="10"><circle cx="5" cy="5" r="3.4" style="fill:var(--halo);stroke:var(--ink-2);stroke-width:1.5"/></svg>After improvement</span>
+    </div>
+    <div id="plot"></div>
+  </figure>
+
+  <section class="readout" aria-live="polite">
+    <div>
+      <div class="stat-label">Current learning gap</div>
+      <div class="stat-row"><span data-tex="\mathcal G_0"></span><span>=</span><span class="stat-val" id="v-gap0"></span></div>
+    </div>
+    <div>
+      <div class="stat-label">Gap after improvement</div>
+      <div class="stat-row"><span data-tex="\mathcal G_1"></span><span>=</span><span class="stat-val" id="v-gap1"></span></div>
+    </div>
+    <div>
+      <div class="stat-label">Change in the gap</div>
+      <div class="stat-row"><span data-tex="\Delta\mathcal G"></span><span>=</span><span class="stat-val" id="v-dG"></span></div>
+      <div class="stat-sub" id="v-share"></div>
+    </div>
+    <div>
+      <div class="stat-label">Learning gain, low SES</div>
+      <div class="stat-row"><span data-tex="\Delta\ell_L"></span><span>=</span><span class="stat-val lo" id="v-dlL"></span></div>
+      <div class="stat-sub" id="v-qL"></div>
+    </div>
+    <div>
+      <div class="stat-label">Learning gain, high SES</div>
+      <div class="stat-row"><span data-tex="\Delta\ell_H"></span><span>=</span><span class="stat-val hi" id="v-dlH"></span></div>
+      <div class="stat-sub" id="v-qH"></div>
+    </div>
+    <div>
+      <div class="stat-label">Larger gain</div>
+      <div class="stat-row"><span class="stat-val" id="v-more"></span></div>
+      <div class="stat-sub" id="v-more-sub"></div>
+    </div>
+    <p class="verdict" id="verdict"></p>
+  </section>
+
+  <section class="controls" aria-label="Model parameters">
+    <div class="bar">
+      <span class="lab">Conversion presets</span>
+      <button type="button" data-preset="equal">Equal</button>
+      <button type="button" data-preset="comp">Compensatory</button>
+      <button type="button" data-preset="repro">Reproductive</button>
+      <span class="spacer"></span>
+      <button type="button" id="reset">Reset</button>
+    </div>
+    <div class="pgrid" id="pgrid"></div>
+    <div class="shared" id="shared"></div>
+  </section>
+
+  <section class="decomp">
+    <h2>The finite intervention</h2>
+    <div data-display data-tex="\Delta\mathcal G=\mathcal G_1-\mathcal G_0=\tau^{\alpha}\left\{\underbrace{c_H\left[(Q_H+\Delta Q)^{\alpha}-Q_H^{\alpha}\right]}_{\text{high-SES school gain}}\;-\;\underbrace{c_L\left[(Q_L+\Delta Q)^{\alpha}-Q_L^{\alpha}\right]}_{\text{low-SES school gain}}\right\}"></div>
+    <div class="nums" id="n-main"></div>
+
+    <div class="cards">
+      <div class="card">
+        <h3><span>School learning</span><span class="v" id="v-school"></span></h3>
+        <p class="sub">Difference in the gains produced by the same improvement</p>
+        <p>A universal quality improvement changes inequality through differences in the learning gains produced by the same quality improvement. The change in the gap is the high-SES gain minus the low-SES gain.</p>
+      </div>
+      <div class="card">
+        <h3><span>Non-school learning</span><span class="v" id="v-home"></span></h3>
+        <p class="sub">Unchanged, because exposure is held fixed</p>
+        <p>The terms <span data-tex="h_g(1-\theta\tau)"></span> are identical before and after and cancel from <span data-tex="\Delta\mathcal G"></span>. Because exposure is held fixed, the intervention does not change the amount of non-school learning displaced.</p>
+      </div>
+    </div>
+
+    <p class="limit" id="share-note"></p>
+  </section>
+
+  <section class="decomp">
+    <h2>Positional versus dispositional returns</h2>
+    <p class="message">Universal quality improvements can reduce socioeconomic learning inequality even when both groups receive exactly the same improvement. Because low-SES children begin in lower-quality schools, diminishing marginal returns can give them a positional advantage. This positional advantage may be reinforced or offset by socioeconomic differences in conversion.</p>
+
+    <div data-display data-tex="\frac{\partial\ell_g}{\partial Q_g}=\alpha c_g\tau^{\alpha}Q_g^{\alpha-1}"></div>
+    <div class="nums" id="n-mr"></div>
+
+    <div class="cards">
+      <div class="card">
+        <h3><span>Position</span><span class="v" id="v-pos"></span></h3>
+        <p class="sub" id="s-pos"></p>
+        <p><strong>Positional advantage:</strong> Socioeconomic sorting places low-SES children lower on the concave quality&ndash;learning curve, where an equivalent improvement in school quality produces a larger marginal gain. With <span data-tex="Q_L<Q_H"></span> and <span data-tex="0<\alpha<1"></span>, <span data-tex="Q_L^{\alpha-1}>Q_H^{\alpha-1}"></span>.</p>
+      </div>
+      <div class="card">
+        <h3><span>Disposition</span><span class="v" id="v-disp"></span></h3>
+        <p class="sub" id="s-disp"></p>
+        <p><strong>Dispositional advantage:</strong> Even at the same level of school quality, children from different socioeconomic backgrounds may convert schooling into learning at different rates, <span data-tex="c_H\neq c_L"></span>.</p>
+      </div>
+    </div>
+
+    <div data-display data-tex="\text{Gap narrows at the margin if}\quad\underbrace{\frac{c_H}{c_L}}_{\substack{\text{high-SES}\\\text{dispositional advantage}}}\;<\;\underbrace{\left(\frac{Q_H}{Q_L}\right)^{1-\alpha}}_{\substack{\text{low-SES}\\\text{positional advantage}}}"></div>
+    <div class="nums" id="n-thresh"></div>
+    <p class="pdv" id="pd-verdict"></p>
+
+    <p class="limit">This condition signs the <em>marginal</em> effect of a universal improvement at the initial qualities:
+      <span data-tex="\left.\frac{\partial\mathcal G}{\partial\Delta Q}\right|_{\Delta Q=0}=\alpha\tau^{\alpha}\left(c_HQ_H^{\alpha-1}-c_LQ_L^{\alpha-1}\right)"></span>
+      = <span class="n" id="v-slope"></span>. <span id="v-agree"></span></p>
+
+    <details>
+      <summary>Split the finite change into position and disposition</summary>
+      <div class="inner">
+        <p class="message">Position is the change in the gap if both groups converted schooling at the low-SES rate; disposition adds the high-SES difference in conversion.</p>
+        <div data-display data-tex="\underbrace{\mathcal P=c_L\tau^{\alpha}\Big\{\left[(Q_H+\Delta Q)^{\alpha}-Q_H^{\alpha}\right]-\left[(Q_L+\Delta Q)^{\alpha}-Q_L^{\alpha}\right]\Big\}}_{\text{Position}}\qquad\underbrace{\mathcal D=(c_H-c_L)\,\tau^{\alpha}\left[(Q_H+\Delta Q)^{\alpha}-Q_H^{\alpha}\right]}_{\text{Disposition}}"></div>
+        <div class="nums" id="n-pd"></div>
+        <div data-display data-tex="\Delta\mathcal G=\mathcal P+\mathcal D"></div>
+        <div class="nums" id="n-full"></div>
+        <div class="forces" id="forces" aria-label="Contribution of position and disposition to the change in the gap"></div>
+      </div>
+    </details>
+  </section>
+
+  <p class="note">Parameter values are illustrative and are intended to demonstrate the theoretical mechanisms of the model, not to represent empirical estimates.</p>
+</main>
+
+<script>
+(function(){
+  "use strict";
+
+  const DEFAULTS = {QH:1, QL:0.8, cH:1, cL:1, hH:0.7, hL:0.5, alpha:0.6, theta:0.5, tau:0.8, dQ:0.2};
+  const RANGES   = {QH:[0.2,2], QL:[0.2,2], cH:[0.5,1.5], cL:[0.5,1.5], hH:[0,2], hL:[0,2],
+                    alpha:[0.1,1], theta:[0,1], tau:[0,1], dQ:[0,1]};
+  const PRESETS  = {equal:{cH:1, cL:1}, comp:{cH:0.85, cL:1}, repro:{cH:1, cL:0.85}};
+  const EPS  = 0.005;   // |change in gap per unit of ΔQ| below this counts as "approximately unchanged"
+  const BAL  = 0.002;   // |log ratio| difference below this counts as "approximately balanced"
+  const p = Object.assign({}, DEFAULTS);
+
+  /* ---------- maths ---------- */
+  function ell(g, Q){
+    const c = g === "H" ? p.cH : p.cL, h = g === "H" ? p.hH : p.hL;
+    return c * Math.pow(p.tau * Q, p.alpha) + h * (1 - p.theta * p.tau);
+  }
+
+  function derived(){
+    const a = p.alpha, ta = Math.pow(p.tau, a);
+    const QHa = Math.pow(p.QH, a), QLa = Math.pow(p.QL, a);
+    const gH = Math.pow(p.QH + p.dQ, a) - QHa;          // (Q_H+ΔQ)^α − Q_H^α
+    const gL = Math.pow(p.QL + p.dQ, a) - QLa;
+    const dlH = p.cH * ta * gH, dlL = p.cL * ta * gL;
+    const lH0 = ell("H", p.QH), lL0 = ell("L", p.QL);
+    const lH1 = ell("H", p.QH + p.dQ), lL1 = ell("L", p.QL + p.dQ);
+    const mrH = a * p.cH * ta * Math.pow(p.QH, a - 1);
+    const mrL = a * p.cL * ta * Math.pow(p.QL, a - 1);
+    return {
+      ta, gH, gL, dlH, dlL, lH0, lL0, lH1, lL1,
+      G0: lH0 - lL0, G1: lH1 - lL1, dG: dlH - dlL,
+      P: p.cL * ta * (gH - gL), D: (p.cH - p.cL) * ta * gH,
+      mrH, mrL, slope: mrH - mrL,
+      dispR: p.cH / p.cL, posR: Math.pow(p.QH / p.QL, 1 - a),
+      homeGap: (p.hH - p.hL) * (1 - p.theta * p.tau),
+      schoolGap: ta * (p.cH * QHa - p.cL * QLa)
+    };
+  }
+
+  /* ---------- formatting ---------- */
+  function fmt(x, d, signed){
+    d = d === undefined ? 3 : d;
+    if (x === Infinity)  return "+∞";
+    if (x === -Infinity) return "−∞";
+    if (Math.abs(x) < 0.5 * Math.pow(10, -d)) x = 0;
+    const sign = x < 0 ? "−" : (signed && x > 0 ? "+" : "");
+    return sign + Math.abs(x).toFixed(d);
+  }
+  const par = (x, d) => (x < 0 ? "(" + fmt(x, d) + ")" : fmt(x, d));
+  const pct = x => (Math.abs(x) < 0.1 ? x.toFixed(1) : Math.abs(x) < 10 ? x.toFixed(1) : x.toFixed(0)) + "%";
+  const tick = v => v.toFixed(2).replace(/0+$/, "").replace(/\.$/, "");
+
+  /* ---------- KaTeX ---------- */
+  function renderTex(root){
+    (root || document).querySelectorAll("[data-tex]").forEach(el => {
+      const src = el.getAttribute("data-tex");
+      if (window.katex) {
+        try { katex.render(src, el, {displayMode: el.hasAttribute("data-display"), throwOnError:false}); return; }
+        catch(e){}
+      }
+      el.textContent = src;
+    });
+  }
+
+  /* ---------- controls ---------- */
+  function slider(key, tex, aria, cls){
+    const r = RANGES[key];
+    return '<div class="sl ' + cls + '"><span data-tex="' + tex + '" aria-hidden="true"></span>' +
+      '<input type="range" id="in-' + key + '" data-key="' + key + '" min="' + r[0] + '" max="' + r[1] +
+      '" step="0.01" value="' + p[key] + '" aria-label="' + aria + '">' +
+      '<input type="text" class="num" inputmode="decimal" autocomplete="off" id="out-' + key + '" data-key="' + key +
+      '" value="' + p[key].toFixed(2) + '" aria-label="' + aria + ', value between ' + r[0] + ' and ' + r[1] + '"></div>';
+  }
+  const PAIRS = [
+    ["School quality",      ["QH","Q_H","High-SES school quality"],      ["QL","Q_L","Low-SES school quality"]],
+    ["Conversion",          ["cH","c_H","High-SES conversion"],          ["cL","c_L","Low-SES conversion"]],
+    ["Non-school learning", ["hH","h_H","High-SES non-school learning"],  ["hL","h_L","Low-SES non-school learning"]]
+  ];
+  const SHARED = [
+    ["alpha","\\alpha","Diminishing returns to effective schooling"],
+    ["theta","\\theta","Displacement of non-school learning"],
+    ["tau","\\tau","Exposure to schooling (held fixed)"],
+    ["dQ","\\Delta Q","Universal quality improvement"]
+  ];
+
+  const pgrid = document.getElementById("pgrid");
+  let html = '<div class="corner"></div>' +
+    '<div class="ch"><svg width="22" height="6" aria-hidden="true"><line x1="0" y1="3" x2="22" y2="3" class="cH"/></svg>High SES</div>' +
+    '<div class="ch"><svg width="22" height="6" aria-hidden="true"><line x1="0" y1="3" x2="22" y2="3" class="cL"/></svg>Low SES</div>';
+  PAIRS.forEach(row => {
+    html += '<div class="rl">' + row[0] + '</div>' + slider(row[1][0], row[1][1], row[1][2], "h") + slider(row[2][0], row[2][1], row[2][2], "l");
+  });
+  pgrid.innerHTML = html;
+  document.getElementById("shared").innerHTML = SHARED.map(s =>
+    '<div><div class="cap">' + s[2] + '</div>' + slider(s[0], s[1], s[2], "s") + '</div>').join("");
+
+  document.querySelectorAll('input[type=range]').forEach(inp => {
+    inp.addEventListener("input", () => { p[inp.dataset.key] = parseFloat(inp.value); update(); });
+  });
+
+  // Typed values: update live while the number is valid and in range; on Enter or leaving the box,
+  // round to two decimals and clamp to the slider's range (anything unreadable reverts).
+  const parse = s => parseFloat(String(s).trim().replace(",", "."));
+  document.querySelectorAll("input.num").forEach(box => {
+    const k = box.dataset.key, r = RANGES[k], range = document.getElementById("in-" + k);
+    box.addEventListener("input", () => {
+      const v = parse(box.value);
+      if (isFinite(v) && v >= r[0] && v <= r[1]) { p[k] = v; range.value = v; update(); }
+    });
+    box.addEventListener("change", () => {
+      let v = parse(box.value);
+      if (!isFinite(v)) v = p[k];
+      v = Math.min(r[1], Math.max(r[0], Math.round(v * 100) / 100));
+      p[k] = v; range.value = v; box.value = v.toFixed(2); update();
+    });
+    box.addEventListener("keydown", e => { if (e.key === "Enter") box.blur(); });
+    box.addEventListener("focus", () => box.select());
+  });
+
+  function setParams(obj){
+    Object.keys(obj).forEach(k => { p[k] = obj[k]; document.getElementById("in-" + k).value = obj[k]; });
+    update();
+  }
+  document.querySelectorAll("[data-preset]").forEach(b =>
+    b.addEventListener("click", () => setParams(PRESETS[b.dataset.preset])));
+  document.getElementById("reset").addEventListener("click", () => setParams(DEFAULTS));
+
+  /* ---------- plot ---------- */
+  const plotEl = document.getElementById("plot");
+  const COL = {H: "var(--high)", L: "var(--low)"};
+
+  function draw(d){
+    const W = Math.max(280, plotEl.clientWidth || 640);
+    const small = W < 520;
+    const H = Math.round(Math.min(480, Math.max(290, W * 0.6)));
+    const m = {l: small ? 46 : 58, r: small ? 64 : 118, t: 18};
+    const iw = W - m.l - m.r;
+    const post = p.dQ > 1e-9;
+
+    // x range: always shows the improved qualities with some curve beyond them
+    const raw = Math.max(1, (Math.max(p.QH, p.QL) + p.dQ) * 1.15);
+    const xs = raw <= 2 ? 0.25 : 0.5;
+    const xTop = Math.ceil(raw / xs - 1e-9) * xs;
+    const sx = q => m.l + q / xTop * iw;
+
+    // quality markers under the axis: coinciding ones share a label ("Q_L + ΔQ = Q_H"),
+    // nearby ones drop to a second or third row
+    const MK = [{q:p.QL, g:"L", post:false}, {q:p.QH, g:"H", post:false}];
+    if (post) MK.push({q:p.QL + p.dQ, g:"L", post:true}, {q:p.QH + p.dQ, g:"H", post:true});
+    MK.forEach(k => { k.x = sx(k.q); });
+    MK.sort((a, b) => a.x - b.x || (a.post - b.post));
+    const clusters = [];
+    MK.forEach(k => {
+      const c = clusters[clusters.length - 1];
+      if (c && Math.abs(k.x - c.x) < 2) c.items.push(k); else clusters.push({x:k.x, items:[k]});
+    });
+    const rowEnd = [];
+    clusters.forEach(c => {
+      let h = "", w = 0, low = false;
+      c.items.forEach((k, i) => {
+        if (i){ h += '<tspan dy="' + (low ? -3 : 0) + '"> = </tspan>'; w += 16; low = false; }
+        h += '<tspan class="m">Q</tspan><tspan class="sb" dy="3">' + k.g + '</tspan>'; w += 17;
+        if (k.post){ h += '<tspan dy="-3"> + Δ</tspan><tspan class="m">Q</tspan>'; w += 38; low = false; }
+        else low = true;
+      });
+      const g = c.items[0].g;
+      c.html = h; c.w = w;
+      c.color = c.items.every(k => k.g === g) ? COL[g] : "var(--ink-2)";
+      const left = Math.min(Math.max(c.x - w / 2, 2), W - w - 2);
+      let r = 0;
+      while (r < rowEnd.length && left < rowEnd[r] + 8) r++;
+      if (r > 2) r = 2;
+      rowEnd[r] = Math.max(rowEnd[r] === undefined ? -1e9 : rowEnd[r], left + w);
+      c.cx = left + w / 2; c.row = r;
+    });
+    const nRows = Math.max(1, rowEnd.length);
+    m.b = 66 + 16 * (nRows - 1);
+    const ih = H - m.t - m.b;
+
+    // curves
+    const N = 240, hp = [], lp = [];
+    let maxY = 0;
+    for (let i = 0; i <= N; i++){
+      const q = i / N * xTop, a = ell("H", q), b = ell("L", q);
+      hp.push([q, a]); lp.push([q, b]);
+      maxY = Math.max(maxY, a, b);
+    }
+    const step = maxY <= 1.2 ? 0.25 : maxY <= 2.6 ? 0.5 : 1;
+    const yTop = Math.max(2 * step, Math.ceil(maxY * 1.04 / step) * step);
+    const sy = y => m.t + ih - (y / yTop) * ih;
+    const path = pts => pts.map((q, i) => (i ? "L" : "M") + sx(q[0]).toFixed(1) + "," + sy(q[1]).toFixed(1)).join("");
+    const dec = step < 0.5 ? 2 : step < 1 ? 1 : 0;
+    const base = m.t + ih;
+
+    let s = "";
+    for (let v = 0; v <= yTop + 1e-9; v += step){
+      const y = sy(v).toFixed(1);
+      s += '<line class="tk" x1="' + (m.l - 5) + '" x2="' + m.l + '" y1="' + y + '" y2="' + y + '"/>' +
+           '<text class="tl" x="' + (m.l - 9) + '" y="' + y + '" dy=".32em" text-anchor="end">' + (v === 0 ? "0" : v.toFixed(dec)) + '</text>';
+    }
+    for (let v = 0; v <= xTop + 1e-9; v += xs){
+      const x = sx(v).toFixed(1);
+      s += '<line class="tk" x1="' + x + '" x2="' + x + '" y1="' + base + '" y2="' + (base + 5) + '"/>' +
+           '<text class="tl" x="' + x + '" y="' + (base + 19) + '" text-anchor="middle">' + tick(v) + '</text>';
+    }
+    s += '<line class="ax" x1="' + m.l + '" y1="' + base + '" x2="' + (m.l + iw) + '" y2="' + base + '"/>' +
+         '<line class="ax" x1="' + m.l + '" y1="' + m.t + '" x2="' + m.l + '" y2="' + base + '"/>';
+    s += '<text class="at" x="' + (m.l + iw / 2) + '" y="' + (H - 8) + '" text-anchor="middle">School quality, <tspan class="m">Q</tspan></text>';
+    s += '<text class="at" transform="translate(' + (small ? 13 : 16) + ',' + (m.t + ih / 2) + ') rotate(-90)" text-anchor="middle">Learning, <tspan class="m">ℓ</tspan><tspan class="m" font-size="11" dy="4">g</tspan></text>';
+
+    // drop lines from each marked point to the axis, with the quality labels beneath
+    MK.forEach(k => {
+      const y = sy(ell(k.g, k.q)).toFixed(1), x = k.x.toFixed(1);
+      s += '<line class="' + (k.post ? "t1" : "t0") + '" x1="' + x + '" x2="' + x + '" y1="' + y + '" y2="' + base + '"/>';
+    });
+    clusters.forEach(c => {
+      s += '<text class="ql" x="' + c.cx.toFixed(1) + '" y="' + (base + 36 + 16 * c.row) + '" text-anchor="middle" style="fill:' + c.color + '">' + c.html + '</text>';
+    });
+
+    // leaders from each point to the gap brackets in the right margin
+    const xr = m.l + iw, xb0 = xr + 12, xb1 = xr + 28;
+    const lead = (q, l, xb) => '<line class="lead" x1="' + sx(q).toFixed(1) + '" x2="' + xb + '" y1="' + sy(l).toFixed(1) + '" y2="' + sy(l).toFixed(1) + '"/>';
+    s += lead(p.QH, d.lH0, xb0) + lead(p.QL, d.lL0, xb0);
+    if (post) s += lead(p.QH + p.dQ, d.lH1, xb1) + lead(p.QL + p.dQ, d.lL1, xb1);
+
+    // curves
+    s += '<path class="cL" d="' + path(lp) + '"/><path class="cH" d="' + path(hp) + '"/>';
+
+    // the same horizontal step ΔQ for both groups, and the vertical gain it buys
+    if (post) ["L", "H"].forEach(g => {
+      const Q0 = g === "H" ? p.QH : p.QL, Q1 = Q0 + p.dQ;
+      const x0 = sx(Q0), x1 = sx(Q1), y0 = sy(ell(g, Q0)), y1 = sy(ell(g, Q1));
+      const st = 'style="stroke:' + COL[g] + '"', fl = 'style="fill:' + COL[g] + '"';
+      if (x1 - x0 > 12){
+        s += '<line class="stp" ' + st + ' x1="' + (x0 + 4).toFixed(1) + '" x2="' + (x1 - 6).toFixed(1) + '" y1="' + y0.toFixed(1) + '" y2="' + y0.toFixed(1) + '"/>' +
+             '<path ' + fl + ' d="M' + x1.toFixed(1) + ',' + y0.toFixed(1) + 'l-7,-3.5v7z"/>';
+        if (!small && x1 - x0 > 30)
+          s += '<text class="dq" ' + fl + ' x="' + ((x0 + x1) / 2).toFixed(1) + '" y="' + (y0 + 15).toFixed(1) + '" text-anchor="middle">ΔQ</text>';
+      }
+      if (y0 - y1 > 12){
+        s += '<line class="rise" ' + st + ' x1="' + x1.toFixed(1) + '" x2="' + x1.toFixed(1) + '" y1="' + y0.toFixed(1) + '" y2="' + (y1 + 9).toFixed(1) + '"/>' +
+             '<path ' + fl + ' d="M' + x1.toFixed(1) + ',' + (y1 + 4).toFixed(1) + 'l-3.5,7h7z"/>';
+      }
+      const gain = g === "H" ? d.dlH : d.dlL;
+      s += '<text class="dl" ' + fl + ' x="' + (x1 + 7).toFixed(1) + '" y="' + ((y0 + y1) / 2).toFixed(1) + '" dy=".32em">' + fmt(gain, 3, true) + '</text>';
+    });
+
+    // points: filled = current quality, open = after the improvement
+    MK.forEach(k => {
+      const y = sy(ell(k.g, k.q)).toFixed(1), x = k.x.toFixed(1);
+      s += k.post
+        ? '<circle cx="' + x + '" cy="' + y + '" r="3.6" style="fill:var(--halo);stroke:' + COL[k.g] + ';stroke-width:1.6"/>'
+        : '<circle cx="' + x + '" cy="' + y + '" r="3.6" style="fill:' + COL[k.g] + '"/>';
+    });
+
+    // gap brackets
+    const bracket = (x, a, b, cls) => {
+      const ya = sy(a), yb = sy(b), cap = 4.5;
+      return '<line class="' + cls + '" x1="' + x + '" x2="' + x + '" y1="' + ya + '" y2="' + yb + '"/>' +
+        '<line class="' + cls + '" x1="' + (x - cap) + '" x2="' + (x + cap) + '" y1="' + ya + '" y2="' + ya + '"/>' +
+        '<line class="' + cls + '" x1="' + (x - cap) + '" x2="' + (x + cap) + '" y1="' + yb + '" y2="' + yb + '"/>';
+    };
+    s += bracket(xb0, d.lH0, d.lL0, "gap");
+    let g0y = (sy(d.lH0) + sy(d.lL0)) / 2;
+    const xl = (post ? xb1 : xb0) + 9;
+    if (post){
+      s += bracket(xb1, d.lH1, d.lL1, "gap1");
+      let g1y = (sy(d.lH1) + sy(d.lL1)) / 2;
+      if (Math.abs(g1y - g0y) < 15){          // keep the two labels apart, preserving their order
+        const mid = (g0y + g1y) / 2, up0 = g0y <= g1y;
+        g0y = mid + (up0 ? -7.5 : 7.5); g1y = mid + (up0 ? 7.5 : -7.5);
+      }
+      s += '<text class="gl target" x="' + xl + '" y="' + g1y.toFixed(1) + '" dy=".32em">' + (small ? "" : "After ") + fmt(d.G1) + '</text>';
+    }
+    s += '<text class="gl" x="' + xl + '" y="' + g0y.toFixed(1) + '" dy=".32em">' + (small ? "" : "Before ") + fmt(d.G0) + '</text>';
+
+    const label = "Learning curves for high- and low-SES children across school quality at exposure " + p.tau.toFixed(2) +
+      ". Both groups' quality rises by " + p.dQ.toFixed(2) + ": low SES from " + p.QL.toFixed(2) + " to " + (p.QL + p.dQ).toFixed(2) +
+      ", gaining " + d.dlL.toFixed(3) + "; high SES from " + p.QH.toFixed(2) + " to " + (p.QH + p.dQ).toFixed(2) +
+      ", gaining " + d.dlH.toFixed(3) + ". The gap goes from " + d.G0.toFixed(3) + " to " + d.G1.toFixed(3) + ".";
+    plotEl.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" role="img" aria-label="' + label + '">' + s + '</svg>';
+  }
+
+  /* ---------- force bars ---------- */
+  function forces(d){
+    const rows = [["Position", d.P, ""], ["Disposition", d.D, ""], ["Net change", d.dG, "net"]];
+    const mx = Math.max(1e-12, ...rows.map(r => Math.abs(r[1])));
+    return '<div class="fdir" aria-hidden="true"><span></span><span><span>← narrows the gap</span><span>widens the gap →</span></span><span></span></div>' +
+      rows.map(r => {
+        const w = Math.abs(r[1]) / mx * 50;
+        const side = r[1] < 0 ? "right:50%" : "left:50%";
+        return '<div class="fr ' + r[2] + '"><span>' + r[0] + '</span><span class="ft"><span class="fb" style="' + side + ';width:' + w.toFixed(2) + '%"></span></span><span class="fv">' + fmt(r[1], 4, true) + '</span></div>';
+      }).join("");
+  }
+
+  /* ---------- position vs disposition (marginal) ---------- */
+  function marginalVerdict(d){
+    const pos  = Math.log(d.posR);    // > 0: low-SES positional advantage
+    const disp = Math.log(d.dispR);   // > 0: high-SES dispositional advantage
+    const net  = pos - disp;          // > 0: a small universal improvement narrows the gap
+    if (Math.abs(net) < BAL)
+      return ["Position and disposition approximately balance: at the initial values, a small universal improvement leaves the gap approximately unchanged.", "flat"];
+    const eff = net > 0 ? "a small universal improvement narrows the gap" : "a small universal improvement widens the gap";
+    const cls = net > 0 ? "" : "widen";
+    const posFav  = Math.abs(pos)  < 1e-9 ? null : (pos  > 0 ? "low" : "high");
+    const dispFav = Math.abs(disp) < 1e-9 ? null : (disp > 0 ? "high" : "low");
+    if (!posFav)  return ["No positional difference (equal qualities or linear returns), so disposition decides: " + eff + ".", cls];
+    if (!dispFav) return ["Equal conversion, so position decides: " + eff + ".", cls];
+    if (posFav === dispFav)
+      return ["Position and disposition reinforce each other, both favouring " + posFav + "-SES children: " + eff + ".", cls];
+    return [(Math.abs(pos) > Math.abs(disp) ? "Position dominates: " : "Disposition dominates: ") + eff + ".", cls];
+  }
+
+  /* ---------- update ---------- */
+  function update(){
+    Object.keys(p).forEach(k => {
+      const box = document.getElementById("out-" + k);
+      if (box !== document.activeElement) box.value = p[k].toFixed(2);   // don't overwrite what's being typed
+    });
+    document.querySelectorAll("[data-preset]").forEach(b => {
+      const pr = PRESETS[b.dataset.preset];
+      b.setAttribute("aria-pressed", Math.abs(p.cH - pr.cH) < 1e-9 && Math.abs(p.cL - pr.cL) < 1e-9 ? "true" : "false");
+    });
+
+    const d = derived();
+    draw(d);
+    const post = p.dQ > 1e-9;
+    const dQs = p.dQ.toFixed(2);
+
+    // readout
+    document.getElementById("v-gap0").textContent = fmt(d.G0);
+    document.getElementById("v-gap1").textContent = fmt(d.G1);
+    document.getElementById("v-dG").textContent = fmt(d.dG, 4, true);
+    let share = "";
+    if (post && d.G0 > 0.005 && Math.abs(d.dG) >= 0.00005){
+      const sh = -d.dG / d.G0 * 100;
+      share = sh > 0 ? pct(sh) + " of the current gap eliminated" : "Gap grows by " + pct(-sh);
+    }
+    document.getElementById("v-share").textContent = share;
+    document.getElementById("v-dlL").textContent = fmt(d.dlL, 4);
+    document.getElementById("v-dlH").textContent = fmt(d.dlH, 4);
+    document.getElementById("v-qL").textContent = "Q_L: " + p.QL.toFixed(2) + " → " + (p.QL + p.dQ).toFixed(2);
+    document.getElementById("v-qH").textContent = "Q_H: " + p.QH.toFixed(2) + " → " + (p.QH + p.dQ).toFixed(2);
+    const more = document.getElementById("v-more"), moreSub = document.getElementById("v-more-sub");
+    if (!post || Math.abs(d.dG) < 0.00005){ more.textContent = "Equal"; more.className = "stat-val"; moreSub.textContent = post ? "Both groups gain the same" : ""; }
+    else if (d.dlL > d.dlH){ more.textContent = "Low SES"; more.className = "stat-val lo"; moreSub.textContent = "by " + fmt(d.dlL - d.dlH, 4); }
+    else { more.textContent = "High SES"; more.className = "stat-val hi"; moreSub.textContent = "by " + fmt(d.dlH - d.dlL, 4); }
+
+    const v = document.getElementById("verdict");
+    let text, cls = "";
+    if (!post){ text = "Set a quality improvement ΔQ above zero to see how the gap changes."; cls = "flat"; }
+    else {
+      const subj = "Universal quality improvement (ΔQ = " + dQs + ")";
+      if (Math.abs(d.dG / p.dQ) < EPS){ text = subj + " leaves the gap approximately unchanged."; cls = "flat"; }
+      else if (d.dG < 0)               text = subj + " narrows the gap.";
+      else                             { text = subj + " widens the gap."; cls = "widen"; }
+    }
+    v.className = "verdict " + cls;
+    v.textContent = text;
+
+    // finite intervention
+    document.getElementById("n-main").innerHTML =
+      "= " + fmt(d.ta) + " × {" + fmt(p.cH, 2) + " × " + fmt(d.gH, 4) + " − " + fmt(p.cL, 2) + " × " + fmt(d.gL, 4) + "}" +
+      " = " + fmt(d.dlH, 4) + " − " + fmt(d.dlL, 4) + " = <b>" + fmt(d.dG, 4) + "</b>";
+    document.getElementById("v-school").textContent = fmt(d.dG, 4, true);
+    document.getElementById("v-home").textContent = fmt(0, 4);
+
+    // what the home environment does to the level of the gap
+    let sn = "Non-school learning sets the level of the gap: <span class=\"n\">(h<sub>H</sub> − h<sub>L</sub>)(1 − θτ) = " + fmt(d.homeGap) +
+      "</span> of the current gap of <span class=\"n\">" + fmt(d.G0) + "</span>, with the remaining <span class=\"n\">" + fmt(d.schoolGap) +
+      "</span> generated in school. ";
+    if (post && d.G0 > 0.005 && d.schoolGap > 0.005 && d.dG < -0.00005){
+      sn += "The improvement removes <span class=\"n\">" + pct(-d.dG / d.schoolGap * 100) + "</span> of the school-generated gap but only <span class=\"n\">" +
+        pct(-d.dG / d.G0 * 100) + "</span> of the observed gap. Changing <span data-tex=\"h_H\"></span>, <span data-tex=\"h_L\"></span> or <span data-tex=\"\\theta\"></span> alters that share without altering <span data-tex=\"\\Delta\\mathcal G\"></span>.";
+    } else {
+      sn += "Changing <span data-tex=\"h_H\"></span>, <span data-tex=\"h_L\"></span> or <span data-tex=\"\\theta\"></span> moves the gap before and after the intervention by the same amount, leaving <span data-tex=\"\\Delta\\mathcal G\"></span> unchanged.";
+    }
+    const snEl = document.getElementById("share-note");
+    snEl.innerHTML = sn;
+    renderTex(snEl);
+
+    // position vs disposition
+    document.getElementById("n-mr").innerHTML =
+      "High SES: <b>" + fmt(d.mrH) + "</b> &nbsp;&nbsp; Low SES: <b>" + fmt(d.mrL) + "</b> &nbsp;&nbsp; (marginal return at current quality)";
+    document.getElementById("v-pos").textContent = fmt(d.posR);
+    document.getElementById("v-disp").textContent = fmt(d.dispR);
+    document.getElementById("s-pos").textContent =
+      d.posR > 1 + 1e-9 ? "Favours low-SES children" : d.posR < 1 - 1e-9 ? "Favours high-SES children" : "No positional difference";
+    document.getElementById("s-disp").textContent =
+      d.dispR > 1 + 1e-9 ? "Favours high-SES children" : d.dispR < 1 - 1e-9 ? "Favours low-SES children" : "No dispositional difference";
+    const rel = Math.abs(Math.log(d.posR) - Math.log(d.dispR)) < BAL ? "≈" : d.dispR < d.posR ? "<" : ">";
+    document.getElementById("n-thresh").innerHTML =
+      "High-SES dispositional advantage <b>" + fmt(d.dispR) + "</b> " + rel + " <b>" + fmt(d.posR) + "</b> low-SES positional advantage";
+    const mv = marginalVerdict(d), pdv = document.getElementById("pd-verdict");
+    pdv.textContent = mv[0];
+    pdv.className = "pdv " + mv[1];
+
+    document.getElementById("v-slope").textContent = fmt(d.slope, 3, true);
+    let agree = "";
+    if (post){
+      const mS = Math.abs(d.slope) < EPS ? 0 : Math.sign(d.slope);
+      const fS = Math.abs(d.dG / p.dQ) < EPS ? 0 : Math.sign(d.dG);
+      agree = mS === 0 && fS === 0
+        ? "The finite intervention of ΔQ = " + dQs + " also leaves the gap approximately unchanged: ΔG = " + fmt(d.dG, 4, true) + "."
+        : mS === fS
+        ? "The finite intervention of ΔQ = " + dQs + " points the same way: ΔG = " + fmt(d.dG, 4, true) + "."
+        : "For the finite intervention of ΔQ = " + dQs + ", however, ΔG = " + fmt(d.dG, 4, true) +
+          ": over a change this large the marginal condition does not settle the sign, so read the before/after calculation above.";
+    }
+    document.getElementById("v-agree").textContent = agree;
+
+    // split
+    document.getElementById("n-pd").innerHTML = "𝒫 = <b>" + fmt(d.P, 4) + "</b> &nbsp;&nbsp; 𝒟 = <b>" + fmt(d.D, 4) + "</b>";
+    document.getElementById("n-full").innerHTML = "= " + fmt(d.P, 4) + " + " + par(d.D, 4) + " = <b>" + fmt(d.dG, 4) + "</b>";
+    document.getElementById("forces").innerHTML = forces(d);
+  }
+
+  renderTex();
+  update();
+  if (window.ResizeObserver) new ResizeObserver(() => draw(derived())).observe(plotEl);
+  else window.addEventListener("resize", () => draw(derived()));
+
+  // When embedded in an iframe, tell the host page how tall the widget is.
+  if (window.parent !== window && window.ResizeObserver){
+    const main = document.querySelector(".lm");
+    new ResizeObserver(() => {
+      window.parent.postMessage({lmHeight: Math.ceil(main.getBoundingClientRect().height + 40)}, "*");
+    }).observe(main);
+  }
+})();
+</script>
+</body>
+</html>
